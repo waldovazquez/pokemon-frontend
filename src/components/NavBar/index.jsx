@@ -16,6 +16,9 @@ import {
 } from '@mui/icons-material';
 
 import AuthContext from '../../context/authContext';
+import Pokeball from '../../assets/pokeball_icon.png';
+
+import './styles.css';
 
 function NavBar({
   routes = [],
@@ -26,35 +29,54 @@ function NavBar({
 
   return (
     <div style={{
-      height: '40px',
-      backgroundColor: 'blue',
+      height: '60px',
+      backgroundColor: '#F02D3A',
       position: 'absolute',
       top: 0,
       width: '100%',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-around',
     }}
     >
-      {
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: '0px 10px',
+        height: '60px',
+      }}
+      >
+        <Link
+          to="/home?page=1"
+          style={{
+            height: '46px',
+          }}
+        >
+          <img src={Pokeball} alt="pokeball" height={48} width={48} className="pokeball" />
+        </Link>
+        {
         routes && routes.map((item) => (
           <Link
             to={item.to}
             key={item.id}
             style={{
               textDecoration: 'none',
-              color: 'white',
+              color: '#EFF6EE',
             }}
           >
             {item.label}
           </Link>
         ))
       }
-      <Tooltip title="Logout">
-        <IconButton aria-label="Logout" onClick={() => logout()}>
-          <Logout fontSize="medium" />
-        </IconButton>
-      </Tooltip>
+        <Tooltip title="Logout">
+          <IconButton aria-label="Logout" onClick={() => logout()}>
+            <Logout
+              fontSize="large"
+              sx={{
+                color: '#EFF6EE',
+              }}
+            />
+          </IconButton>
+        </Tooltip>
+      </div>
     </div>
   );
 }

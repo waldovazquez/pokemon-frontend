@@ -1,0 +1,7 @@
+.pokeball:hover {
+    transform: rotate(360deg);
+}
+
+.pokeball {
+    transition: .5s all;
+}

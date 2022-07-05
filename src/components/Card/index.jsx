@@ -1,96 +1,85 @@
-import React, {
-  useContext,
-} from 'react';
+import React from 'react';
 
 import {
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Tooltip,
-  IconButton,
-  Typography,
-} from '@mui/material';
-
-import axios from 'axios';
+  useNavigate,
+} from 'react-router-dom';
 
 import {
   Favorite,
 } from '@mui/icons-material';
 
 import {
-  API_URL,
-} from '../../utils/constants';
+  IconButton,
+  Tooltip,
+} from '@mui/material';
 
-import AuthContext from '../../context/authContext';
+import NotAvailable from '../../assets/imagenotavailable.png';
 
-function CardComponent({
+import Button from '../Button';
+
+function Card({
   image,
   title,
-  about,
-  malId,
+  id,
 }) {
-  const {
-    userData,
-  } = useContext(AuthContext);
-
-  async function addToFavorites(id) {
-    try {
-      await axios.post(`${API_URL}/favorites/add`, {
-        userId: userData._id,
-        malId: id,
-      });
-    } catch (e) {
-      console.info('Error: ', e);
-    }
-  }
-
+  const navigate = useNavigate();
   return (
-    <Card sx={{
-      width: 345,
-      height: 500,
+    <div style={{
+      height: '300px',
+      width: '240px',
+      backgroundColor: '#EFF6EE',
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'space-between',
+      justifyContent: 'center',
+      alignItems: 'center',
+      border: '4px solid #F02D3A',
+      borderRadius: '10px',
     }}
     >
-      <CardMedia
-        component="img"
-        height="200"
-        image={image}
-        alt={title}
-        sx={{
-          objectFit: 'contain',
-          height: '45%',
-        }}
-      />
-      <CardContent
-        sx={{
-          height: '45%',
-        }}
+      {image ? (
+        <img
+          src={image}
+          alt={title}
+          height={200}
+          width={200}
+        />
+      )
+        : (
+          <img
+            src={NotAvailable}
+            alt={title}
+            height={200}
+            width={240}
+            style={{ objectFit: 'cover' }}
+          />
+        )}
+      <p style={{
+        textTransform: 'capitalize',
+      }}
       >
-        <Typography gutterBottom variant="h5" component="div">
-          {title}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {(about || '').split(' ')
-            .filter((item, index) => index <= 30)
-            .join(' ')}
-        </Typography>
-      </CardContent>
-      <CardActions
-        sx={{
-          height: '10%',
-        }}
+        {title}
+      </p>
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+      }}
       >
-        <Tooltip title="Add To Favorites">
-          <IconButton aria-label="Add To Favorites" onClick={() => addToFavorites(malId)}>
-            <Favorite />
+        <Tooltip title="Favorite">
+          <IconButton aria-label="Favorite" onClick={() => console.info('favorite called...')}>
+            <Favorite
+              fontSize="large"
+              sx={{
+                color: '#F02D3A',
+              }}
+            />
           </IconButton>
         </Tooltip>
-      </CardActions>
-    </Card>
+        <Button onClick={() => navigate(`/pokemon/${id}`)}>
+          More Details
+        </Button>
+      </div>
+    </div>
   );
 }
 
-export default CardComponent;
+export default Card;

@@ -1,24 +1,17 @@
 import React from 'react';
 import NavBar from '../NavBar';
 import Footer from '../Footer';
+import Routes from './routes';
 
 function Screen({ children }) {
-  const routes = [{
-    id: 1,
-    to: '/',
-    label: 'Home',
-  },
-  {
-    id: 2,
-    to: '/about',
-    label: 'About',
-  },
-  ];
   return (
-    <div>
-      <NavBar routes={routes} />
+    <div style={{
+      backgroundColor: '#273043',
+    }}
+    >
+      <NavBar routes={Routes} />
       <div style={{
-        margin: '40px auto',
+        margin: '60px auto',
         maxWidth: '1200px',
       }}
       >

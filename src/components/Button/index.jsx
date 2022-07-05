@@ -7,11 +7,14 @@ function Button({
   children,
 }) {
   return (
-    <div>
+    <div style={style}>
       <button
         type={type}
         onClick={onClick}
-        style={style}
+        style={{
+          width: '100%',
+          fontSize: '16px',
+        }}
       >
         {children}
       </button>

@@ -8,6 +8,7 @@ import {
 import {
   LinkedIn,
   GitHub,
+  Email,
 } from '@mui/icons-material';
 
 function Footer() {
@@ -15,29 +16,49 @@ function Footer() {
     <div style={{
       height: '200px',
       display: 'flex',
+      backgroundColor: '#F02D3A',
+      alignItems: 'center',
+      justifyContent: 'space-around',
     }}
     >
-      <p>Pokemon World</p>
-      <Tooltip title="LinkedIn">
-        <IconButton>
-          <a href="https://www.linkedin.com/in/waldo-leonel-vazquez/">
-            <LinkedIn sx={{
-              color: 'black',
-            }}
-            />
-          </a>
-        </IconButton>
-      </Tooltip>
-      <Tooltip title="GitHub">
-        <IconButton>
-          <a href="https://github.com/waldovazquez">
-            <GitHub sx={{
-              color: 'black',
-            }}
-            />
-          </a>
-        </IconButton>
-      </Tooltip>
+      <h1 style={{
+        color: '#EFF6EE',
+      }}
+      >
+        Pokemon World
+      </h1>
+      <div>
+        <Tooltip title="LinkedIn">
+          <IconButton>
+            <a href="https://www.linkedin.com/in/waldo-leonel-vazquez/">
+              <LinkedIn sx={{
+                color: '#EFF6EE',
+              }}
+              />
+            </a>
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="GitHub">
+          <IconButton>
+            <a href="https://github.com/waldovazquez">
+              <GitHub sx={{
+                color: '#EFF6EE',
+              }}
+              />
+            </a>
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Email">
+          <IconButton>
+            <a href="mailto:waldovazquezdev@gmail.com">
+              <Email sx={{
+                color: '#EFF6EE',
+              }}
+              />
+            </a>
+          </IconButton>
+        </Tooltip>
+      </div>
     </div>
   );
 }

@@ -24,27 +24,30 @@ import {
 } from '../../utils/storage';
 
 function Login() {
-  const {
-    setData,
-  } = useContext(AuthContext);
+  const context = useContext(AuthContext);
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   async function login() {
-    const dataToLogin = {
-      email,
-      password,
-    };
+    try {
+      const dataToLogin = {
+        email,
+        password,
+      };
 
-    const response = await axios.post(`${API_URL}/user/login`, dataToLogin);
-    if (response && response.data.ok) {
-      setSessionStorage('x-access-token', response.data.token);
-      const responseData = await axios.get(`${API_URL}/user/getbytoken?token=${response.data.token}`);
-      if (responseData && responseData.data.ok) {
-        setData(responseData.data.userData);
+      const response = await axios.post(`${API_URL}/user/login`, dataToLogin);
+      if (response && response.data.ok) {
+        setSessionStorage('x-access-token', response.data.token);
+        const responseData = await axios.get(`${API_URL}/user/getbytoken?token=${response.data.token}`);
+        if (responseData && responseData.data.ok) {
+          context.setUserData(responseData.data.userData);
+          context.setToken(response.data.token);
+        }
+        navigate('/home?page=1');
       }
-      navigate('/');
+    } catch (e) {
+      console.info('Error', e);
     }
   }
 
@@ -53,6 +56,7 @@ function Login() {
       <div style={{
         display: 'flex',
         height: '100vh',
+        backgroundColor: 'dimgray',
       }}
       >
         <div style={{
@@ -93,7 +97,11 @@ function Login() {
           <p>
             Necesitas una cuenta?
           </p>
-          <Link to="/register">Sign Up</Link>
+          <Link
+            to="/register"
+          >
+            Sign Up
+          </Link>
           <Button
             type="submit"
             onClick={() => login({

@@ -6,6 +6,10 @@ import React, {
 import axios from 'axios';
 
 import {
+  useSearchParams,
+} from 'react-router-dom';
+
+import {
   Pagination,
   Stack,
 } from '@mui/material';
@@ -19,6 +23,7 @@ import {
 } from '../../utils/constants';
 
 function Home() {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [pokemons, setPokemons] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -37,11 +42,33 @@ function Home() {
     }
   }
 
+  function handlePage(value) {
+    let search = null;
+    if (value) {
+      search = {
+        page: value,
+      };
+    }
+    setPage(value);
+    setSearchParams(search, { replace: true });
+  }
+
   useEffect(() => {
     getPokemons();
   }, [
     page,
   ]);
+
+  useEffect(() => {
+    const pageQuery = searchParams.get('page');
+    if (pageQuery) {
+      if (page !== Number(pageQuery)) {
+        handlePage(Number(pageQuery));
+      }
+    } else {
+      handlePage(1);
+    }
+  }, [searchParams]);
 
   return (
     <Screen>
@@ -49,6 +76,7 @@ function Home() {
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'center',
+        height: pokemons.length < 12 && '90vh',
       }}
       >
         {
@@ -56,13 +84,13 @@ function Home() {
             <div
               key={item._id}
               style={{
-                margin: '20px',
+                margin: '10px',
               }}
             >
               <Card
                 image={item.image}
                 title={item.name}
-                malId={item._id}
+                id={item._id}
               />
             </div>
           ))
@@ -76,7 +104,19 @@ function Home() {
           justifyContent: 'center',
         }}
       >
-        <Pagination count={47} onChange={(event, value) => setPage(value)} />
+        <Pagination
+          count={47}
+          page={page}
+          onChange={(event, value) => {
+            handlePage(value);
+          }}
+          sx={{
+            backgroundColor: '#F02D3A',
+            borderRadius: '12px',
+          }}
+          color="standard"
+          size="large"
+        />
       </Stack>
       { loading && <Loading />}
     </Screen>

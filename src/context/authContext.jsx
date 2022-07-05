@@ -18,37 +18,34 @@ import {
 const AuthContext = createContext();
 
 function AuthProvider({ children }) {
-  const [data, setData] = useState({
-    userData: null,
-  });
+  const [userData, setUserData] = useState(null);
+  const [token, setToken] = useState(null);
 
-  async function updatingUserData(token) {
-    console.info('updatingUserData called');
-    const responseData = await axios.get(`${API_URL}/user/getbytoken?token=${token}`);
-    if (responseData && responseData.data) {
-      setData({
-        userData: responseData.data.userData,
-      });
+  async function updatingUserData(newToken) {
+    const responseData = await axios.get(`${API_URL}/user/getbytoken?token=${newToken}`);
+    if (responseData && responseData.data.ok) {
+      setUserData(responseData.data.userData);
     }
   }
 
   useEffect(() => {
-    if (getSessionStorage('x-access-token')) {
-      const token = getSessionStorage('x-access-token');
-      if (token) updatingUserData(token);
+    const newToken = getSessionStorage('x-access-token');
+    if (newToken) {
+      updatingUserData(newToken);
     }
   }, []);
 
   return (
     <AuthContext.Provider
       value={{
-        data,
-        setData,
+        userData,
+        setUserData,
+        token,
+        setToken,
         logout: () => {
           removeSessionStorage('x-access-token');
-          setData({
-            userData: null,
-          });
+          setUserData(null);
+          setToken(null);
         },
       }}
     >
