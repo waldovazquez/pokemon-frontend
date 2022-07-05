@@ -25,7 +25,6 @@ function AuthProvider({ children }) {
   async function updatingUserData(token) {
     console.info('updatingUserData called');
     const responseData = await axios.get(`${API_URL}/user/getbytoken?token=${token}`);
-    console.info('responseData', responseData);
     if (responseData && responseData.data) {
       setData({
         userData: responseData.data.userData,

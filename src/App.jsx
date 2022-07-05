@@ -25,7 +25,7 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!data.userData) {
+    if (data.userData === null) {
       return navigate('/login');
     }
     return navigate('/');

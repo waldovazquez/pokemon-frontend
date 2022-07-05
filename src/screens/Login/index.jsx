@@ -1,7 +1,6 @@
 import React, {
   useState,
   useContext,
-  useEffect,
 } from 'react';
 
 import axios from 'axios';
@@ -26,7 +25,6 @@ import {
 
 function Login() {
   const {
-    data,
     setData,
   } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -38,6 +36,7 @@ function Login() {
       email,
       password,
     };
+
     const response = await axios.post(`${API_URL}/user/login`, dataToLogin);
     if (response && response.data.ok) {
       setSessionStorage('x-access-token', response.data.token);
@@ -45,12 +44,9 @@ function Login() {
       if (responseData && responseData.data.ok) {
         setData(responseData.data.userData);
       }
+      navigate('/');
     }
   }
-
-  useEffect(() => {
-    if (data.userData) navigate('/');
-  }, [data]);
 
   return (
     <form onSubmit={(e) => e.preventDefault()}>
