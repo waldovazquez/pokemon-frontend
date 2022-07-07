@@ -2,10 +2,10 @@ import React from 'react';
 
 function Button({
   type,
-  onClick,
   children,
   style,
   className,
+  onClick = () => {},
 }) {
   return (
     <button

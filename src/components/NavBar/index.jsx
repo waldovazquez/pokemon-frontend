@@ -17,6 +17,10 @@ import {
 
 import AuthContext from '../../context/authContext';
 
+import {
+  LOGO_URL,
+} from '../../utils/constants';
+
 import styles from './navbar.module.css';
 
 function NavBar({
@@ -24,11 +28,20 @@ function NavBar({
 }) {
   const {
     logout,
+    data,
   } = useContext(AuthContext);
 
   return (
     <div className={styles.container}>
       <div className={styles.subcontainer}>
+        <div>
+          <img
+            src={LOGO_URL}
+            alt="logoNavbar"
+            height="60px"
+            width="160px"
+          />
+        </div>
         {
         routes && routes.map((item) => (
           <Link
@@ -40,11 +53,13 @@ function NavBar({
           </Link>
         ))
       }
+        { data.userData && (
         <Tooltip title="Logout">
           <IconButton aria-label="Logout" onClick={() => logout()}>
-            <MdLogout color="#273043" />
+            <MdLogout color="#EDF2F4" />
           </IconButton>
         </Tooltip>
+        )}
       </div>
     </div>
   );

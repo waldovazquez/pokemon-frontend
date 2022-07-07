@@ -141,40 +141,40 @@ function PokemonCreate() {
                 value={hp}
                 className={styles.component__input}
                 onChange={(e) => setHp(e.target.value)}
-                icon
-                image={Heart}
+                activeIcon
+                icon={Heart}
               />
               <Input
                 type="number"
                 value={attack}
                 className={styles.component__input}
                 onChange={(e) => setAttack(e.target.value)}
-                icon
-                image={Attack}
+                activeIcon
+                icon={Attack}
               />
               <Input
                 type="number"
                 value={defense}
                 className={styles.component__input}
                 onChange={(e) => setDefense(e.target.value)}
-                icon
-                image={Defense}
+                activeIcon
+                icon={Defense}
               />
               <Input
                 type="number"
                 value={speed}
                 className={styles.component__input}
                 onChange={(e) => setSpeed(e.target.value)}
-                icon
-                image={Speed}
+                activeIcon
+                icon={Speed}
               />
               <Input
                 type="number"
                 value={height}
                 className={styles.component__input}
                 onChange={(e) => setHeight(e.target.value)}
-                icon
-                image={Height}
+                activeIcon
+                icon={Height}
               />
             </div>
             <div className={styles.container__input__bottom}>
@@ -183,8 +183,8 @@ function PokemonCreate() {
                 value={weight}
                 className={styles.component__input}
                 onChange={(e) => setWeight(e.target.value)}
-                icon
-                image={Weight}
+                activeIcon
+                icon={Weight}
               />
             </div>
             <div className={styles.container__types}>
@@ -197,7 +197,7 @@ function PokemonCreate() {
                     <label
                       htmlFor={t.name}
                       style={{
-                        color: '#EFF6EE',
+                        color: '#2B2D42',
                       }}
                     >
                       {t.name}

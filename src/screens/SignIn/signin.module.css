@@ -8,15 +8,15 @@
 }
 
 .component__input:focus {
-    border: 2px solid #273043;
+    border: 2px solid #2B2D42;
     outline: none;
 }
 
 .component__button {
     margin-bottom: 6px;
     padding: 16px 16px;
-    background-color: #273043;
-    color: #EFF6EE;
+    background-color: #2B2D42;
+    color: #EDF2F4;
     font-size: 16px;
     cursor: pointer;
     border: none;
@@ -25,33 +25,32 @@
 }
 
 .component__button:hover {
-    background-color: #EFF6EE;
-    color: #273043;
+    background-color: #EDF2F4;
+    color: #2B2D42;
 }
 
 .component__link {
     display: flex;
     justify-content: flex-end;
     width: 100%;
-    text-decoration: none;
-    color: #EFF6EE;
+    color: #EDF2F4;
     margin-bottom: 6px;
     font-style: italic;
 }
 
 .component__link:hover {
-    color: #273043;
+    color: #2B2D42;
 }
 
 .container {
     display: flex;
     height: 100vh;
-    background-color: #273043;
+    background-color: #2B2D42;
 }
 
 .sub__container {
-    background-color: #9197AE60;
-    border: 1px solid #EFF6EE;
+    background-color: #8D99AE60;
+    border: 1px solid #EDF2F4;
     border-radius: 14px;
     width: 400px;
     margin: auto;

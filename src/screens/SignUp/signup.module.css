@@ -1,8 +1,8 @@
 .component__button {
     margin-bottom: 6px;
     padding: 16px 16px;
-    background-color: #273043;
-    color: #EFF6EE;
+    background-color: #2B2D42;
+    color: #EDF2F4;
     font-size: 16px;
     cursor: pointer;
     border: none;
@@ -11,8 +11,8 @@
 }
 
 .component__button:hover {
-    background-color: #EFF6EE;
-    color: #273043;
+    background-color: #EDF2F4;
+    color: #2B2D42;
 }
 
 .component__input {
@@ -25,7 +25,7 @@
 }
 
 .component__input:focus {
-    border: 2px solid #273043;
+    border: 2px solid #2B2D42;
     outline: none;
 }
 
@@ -36,14 +36,14 @@
 .container {
     display: flex;
     height: 100vh;
-    background-color: #273043;
+    background-color: #2B2D42;
     align-items: center;
     justify-content: center;
 }
 
 .sub__container {
-    background-color: #9197AE60;
-    border: 1px solid #EFF6EE;
+    background-color: #8D99AE60;
+    border: 1px solid #EDF2F4;
     border-radius: 10px;
     display: flex;
     height: 400px;

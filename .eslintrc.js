@@ -23,5 +23,6 @@ module.exports = {
     'react/prop-types': 'off',
     'no-underscore-dangle': 'off',
     'react/button-has-type': 'off',
+    'max-len': 'off',
   },
 };

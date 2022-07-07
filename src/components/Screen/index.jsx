@@ -10,7 +10,7 @@ function Screen({
 }) {
   return (
     <div style={{
-      backgroundColor: '#273043',
+      backgroundColor: '#8D99AE',
     }}
     >
       <NavBar routes={Routes} />

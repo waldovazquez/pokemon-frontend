@@ -34,7 +34,7 @@ import {
 import styles from './signin.module.css';
 
 function SignIn() {
-  const context = useContext(AuthContext);
+  const { setData } = useContext(AuthContext);
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -51,8 +51,10 @@ function SignIn() {
         setSessionStorage('x-access-token', response.data.token);
         const responseData = await axios.get(`${API_URL}/user/getbytoken?token=${response.data.token}`);
         if (responseData && responseData.data.ok) {
-          context.setUserData(responseData.data.userData);
-          context.setToken(response.data.token);
+          setData({
+            userData: responseData.data.userData,
+            token: response.data.token,
+          });
         }
         navigate('/home?page=1');
       }
@@ -84,8 +86,8 @@ function SignIn() {
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                image={User}
-                icon
+                icon={User}
+                activeIcon
                 className={styles.component__input}
               />
               <Input
@@ -93,9 +95,9 @@ function SignIn() {
                 placeholder="Password"
                 value={password}
                 className={styles.component__input}
-                icon
+                activeIcon
+                icon={Key}
                 onChange={(e) => setPassword(e.target.value)}
-                image={Key}
               />
             </div>
             <Link

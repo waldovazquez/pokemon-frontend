@@ -9,18 +9,18 @@ function Input({
   placeholder,
   id,
   icon,
-  image,
+  activeIcon,
   alt,
   className,
 }) {
   return (
     <div style={{
-      position: icon && 'relative',
+      position: activeIcon && 'relative',
     }}
     >
-      {image && (
+      {icon && (
         <img
-          src={image}
+          src={icon}
           alt={alt}
           height={24}
           width={24}
@@ -36,7 +36,7 @@ function Input({
         onChange={onChange}
         className={className}
         style={{
-          textIndent: icon ? '40px' : '10px',
+          textIndent: activeIcon ? '40px' : '10px',
         }}
       />
     </div>

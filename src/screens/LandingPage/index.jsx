@@ -5,7 +5,15 @@ import Screen from '../../components/Screen';
 function LandingPage() {
   return (
     <Screen>
-      <h1>Landing Page</h1>
+      <div style={{
+        height: '90vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+      >
+        <h1>Landing Page</h1>
+      </div>
     </Screen>
   );
 }

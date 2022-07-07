@@ -13,9 +13,9 @@ import {
   Tooltip,
 } from '@mui/material';
 
-import NotAvailable from '../../assets/imagenotavailable.png';
-
 import Button from '../Button';
+
+import NotAvailable from '../../assets/imagenotavailable.png';
 
 import styles from './card.module.css';
 
@@ -46,7 +46,8 @@ function Card({
           />
         )}
       <p style={{
-        textTransform: 'capitalize',
+        textTransform: 'uppercase',
+        color: '#2B2D42',
       }}
       >
         {title}
@@ -54,7 +55,7 @@ function Card({
       <div className={styles.container__bottom}>
         <Tooltip title="Favorite">
           <IconButton aria-label="Favorite" onClick={() => console.info('favorite called...')}>
-            <MdFavorite />
+            <MdFavorite color="#2B2D42" />
           </IconButton>
         </Tooltip>
         <Button

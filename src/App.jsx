@@ -26,21 +26,21 @@ const LandingPage = React.lazy(() => import('./screens/LandingPage'));
 const PokemonCreate = React.lazy(() => import('./screens/PokemonCreate'));
 
 function ProtectedRoute({ children }) {
-  const context = useContext(AuthContext);
-  if (context.userData === null) {
+  const { data } = useContext(AuthContext);
+  if (!data.userData) {
     return <SignIn />;
   }
   return children;
 }
 
 function App() {
-  const context = useContext(AuthContext);
+  const { data } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
 
   function init() {
-    const excluded = ['sign-in', 'sign-up'];
-    if (context.userData) {
+    const excluded = ['sign-in', 'sign-up', 'about'];
+    if (data.userData) {
       if (excluded.includes(location.pathname.split('/')[1])) {
         return navigate('/home?page=1');
       }
@@ -51,7 +51,7 @@ function App() {
 
   useEffect(() => {
     init();
-  }, [context.userData]);
+  }, [data.userData]);
 
   return (
     <Suspense fallback={<Loading />}>
@@ -73,9 +73,7 @@ function App() {
         <Route
           path="/about"
           element={(
-            <ProtectedRoute>
-              <About />
-            </ProtectedRoute>
+            <About />
           )}
         />
         <Route path="sign-in" element={<SignIn />} />

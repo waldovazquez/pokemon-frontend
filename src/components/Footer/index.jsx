@@ -14,41 +14,40 @@ import {
   MdEmail,
 } from 'react-icons/md';
 
+import {
+  LOGO_URL,
+} from '../../utils/constants';
+
+import styles from './footer.module.css';
+
 function Footer() {
   return (
-    <div style={{
-      height: '200px',
-      display: 'flex',
-      backgroundColor: '#9197AE',
-      alignItems: 'center',
-      justifyContent: 'space-around',
-    }}
-    >
-      <h1 style={{
-        color: '#273043',
-      }}
-      >
-        Pokemon World
-      </h1>
+    <div className={styles.container}>
+      <img
+        src={LOGO_URL}
+        alt="logoFooter"
+        width="200px"
+        height="80px"
+      />
       <div>
         <Tooltip title="LinkedIn">
           <IconButton>
             <a href="https://www.linkedin.com/in/waldo-leonel-vazquez/">
-              <BsLinkedin color="#273043" />
+              <BsLinkedin color="#EDF2F4" />
             </a>
           </IconButton>
         </Tooltip>
         <Tooltip title="GitHub">
           <IconButton>
             <a href="https://github.com/waldovazquez">
-              <BsGithub color="#273043" />
+              <BsGithub color="#EDF2F4" />
             </a>
           </IconButton>
         </Tooltip>
         <Tooltip title="Email">
           <IconButton>
             <a href="mailto:waldovazquezdev@gmail.com">
-              <MdEmail color="#273043" />
+              <MdEmail color="#EDF2F4" />
             </a>
           </IconButton>
         </Tooltip>
