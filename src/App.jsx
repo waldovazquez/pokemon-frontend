@@ -18,8 +18,8 @@ import Loading from './components/Loading';
 
 const Home = React.lazy(() => import('./screens/Home'));
 const About = React.lazy(() => import('./screens/About'));
-const Login = React.lazy(() => import('./screens/Login'));
-const Register = React.lazy(() => import('./screens/Register'));
+const SignIn = React.lazy(() => import('./screens/SignIn'));
+const SignUp = React.lazy(() => import('./screens/SignUp'));
 const PokemonDetails = React.lazy(() => import('./screens/PokemonDetails'));
 const NotFound = React.lazy(() => import('./screens/NotFound'));
 const LandingPage = React.lazy(() => import('./screens/LandingPage'));
@@ -28,7 +28,7 @@ const PokemonCreate = React.lazy(() => import('./screens/PokemonCreate'));
 function ProtectedRoute({ children }) {
   const context = useContext(AuthContext);
   if (context.userData === null) {
-    return <Login />;
+    return <SignIn />;
   }
   return children;
 }
@@ -39,7 +39,7 @@ function App() {
   const navigate = useNavigate();
 
   function init() {
-    const excluded = ['login', 'register'];
+    const excluded = ['sign-in', 'sign-up'];
     if (context.userData) {
       if (excluded.includes(location.pathname.split('/')[1])) {
         return navigate('/home?page=1');
@@ -78,8 +78,8 @@ function App() {
             </ProtectedRoute>
           )}
         />
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
+        <Route path="sign-in" element={<SignIn />} />
+        <Route path="sign-up" element={<SignUp />} />
         <Route
           path="pokemon/:id"
           element={(

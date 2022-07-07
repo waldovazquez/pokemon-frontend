@@ -31,22 +31,22 @@ import {
   setSessionStorage,
 } from '../../utils/storage';
 
-import styles from './login.module.css';
+import styles from './signin.module.css';
 
-function Login() {
+function SignIn() {
   const context = useContext(AuthContext);
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  async function handleLogin() {
+  async function handleSignIn() {
     try {
-      const dataToLogin = {
+      const dataToSignIn = {
         email,
         password,
       };
 
-      const response = await axios.post(`${API_URL}/user/login`, dataToLogin);
+      const response = await axios.post(`${API_URL}/user/login`, dataToSignIn);
       if (response && response.data.ok) {
         setSessionStorage('x-access-token', response.data.token);
         const responseData = await axios.get(`${API_URL}/user/getbytoken?token=${response.data.token}`);
@@ -99,17 +99,17 @@ function Login() {
               />
             </div>
             <Link
-              to="/register"
+              to="/sign-up"
               className={styles.component__link}
             >
               Sign Up?
             </Link>
             <Button
               type="submit"
-              onClick={() => handleLogin()}
+              onClick={() => handleSignIn()}
               className={styles.component__button}
             >
-              Login
+              Sign In
             </Button>
           </div>
         </div>
@@ -118,4 +118,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default SignIn;

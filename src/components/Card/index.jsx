@@ -5,8 +5,8 @@ import {
 } from 'react-router-dom';
 
 import {
-  Favorite,
-} from '@mui/icons-material';
+  MdFavorite,
+} from 'react-icons/md';
 
 import {
   IconButton,
@@ -54,12 +54,7 @@ function Card({
       <div className={styles.container__bottom}>
         <Tooltip title="Favorite">
           <IconButton aria-label="Favorite" onClick={() => console.info('favorite called...')}>
-            <Favorite
-              fontSize="large"
-              sx={{
-                color: '#273043',
-              }}
-            />
+            <MdFavorite />
           </IconButton>
         </Tooltip>
         <Button

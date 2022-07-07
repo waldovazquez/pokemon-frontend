@@ -14,9 +14,9 @@ import {
   API_URL,
 } from '../../utils/constants';
 
-import styles from './register.module.css';
+import styles from './signup.module.css';
 
-function Register() {
+function SignUp() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -24,7 +24,7 @@ function Register() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [alert, setAlert] = useState(null);
 
-  async function handleRegister() {
+  async function handleSignUp() {
     try {
       if (password !== confirmPassword) {
         return setAlert({
@@ -33,14 +33,14 @@ function Register() {
         });
       }
 
-      const dataToRegister = {
+      const dataToSignUp = {
         firstName,
         lastName,
         email,
         password,
       };
 
-      const response = await axios.post(`${API_URL}/user/register`, dataToRegister);
+      const response = await axios.post(`${API_URL}/user/register`, dataToSignUp);
       if (response && response.data.ok) {
         setAlert({
           severity: 'success',
@@ -113,7 +113,7 @@ function Register() {
               </div>
               <Button
                 type="submit"
-                onClick={() => handleRegister()}
+                onClick={() => handleSignUp()}
                 className={styles.component__button}
               >
                 Sign Up
@@ -135,4 +135,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default SignUp;

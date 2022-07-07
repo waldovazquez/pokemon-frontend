@@ -6,10 +6,13 @@ import {
 } from '@mui/material';
 
 import {
-  LinkedIn,
-  GitHub,
-  Email,
-} from '@mui/icons-material';
+  BsLinkedin,
+  BsGithub,
+} from 'react-icons/bs';
+
+import {
+  MdEmail,
+} from 'react-icons/md';
 
 function Footer() {
   return (
@@ -31,30 +34,21 @@ function Footer() {
         <Tooltip title="LinkedIn">
           <IconButton>
             <a href="https://www.linkedin.com/in/waldo-leonel-vazquez/">
-              <LinkedIn sx={{
-                color: '#273043',
-              }}
-              />
+              <BsLinkedin color="#273043" />
             </a>
           </IconButton>
         </Tooltip>
         <Tooltip title="GitHub">
           <IconButton>
             <a href="https://github.com/waldovazquez">
-              <GitHub sx={{
-                color: '#273043',
-              }}
-              />
+              <BsGithub color="#273043" />
             </a>
           </IconButton>
         </Tooltip>
         <Tooltip title="Email">
           <IconButton>
             <a href="mailto:waldovazquezdev@gmail.com">
-              <Email sx={{
-                color: '#273043',
-              }}
-              />
+              <MdEmail color="#273043" />
             </a>
           </IconButton>
         </Tooltip>

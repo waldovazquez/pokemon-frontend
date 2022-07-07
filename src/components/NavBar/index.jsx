@@ -12,8 +12,8 @@ import {
 } from '@mui/material';
 
 import {
-  Logout,
-} from '@mui/icons-material';
+  MdLogout,
+} from 'react-icons/md';
 
 import AuthContext from '../../context/authContext';
 
@@ -42,12 +42,7 @@ function NavBar({
       }
         <Tooltip title="Logout">
           <IconButton aria-label="Logout" onClick={() => logout()}>
-            <Logout
-              fontSize="large"
-              sx={{
-                color: '#273043',
-              }}
-            />
+            <MdLogout color="#273043" />
           </IconButton>
         </Tooltip>
       </div>
