@@ -16,13 +16,13 @@ function Footer() {
     <div style={{
       height: '200px',
       display: 'flex',
-      backgroundColor: '#F02D3A',
+      backgroundColor: '#9197AE',
       alignItems: 'center',
       justifyContent: 'space-around',
     }}
     >
       <h1 style={{
-        color: '#EFF6EE',
+        color: '#273043',
       }}
       >
         Pokemon World
@@ -32,7 +32,7 @@ function Footer() {
           <IconButton>
             <a href="https://www.linkedin.com/in/waldo-leonel-vazquez/">
               <LinkedIn sx={{
-                color: '#EFF6EE',
+                color: '#273043',
               }}
               />
             </a>
@@ -42,7 +42,7 @@ function Footer() {
           <IconButton>
             <a href="https://github.com/waldovazquez">
               <GitHub sx={{
-                color: '#EFF6EE',
+                color: '#273043',
               }}
               />
             </a>
@@ -52,7 +52,7 @@ function Footer() {
           <IconButton>
             <a href="mailto:waldovazquezdev@gmail.com">
               <Email sx={{
-                color: '#EFF6EE',
+                color: '#273043',
               }}
               />
             </a>

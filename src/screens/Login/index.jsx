@@ -3,17 +3,25 @@ import React, {
   useContext,
 } from 'react';
 
-import axios from 'axios';
-
 import {
   Link,
   useNavigate,
 } from 'react-router-dom';
 
+import axios from 'axios';
+
+import {
+  Avatar,
+} from '@mui/material';
+
 import AuthContext from '../../context/authContext';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+
+import defaultAvatar from '../../assets/defaultAvatar.png';
+import User from '../../assets/user.png';
+import Key from '../../assets/key.png';
 
 import {
   API_URL,
@@ -23,13 +31,15 @@ import {
   setSessionStorage,
 } from '../../utils/storage';
 
+import styles from './login.module.css';
+
 function Login() {
   const context = useContext(AuthContext);
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  async function login() {
+  async function handleLogin() {
     try {
       const dataToLogin = {
         email,
@@ -53,64 +63,55 @@ function Login() {
 
   return (
     <form onSubmit={(e) => e.preventDefault()}>
-      <div style={{
-        display: 'flex',
-        height: '100vh',
-        backgroundColor: 'dimgray',
-      }}
-      >
-        <div style={{
-          textAlign: 'center',
-          backgroundColor: 'aqua',
-          border: '1px solid chartreuse',
-          padding: '12px',
-          borderRadius: '10px',
-          width: '300px',
-          margin: 'auto',
-        }}
-        >
-          <h1>Login</h1>
-          <div>
-            <Input
-              type="text"
-              label="Ingrese su correo"
-              placeholder="Usuario"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
+      <div className={styles.container}>
+        <div className={styles.sub__container}>
+          <div className={styles.content}>
+            <Avatar
+              alt="Avatar"
+              src={defaultAvatar}
+              sx={{
+                height: '128px',
+                width: '128px',
+                marginTop: '16px',
               }}
             />
-            <Input
-              type="password"
-              label="Ingrese su password"
-              placeholder="Password"
-              value={password}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-              }}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <div style={{
+              marginTop: '24px',
+            }}
+            >
+              <Input
+                type="text"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                image={User}
+                icon
+                className={styles.component__input}
+              />
+              <Input
+                type="password"
+                placeholder="Password"
+                value={password}
+                className={styles.component__input}
+                icon
+                onChange={(e) => setPassword(e.target.value)}
+                image={Key}
+              />
+            </div>
+            <Link
+              to="/register"
+              className={styles.component__link}
+            >
+              Sign Up?
+            </Link>
+            <Button
+              type="submit"
+              onClick={() => handleLogin()}
+              className={styles.component__button}
+            >
+              Login
+            </Button>
           </div>
-          <p>
-            Necesitas una cuenta?
-          </p>
-          <Link
-            to="/register"
-          >
-            Sign Up
-          </Link>
-          <Button
-            type="submit"
-            onClick={() => login({
-              email,
-              password,
-            })}
-          >
-            Login
-          </Button>
         </div>
       </div>
     </form>

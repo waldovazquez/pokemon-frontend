@@ -22,6 +22,8 @@ const Login = React.lazy(() => import('./screens/Login'));
 const Register = React.lazy(() => import('./screens/Register'));
 const PokemonDetails = React.lazy(() => import('./screens/PokemonDetails'));
 const NotFound = React.lazy(() => import('./screens/NotFound'));
+const LandingPage = React.lazy(() => import('./screens/LandingPage'));
+const PokemonCreate = React.lazy(() => import('./screens/PokemonCreate'));
 
 function ProtectedRoute({ children }) {
   const context = useContext(AuthContext);
@@ -36,19 +38,30 @@ function App() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const excluded = ['login', 'register', ''];
+  function init() {
+    const excluded = ['login', 'register'];
     if (context.userData) {
       if (excluded.includes(location.pathname.split('/')[1])) {
         return navigate('/home?page=1');
       }
       return navigate(location.pathname);
     }
+    return null;
+  }
+
+  useEffect(() => {
+    init();
   }, [context.userData]);
 
   return (
     <Suspense fallback={<Loading />}>
       <Routes>
+        <Route
+          path="/"
+          element={(
+            <LandingPage />
+        )}
+        />
         <Route
           path="/home"
           element={(
@@ -72,6 +85,14 @@ function App() {
           element={(
             <ProtectedRoute>
               <PokemonDetails />
+            </ProtectedRoute>
+        )}
+        />
+        <Route
+          path="pokemon/create"
+          element={(
+            <ProtectedRoute>
+              <PokemonCreate />
             </ProtectedRoute>
         )}
         />

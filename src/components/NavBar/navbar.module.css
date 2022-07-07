@@ -1,0 +1,21 @@
+.container {
+    height: 60px;
+    background-color: #9197AE;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.subcontainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 10px;
+    height: 60px;
+}
+
+.link {
+    text-decoration: none;
+    color: #273043;
+    font-size: 18px;
+}

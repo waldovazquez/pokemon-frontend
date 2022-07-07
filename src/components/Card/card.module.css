@@ -1,0 +1,38 @@
+.container {
+    height: 300px;
+    width: 240px;
+    background-color: #9197AE;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #EFF6EE;
+    border-radius: 10px;
+}
+
+.container__bottom {
+    display: flex;
+    align-items: center;
+}
+
+.component__button {
+    margin-bottom: 6px;
+    padding: 16px 16px;
+    background-color: #273043;
+    color: #EFF6EE;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    transition: .5s all;
+}
+
+.component__button:hover {
+    background-color: #EFF6EE;
+    color: #273043;
+}
+
+.image {
+    height: 200px;
+    width: 200px;
+}

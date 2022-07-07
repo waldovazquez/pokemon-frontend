@@ -11,7 +11,6 @@ import {
 
 import {
   Pagination,
-  Stack,
 } from '@mui/material';
 
 import Screen from '../../components/Screen';
@@ -21,6 +20,8 @@ import Card from '../../components/Card';
 import {
   API_URL,
 } from '../../utils/constants';
+
+import styles from './home.module.css';
 
 function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -72,19 +73,18 @@ function Home() {
 
   return (
     <Screen>
-      <div style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'center',
-        height: pokemons.length < 12 && '90vh',
-      }}
+      <div
+        styles={{
+          height: pokemons.length < 12 && '90vh',
+        }}
+        className={styles.container}
       >
         {
           pokemons && pokemons.map((item) => (
             <div
               key={item._id}
               style={{
-                margin: '10px',
+                margin: '6px',
               }}
             >
               <Card
@@ -96,13 +96,12 @@ function Home() {
           ))
         }
       </div>
-      <Stack
-        spacing={2}
-        sx={{
-          height: '50px',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
+      <div style={{
+        height: '50px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
       >
         <Pagination
           count={47}
@@ -111,13 +110,12 @@ function Home() {
             handlePage(value);
           }}
           sx={{
-            backgroundColor: '#F02D3A',
+            backgroundColor: '#EFF6EE',
             borderRadius: '12px',
           }}
-          color="standard"
-          size="large"
+          size="medium"
         />
-      </Stack>
+      </div>
       { loading && <Loading />}
     </Screen>
   );

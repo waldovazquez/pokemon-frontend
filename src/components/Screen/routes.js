@@ -10,7 +10,7 @@ const routes = [{
 },
 {
   id: 3,
-  to: '/crear',
+  to: '/pokemon/create',
   label: 'Crea tu pokemon',
 },
 ];

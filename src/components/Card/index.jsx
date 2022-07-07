@@ -17,6 +17,8 @@ import NotAvailable from '../../assets/imagenotavailable.png';
 
 import Button from '../Button';
 
+import styles from './card.module.css';
+
 function Card({
   image,
   title,
@@ -24,24 +26,12 @@ function Card({
 }) {
   const navigate = useNavigate();
   return (
-    <div style={{
-      height: '300px',
-      width: '240px',
-      backgroundColor: '#EFF6EE',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      border: '4px solid #F02D3A',
-      borderRadius: '10px',
-    }}
-    >
+    <div className={styles.container}>
       {image ? (
         <img
           src={image}
           alt={title}
-          height={200}
-          width={200}
+          className={styles.image}
         />
       )
         : (
@@ -50,7 +40,9 @@ function Card({
             alt={title}
             height={200}
             width={240}
-            style={{ objectFit: 'cover' }}
+            style={{
+              objectFit: 'cover',
+            }}
           />
         )}
       <p style={{
@@ -59,22 +51,21 @@ function Card({
       >
         {title}
       </p>
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-      }}
-      >
+      <div className={styles.container__bottom}>
         <Tooltip title="Favorite">
           <IconButton aria-label="Favorite" onClick={() => console.info('favorite called...')}>
             <Favorite
               fontSize="large"
               sx={{
-                color: '#F02D3A',
+                color: '#273043',
               }}
             />
           </IconButton>
         </Tooltip>
-        <Button onClick={() => navigate(`/pokemon/${id}`)}>
+        <Button
+          onClick={() => navigate(`/pokemon/${id}`)}
+          className={styles.component__button}
+        >
           More Details
         </Button>
       </div>

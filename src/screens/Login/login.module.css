@@ -1,0 +1,66 @@
+.component__input {
+    margin-bottom: 6px;
+    width: 260px;
+    height: 36px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    text-indent: 40px;
+}
+
+.component__input:focus {
+    border: 2px solid #273043;
+    outline: none;
+}
+
+.component__button {
+    margin-bottom: 6px;
+    padding: 16px 16px;
+    background-color: #273043;
+    color: #EFF6EE;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    transition: .5s all;
+}
+
+.component__button:hover {
+    background-color: #EFF6EE;
+    color: #273043;
+}
+
+.component__link {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    text-decoration: none;
+    color: #EFF6EE;
+    margin-bottom: 6px;
+    font-style: italic;
+}
+
+.component__link:hover {
+    color: #273043;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    background-color: #273043;
+}
+
+.sub__container {
+    background-color: #9197AE60;
+    border: 1px solid #EFF6EE;
+    border-radius: 14px;
+    width: 400px;
+    margin: auto;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    margin: auto;
+}

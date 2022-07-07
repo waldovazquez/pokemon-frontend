@@ -1,0 +1,74 @@
+.component__button {
+    margin-top: 10px;
+    padding: 16px 16px;
+    background-color: #EFF6EE;
+    color: #273043;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    transition: .5s all;
+}
+
+.component__input {
+    margin-bottom: 6px;
+    width: 200px;
+    height: 36px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+}
+
+.component__input:focus {
+    border: 2px solid #273043;
+    outline: none;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.subcontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container__stats {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container__input__top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.component__input__bottom {
+    display: flex;
+    justify-content: center;
+}
+
+.container__image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container__checkbox {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    padding: 4px;
+}
+
+.container__types {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
