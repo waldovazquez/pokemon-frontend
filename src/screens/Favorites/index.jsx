@@ -83,7 +83,7 @@ function Favorites() {
         className={styles.container}
       >
         {
-          favorites && favorites.map((item) => (
+          favorites && favorites.length > 0 ? favorites.map((item) => (
             <div
               key={item._id}
               style={{
@@ -98,9 +98,19 @@ function Favorites() {
                 onClick={() => deleteFavorite(item._id)}
               />
             </div>
-          ))
+          )) : (
+            <p style={{
+              display: 'flex',
+              alignItems: 'center',
+              fontSize: 24,
+            }}
+            >
+              You do not have favorites
+            </p>
+          )
         }
       </div>
+      {favorites && favorites.length > 0 && (
       <div style={{
         height: '50px',
         display: 'flex',
@@ -121,6 +131,7 @@ function Favorites() {
           size="large"
         />
       </div>
+      )}
       {
         alert && (
         <Toast

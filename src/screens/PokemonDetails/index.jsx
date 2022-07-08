@@ -10,14 +10,16 @@ import {
 import axios from 'axios';
 
 import Screen from '../../components/Screen';
+import CardDetail from '../../components/CardDetail';
 
 import {
   API_URL,
 } from '../../utils/constants';
 
+import styles from './pokemondetails.module.css';
+
 function PokemonDetails() {
   const [details, setDetails] = useState({});
-  console.info('details', details);
   const {
     id,
   } = useParams();
@@ -39,9 +41,23 @@ function PokemonDetails() {
 
   return (
     <Screen>
-      <p>
-        {id}
-      </p>
+      <div
+        className={styles.container}
+      >
+        {details && (
+        <CardDetail
+          attack={details.attack}
+          defense={details.defense}
+          height={details.height}
+          hp={details.hp}
+          image={details.image}
+          name={details.name}
+          speed={details.speed}
+          types={details.types}
+          weight={details.weight}
+        />
+        )}
+      </div>
     </Screen>
   );
 }
