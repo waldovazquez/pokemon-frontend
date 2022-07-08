@@ -18,6 +18,7 @@ import AuthContext from '../../context/authContext';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import Screen from '../../components/Screen';
 
 import defaultAvatar from '../../assets/defaultAvatar.png';
 import User from '../../assets/user.png';
@@ -66,59 +67,61 @@ function SignIn() {
   }
 
   return (
-    <form onSubmit={(e) => e.preventDefault()}>
-      <div className={styles.container}>
-        <div className={styles.sub__container}>
-          <div className={styles.content}>
-            <Avatar
-              alt="Avatar"
-              src={defaultAvatar}
-              sx={{
-                height: '128px',
-                width: '128px',
-                marginTop: '16px',
+    <Screen>
+      <form onSubmit={(e) => e.preventDefault()}>
+        <div className={styles.container}>
+          <div className={styles.sub__container}>
+            <div className={styles.content}>
+              <Avatar
+                alt="Avatar"
+                src={defaultAvatar}
+                sx={{
+                  height: '128px',
+                  width: '128px',
+                  marginTop: '16px',
+                }}
+              />
+              <div style={{
+                marginTop: '24px',
               }}
-            />
-            <div style={{
-              marginTop: '24px',
-            }}
-            >
-              <Input
-                type="text"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                icon={User}
-                activeIcon
-                className={styles.component__input}
-              />
-              <Input
-                type="password"
-                placeholder="Password"
-                value={password}
-                className={styles.component__input}
-                activeIcon
-                icon={Key}
-                onChange={(e) => setPassword(e.target.value)}
-              />
+              >
+                <Input
+                  type="text"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  icon={User}
+                  activeIcon
+                  className={styles.component__input}
+                />
+                <Input
+                  type="password"
+                  placeholder="Password"
+                  value={password}
+                  className={styles.component__input}
+                  activeIcon
+                  icon={Key}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+              <Link
+                to="/sign-up"
+                className={styles.component__link}
+              >
+                Sign Up?
+              </Link>
+              <Button
+                type="submit"
+                onClick={() => handleSignIn()}
+                className={styles.component__button}
+              >
+                Sign In
+              </Button>
             </div>
-            <Link
-              to="/sign-up"
-              className={styles.component__link}
-            >
-              Sign Up?
-            </Link>
-            <Button
-              type="submit"
-              onClick={() => handleSignIn()}
-              className={styles.component__button}
-            >
-              Sign In
-            </Button>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </Screen>
   );
 }
 

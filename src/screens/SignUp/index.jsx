@@ -9,6 +9,7 @@ import Slider from 'react-slick';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import Toast from '../../components/Toast';
+import Screen from '../../components/Screen';
 
 import Pikachu from '../../assets/pikachu.png';
 
@@ -63,7 +64,7 @@ function SignUp() {
   }
 
   return (
-    <>
+    <Screen>
       <form onSubmit={(e) => e.preventDefault()}>
         <div className={styles.container}>
           <div className={styles.sub__container}>
@@ -164,7 +165,7 @@ function SignUp() {
         />
         )
     }
-    </>
+    </Screen>
   );
 }
 

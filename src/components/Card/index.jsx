@@ -56,7 +56,7 @@ function Card({
       <div className={styles.container__bottom}>
         <Tooltip title="Favorite">
           <IconButton aria-label="Favorite" onClick={() => console.info('favorite called...')}>
-            <MdFavorite color="#2B2D42" />
+            <MdFavorite className={styles.icon} />
           </IconButton>
         </Tooltip>
         <Button

@@ -17,6 +17,7 @@
 .link {
   color: #EDF2F4;
   font-size: 18px;
+  text-transform: uppercase;
 }
 
 .container__right{

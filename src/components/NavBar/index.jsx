@@ -22,11 +22,11 @@ import {
   LOGO_URL,
 } from '../../utils/constants';
 
+import getRoutes from '../../utils/routes';
+
 import styles from './navbar.module.css';
 
-function NavBar({
-  routes = [],
-}) {
+function NavBar() {
   const {
     logout,
     data,
@@ -47,7 +47,7 @@ function NavBar({
         <div className={styles.container__right}>
           <div className={styles.container__link}>
             {
-          routes && routes.map((item) => (
+          getRoutes(data.userData).map((item) => (
             <Link
               to={item.to}
               key={item.id}

@@ -32,3 +32,11 @@
   background-color: #2B2D42;
   color: #EF233C;
 }
+
+.icon {
+  color: #2B2D42;
+}
+
+.icon:hover{
+  color: #EF233C;
+}

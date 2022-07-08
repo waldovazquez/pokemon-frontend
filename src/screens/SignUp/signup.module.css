@@ -36,14 +36,13 @@
 
 .container {
   display: flex;
-  height: 100vh;
-  background-color: #2B2D42;
+  height: 90vh;
   align-items: center;
   justify-content: center;
 }
 
 .sub__container {
-  background-color: #8D99AE60;
+  background-color: #2B2D4260;
   border: 1px solid #EDF2F4;
   border-radius: 10px;
   display: flex;

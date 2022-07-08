@@ -3,8 +3,6 @@ import React from 'react';
 import NavBar from '../NavBar';
 import Footer from '../Footer';
 
-import Routes from './routes';
-
 function Screen({
   children,
 }) {
@@ -13,7 +11,7 @@ function Screen({
       backgroundColor: '#8D99AE',
     }}
     >
-      <NavBar routes={Routes} />
+      <NavBar />
       <div style={{
         margin: '60px auto',
         maxWidth: '1200px',
