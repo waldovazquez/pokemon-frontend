@@ -4,7 +4,7 @@ import styles from './input.module.css';
 
 function Input({
   value,
-  onChange,
+  onChange = () => {},
   type,
   placeholder,
   id,

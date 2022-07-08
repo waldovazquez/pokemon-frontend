@@ -18,10 +18,9 @@ import Speed from '../../assets/speed.png';
 import Height from '../../assets/height.png';
 import Weight from '../../assets/weight.png';
 
-import dataTypes from './types';
-
 import {
   API_URL,
+  TYPES,
 } from '../../utils/constants';
 
 import styles from './pokemoncreate.module.css';
@@ -189,7 +188,7 @@ function PokemonCreate() {
             </div>
             <div className={styles.container__types}>
               {
-                dataTypes.map((t) => (
+                TYPES.map((t) => (
                   <div
                     key={t.id}
                     className={styles.container__checkbox}

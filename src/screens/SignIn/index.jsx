@@ -34,7 +34,9 @@ import {
 import styles from './signin.module.css';
 
 function SignIn() {
-  const { setData } = useContext(AuthContext);
+  const {
+    setData,
+  } = useContext(AuthContext);
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

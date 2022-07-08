@@ -31,7 +31,8 @@ function Card({
         <img
           src={image}
           alt={title}
-          className={styles.image}
+          height={200}
+          width={200}
         />
       )
         : (

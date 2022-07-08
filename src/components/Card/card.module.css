@@ -1,39 +1,34 @@
 .container {
-    height: 300px;
-    width: 240px;
-    background-color: #EDF2F4;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid #2B2D42;
-    border-radius: 10px;
+  height: 300px;
+  width: 240px;
+  background-color: #EDF2F4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #2B2D42;
+  border-radius: 10px;
 }
 
 .container__bottom {
-    display: flex;
-    align-items: center;
-    margin-top: 4px;
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
 }
 
 .component__button {
-    margin-bottom: 6px;
-    padding: 16px 16px;
-    background-color: #EF233C;
-    color: #2B2D42;
-    font-size: 16px;
-    cursor: pointer;
-    border: none;
-    border-radius: 8px;
-    transition: .5s all;
+  margin-bottom: 6px;
+  padding: 16px 16px;
+  background-color: #EF233C;
+  color: #2B2D42;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  transition: .5s all;
 }
 
 .component__button:hover {
-    background-color: #2B2D42;
-    color: #EF233C;
-}
-
-.image {
-    height: 200px;
-    width: 200px;
+  background-color: #2B2D42;
+  color: #EF233C;
 }

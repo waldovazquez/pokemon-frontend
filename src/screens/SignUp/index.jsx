@@ -4,6 +4,8 @@ import React, {
 
 import axios from 'axios';
 
+import Slider from 'react-slick';
+
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import Toast from '../../components/Toast';
@@ -12,6 +14,7 @@ import Pikachu from '../../assets/pikachu.png';
 
 import {
   API_URL,
+  AVATARS,
 } from '../../utils/constants';
 
 import styles from './signup.module.css';
@@ -22,6 +25,7 @@ function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [avatar, setAvatar] = useState(AVATARS[0]);
   const [alert, setAlert] = useState(null);
 
   async function handleSignUp() {
@@ -38,6 +42,7 @@ function SignUp() {
         lastName,
         email,
         password,
+        avatar,
       };
 
       const response = await axios.post(`${API_URL}/user/register`, dataToSignUp);
@@ -70,6 +75,7 @@ function SignUp() {
             <div className={styles.container__input}>
               <h1 style={{
                 color: '#EFF6EE',
+                marginBottom: '12px',
               }}
               >
                 Sign Up
@@ -110,6 +116,33 @@ function SignUp() {
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   className={styles.component__input}
                 />
+              </div>
+              <div className={styles.container__avatars}>
+                <p style={{
+                  color: '#EFF6EE',
+                }}
+                >
+                  Avatar
+                </p>
+                <div style={{
+                  width: '125px',
+                }}
+                >
+                  <Slider
+                    dots={false}
+                    infinite
+                    speed={500}
+                    slidesToShow={1}
+                    slidesToScroll={1}
+                    afterChange={(index) => setAvatar(AVATARS[index])}
+                  >
+                    {AVATARS.map((av) => (
+                      <div key={av}>
+                        <img src={av} alt="pokemon" />
+                      </div>
+                    ))}
+                  </Slider>
+                </div>
               </div>
               <Button
                 type="submit"

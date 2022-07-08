@@ -17,6 +17,7 @@ import {
 
 function PokemonDetails() {
   const [details, setDetails] = useState({});
+  console.info('details', details);
   const {
     id,
   } = useParams();

@@ -14,6 +14,9 @@ import {
 import AuthContext from './context/authContext';
 
 import './App.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 import Loading from './components/Loading';
 
 const Home = React.lazy(() => import('./screens/Home'));
@@ -26,7 +29,9 @@ const LandingPage = React.lazy(() => import('./screens/LandingPage'));
 const PokemonCreate = React.lazy(() => import('./screens/PokemonCreate'));
 
 function ProtectedRoute({ children }) {
-  const { data } = useContext(AuthContext);
+  const {
+    data,
+  } = useContext(AuthContext);
   if (!data.userData) {
     return <SignIn />;
   }
@@ -34,7 +39,9 @@ function ProtectedRoute({ children }) {
 }
 
 function App() {
-  const { data } = useContext(AuthContext);
+  const {
+    data,
+  } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
 
