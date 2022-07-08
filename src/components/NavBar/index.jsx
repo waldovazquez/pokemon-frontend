@@ -4,7 +4,7 @@ import React, {
 } from 'react';
 
 import {
-  Link,
+  NavLink,
 } from 'react-router-dom';
 
 import {
@@ -36,25 +36,25 @@ function NavBar() {
   return (
     <div className={styles.container}>
       <div className={styles.subcontainer}>
-        <Link to="/">
+        <NavLink to="/">
           <img
             src={LOGO_URL}
             alt="logoNavbar"
             height="60px"
             width="160px"
           />
-        </Link>
+        </NavLink>
         <div className={styles.container__right}>
           <div className={styles.container__link}>
             {
           getRoutes(data.userData).map((item) => (
-            <Link
+            <NavLink
               to={item.to}
               key={item.id}
-              className={styles.link}
+              className={({ isActive }) => (isActive ? styles.link__is__active : styles.link__is__not__active)}
             >
               {item.label}
-            </Link>
+            </NavLink>
           ))
           }
           </div>

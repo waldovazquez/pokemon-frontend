@@ -9,6 +9,10 @@ import {
 } from 'react-icons/md';
 
 import {
+  IoMdTrash,
+} from 'react-icons/io';
+
+import {
   IconButton,
   Tooltip,
 } from '@mui/material';
@@ -23,6 +27,8 @@ function Card({
   image,
   title,
   id,
+  favorite = false,
+  onClick = () => {},
 }) {
   const navigate = useNavigate();
   return (
@@ -54,11 +60,19 @@ function Card({
         {title}
       </p>
       <div className={styles.container__bottom}>
-        <Tooltip title="Favorite">
-          <IconButton aria-label="Favorite" onClick={() => console.info('favorite called...')}>
-            <MdFavorite className={styles.icon} />
-          </IconButton>
-        </Tooltip>
+        {!favorite ? (
+          <Tooltip title="Favorite">
+            <IconButton aria-label="Favorite" onClick={() => onClick()}>
+              <MdFavorite className={styles.icon} />
+            </IconButton>
+          </Tooltip>
+        ) : (
+          <Tooltip title="Delete">
+            <IconButton aria-label="Delete" onClick={() => onClick()}>
+              <IoMdTrash className={styles.icon} />
+            </IconButton>
+          </Tooltip>
+        )}
         <Button
           onClick={() => navigate(`/pokemon/${id}`)}
           className={styles.component__button}

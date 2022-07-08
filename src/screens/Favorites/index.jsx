@@ -7,10 +7,6 @@ import React, {
 import axios from 'axios';
 
 import {
-  useSearchParams,
-} from 'react-router-dom';
-
-import {
   Pagination,
 } from '@mui/material';
 
@@ -18,33 +14,32 @@ import AuthContext from '../../context/authContext';
 
 import Screen from '../../components/Screen';
 import Loading from '../../components/Loading';
-import Card from '../../components/Card';
 import Toast from '../../components/Toast';
+import Card from '../../components/Card';
 
 import {
   API_URL,
 } from '../../utils/constants';
 
-import styles from './home.module.css';
+import styles from './favorites.module.css';
 
-function Home() {
+function Favorites() {
   const {
     data,
   } = useContext(AuthContext);
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [pokemons, setPokemons] = useState([]);
+  const [favorites, setFavorites] = useState([]);
+  const [totalPages, setTotalPages] = useState(1);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [totalPages, setTotalPages] = useState(1);
   const [alert, setAlert] = useState(null);
 
-  async function getPokemons() {
+  async function getFavorites() {
     try {
       setLoading(true);
-      const response = await axios.get(`${API_URL}/pokemon/getallpokemons?page=${page}`);
+      const response = await axios.get(`${API_URL}/favorites/getallfavorites?page=${page}?userId=${data.userData._id}`);
       if (response && response.data) {
         setTotalPages(response.data.totalPages);
-        setPokemons(response.data.docs);
+        setFavorites(response.data.docs);
       }
     } catch (e) {
       console.info('Error: ', e);
@@ -53,61 +48,42 @@ function Home() {
     }
   }
 
-  async function addToFavorites(pokemonId) {
+  async function deleteFavorite(favoriteId) {
     try {
-      const response = await axios.post(`${API_URL}/favorites/create`, {
-        pokemonId,
-        userId: data.userData._id,
+      const response = await axios.delete(`${API_URL}/favorites/delete`, {
+        data: {
+          id: favoriteId,
+        },
       });
       if (response && response.data.ok) {
         setAlert({
           severity: 'success',
-          message: 'Favorite Successfully Created',
+          message: 'Favorite Successfully Deleted',
         });
       }
     } catch (e) {
       console.info('Error: ', e);
+    } finally {
+      getFavorites();
     }
-  }
-
-  function handlePage(value) {
-    let search = null;
-    if (value) {
-      search = {
-        page: value,
-      };
-    }
-    setPage(value);
-    setSearchParams(search, { replace: true });
   }
 
   useEffect(() => {
-    getPokemons();
+    getFavorites();
   }, [
     page,
   ]);
-
-  useEffect(() => {
-    const pageQuery = searchParams.get('page');
-    if (pageQuery) {
-      if (page !== Number(pageQuery)) {
-        handlePage(Number(pageQuery));
-      }
-    } else {
-      handlePage(1);
-    }
-  }, [searchParams]);
 
   return (
     <Screen>
       <div
         style={{
-          height: pokemons.length < 12 && '90vh',
+          height: favorites.length < 12 && '90vh',
         }}
         className={styles.container}
       >
         {
-          pokemons && pokemons.map((item) => (
+          favorites && favorites.map((item) => (
             <div
               key={item._id}
               style={{
@@ -115,10 +91,11 @@ function Home() {
               }}
             >
               <Card
-                image={item.image}
-                title={item.name}
-                id={item._id}
-                onClick={() => addToFavorites(item._id)}
+                image={item.pokemon.image}
+                favorite
+                title={item.pokemon.name}
+                id={item.pokemon._id}
+                onClick={() => deleteFavorite(item._id)}
               />
             </div>
           ))
@@ -134,14 +111,14 @@ function Home() {
         <Pagination
           count={totalPages}
           page={page}
-          onChange={(event, value) => {
-            handlePage(value);
+          onChange={(_event, value) => {
+            setPage(value);
           }}
           sx={{
             backgroundColor: '#EFF6EE',
             borderRadius: '12px',
           }}
-          size="medium"
+          size="large"
         />
       </div>
       {
@@ -158,4 +135,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Favorites;

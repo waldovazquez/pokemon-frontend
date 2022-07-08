@@ -14,7 +14,15 @@
   height: 60px;
 }
 
-.link {
+.link__is__active {
+  color: #D90429;
+  font-size: 18px;
+  text-transform: uppercase;
+  border-bottom: 2px solid #D90429;
+  padding-bottom: 3px;
+}
+
+.link__is__not__active{
   color: #EDF2F4;
   font-size: 18px;
   text-transform: uppercase;
@@ -26,9 +34,10 @@
 }
 
 .container__link{
-  width: 400px;
+  width: 600px;
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 
 .menuAvatar{

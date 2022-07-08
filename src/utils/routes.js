@@ -8,11 +8,16 @@ function getRoutes(userData) {
     },
     {
       id: 2,
+      to: '/favorites',
+      label: 'Favorites',
+    },
+    {
+      id: 3,
       to: '/about',
       label: 'About',
     },
     {
-      id: 3,
+      id: 4,
       to: '/pokemon/create',
       label: 'Make your pokemon',
       logged: true,

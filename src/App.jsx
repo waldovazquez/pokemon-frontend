@@ -27,6 +27,7 @@ const PokemonDetails = React.lazy(() => import('./screens/PokemonDetails'));
 const NotFound = React.lazy(() => import('./screens/NotFound'));
 const LandingPage = React.lazy(() => import('./screens/LandingPage'));
 const PokemonCreate = React.lazy(() => import('./screens/PokemonCreate'));
+const Favorites = React.lazy(() => import('./screens/Favorites'));
 
 function ProtectedRoute({ children }) {
   const {
@@ -85,6 +86,14 @@ function App() {
         />
         <Route path="sign-in" element={<SignIn />} />
         <Route path="sign-up" element={<SignUp />} />
+        <Route
+          path="/favorites"
+          element={(
+            <ProtectedRoute>
+              <Favorites />
+            </ProtectedRoute>
+        )}
+        />
         <Route
           path="pokemon/:id"
           element={(
