@@ -1,9 +1,12 @@
 import React, {
   useState,
   useEffect,
+  useContext,
 } from 'react';
 
 import axios from 'axios';
+
+import AuthContext from '../../context/authContext';
 
 import Input from '../../components/Input';
 import Toast from '../../components/Toast';
@@ -20,12 +23,12 @@ import Weight from '../../assets/weight.png';
 
 import {
   API_URL,
-  TYPES,
 } from '../../utils/constants';
 
 import styles from './pokemoncreate.module.css';
 
 function PokemonCreate() {
+  const { data } = useContext(AuthContext);
   const [name, setName] = useState('');
   const [hp, setHp] = useState(0);
   const [attack, setAttack] = useState(0);
@@ -34,6 +37,7 @@ function PokemonCreate() {
   const [height, setHeight] = useState(0);
   const [weight, setWeight] = useState(0);
   const [types, setTypes] = useState([]);
+  const [selectedTypes, setSelectedTypes] = useState([]);
   const [image, setImage] = useState('');
   const [alert, setAlert] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -63,8 +67,9 @@ function PokemonCreate() {
         speed,
         height,
         weight,
-        types,
+        types: selectedTypes,
         image,
+        userId: data.userData._id,
       };
 
       const response = await axios.post(`${API_URL}/pokemon/create`, dataToSave);
@@ -84,19 +89,31 @@ function PokemonCreate() {
       setSpeed(0);
       setHeight(0);
       setWeight(0);
-      setTypes([]);
+      setSelectedTypes([]);
       setLoading(false);
     }
   }
 
+  async function getTypes() {
+    try {
+      const response = await axios.get(`${API_URL}/type/getalltypes`);
+      if (response && response.data.ok) {
+        setTypes(response.data.data);
+      }
+    } catch (e) {
+      console.info('Error: ', e);
+    }
+  }
+
   const handleTypes = (type) => {
-    setTypes((currentState) => {
+    setSelectedTypes((currentState) => {
       const newState = [...currentState];
-      if (newState.filter((item) => item.name === type).length > 0) {
-        return newState.filter((item) => item.name !== type);
+      if (newState.filter((item) => item._id === type._id).length > 0) {
+        return newState.filter((item) => item._id !== type._id);
       }
       newState.push({
-        name: type,
+        name: type.name,
+        _id: type._id,
       });
       return newState;
     });
@@ -104,6 +121,7 @@ function PokemonCreate() {
 
   useEffect(() => {
     getImage();
+    getTypes();
   }, []);
 
   return (
@@ -188,9 +206,9 @@ function PokemonCreate() {
             </div>
             <div className={styles.container__types}>
               {
-                TYPES.map((t) => (
+                types && types.map((t) => (
                   <div
-                    key={t.id}
+                    key={t._id}
                     className={styles.container__checkbox}
                   >
                     <label
@@ -204,8 +222,8 @@ function PokemonCreate() {
                     <input
                       id={t.name}
                       type="checkbox"
-                      checked={types.filter((item) => item.name === t.name).length > 0}
-                      onChange={() => handleTypes(t.name)}
+                      checked={selectedTypes.filter((item) => item._id === t._id).length > 0}
+                      onChange={() => handleTypes(t)}
                     />
                   </div>
                 ))
