@@ -14,7 +14,7 @@ function Screen({
       <NavBar />
       <div style={{
         margin: '60px auto',
-        maxWidth: '1200px',
+        maxWidth: '1280px',
       }}
       >
         {children}

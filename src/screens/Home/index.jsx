@@ -131,7 +131,10 @@ function Home() {
             icon={Search}
             alt="search"
             className={styles.component__input}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => {
+              setPage(1);
+              setQuery(e.target.value);
+            }}
           />
         </div>
         <div

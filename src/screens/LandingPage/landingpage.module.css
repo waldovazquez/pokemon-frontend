@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 90vh;
+}
+
+.container__information{
+  display: flex;
+  flex-direction: column;
+}
+
+.container__title{
+    width: 400px;
+}
+
+.title {
+  color: #EDF2F4;
+  font-size: 40px;
+}
+
+.container__buttons {
+  display: flex;
+  margin-top: 20px;
+}
+
+.component__left__button{
+  padding: 16px 64px;
+  background-color: #EF233C;
+  color: #EDF2F4;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  transition: .5s all;
+}
+
+.component__right__button{
+  padding: 16px 64px;
+  background-color: #2B2D42;
+  color: #EDF2F4;
+  font-size: 16px;
+  margin-left: 10px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  transition: .5s all;
+}

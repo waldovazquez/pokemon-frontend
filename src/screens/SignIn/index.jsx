@@ -19,6 +19,7 @@ import AuthContext from '../../context/authContext';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import Screen from '../../components/Screen';
+import Toast from '../../components/Toast';
 
 import defaultAvatar from '../../assets/defaultAvatar.png';
 import User from '../../assets/user.png';
@@ -41,6 +42,7 @@ function SignIn() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [alert, setAlert] = useState(null);
 
   async function handleSignIn() {
     try {
@@ -63,6 +65,10 @@ function SignIn() {
       }
     } catch (e) {
       console.info('Error', e);
+      setAlert({
+        severity: 'error',
+        message: 'Something is wrong',
+      });
     }
   }
 
@@ -121,6 +127,15 @@ function SignIn() {
           </div>
         </div>
       </form>
+      {
+        alert && (
+        <Toast
+          severity={alert.severity}
+          message={alert.message}
+          onClose={() => setAlert(null)}
+        />
+        )
+    }
     </Screen>
   );
 }

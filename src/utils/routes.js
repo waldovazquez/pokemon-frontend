@@ -24,23 +24,7 @@ function getRoutes(userData) {
     },
     ];
   }
-  return [
-    {
-      id: 1,
-      to: '/about',
-      label: 'About',
-    },
-    {
-      id: 2,
-      to: '/sign-in',
-      label: 'Sign in',
-    },
-    {
-      id: 3,
-      to: '/sign-up',
-      label: 'Sign up',
-    },
-  ];
+  return [];
 }
 
 export default getRoutes;
