@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {
+  useContext,
+} from 'react';
 
 import {
   useNavigate,
 } from 'react-router-dom';
+
+import AuthContext from '../../context/authContext';
 
 import Screen from '../../components/Screen';
 import Button from '../../components/Button';
@@ -12,6 +16,9 @@ import PikachuLanding from '../../assets/pikachuLanding.png';
 import styles from './landingpage.module.css';
 
 function LandingPage() {
+  const {
+    data,
+  } = useContext(AuthContext);
   const navigate = useNavigate();
   return (
     <Screen>
@@ -20,6 +27,7 @@ function LandingPage() {
           <div className={styles.container__title}>
             <p className={styles.title}>Discover And Collect Your Pokémon</p>
           </div>
+          {!data.userData && (
           <div className={styles.container__buttons}>
             <Button
               className={styles.component__left__button}
@@ -34,6 +42,7 @@ function LandingPage() {
               Sign Up
             </Button>
           </div>
+          )}
         </div>
         <img
           src={PikachuLanding}

@@ -4,8 +4,6 @@ import React, {
   useContext,
 } from 'react';
 
-import axios from 'axios';
-
 import AuthContext from '../../context/authContext';
 
 import Input from '../../components/Input';
@@ -22,8 +20,13 @@ import Height from '../../assets/height.png';
 import Weight from '../../assets/weight.png';
 
 import {
-  API_URL,
-} from '../../utils/constants';
+  getRandomImage,
+  createPokemon,
+} from '../../libs/pokemon';
+
+import {
+  getTypes,
+} from '../../libs/type';
 
 import styles from './pokemoncreate.module.css';
 
@@ -45,9 +48,9 @@ function PokemonCreate() {
   async function getImage() {
     try {
       setLoading(true);
-      const response = await axios.get(`${API_URL}/pokemon/getimage`);
-      if (response && response.data.ok) {
-        setImage(response.data.image);
+      const response = await getRandomImage();
+      if (response && response.ok) {
+        setImage(response.image);
       }
     } catch (e) {
       console.info('Error: ', e);
@@ -56,7 +59,7 @@ function PokemonCreate() {
     }
   }
 
-  async function createPokemon() {
+  async function makePokemon() {
     try {
       setLoading(true);
       const dataToSave = {
@@ -72,8 +75,8 @@ function PokemonCreate() {
         userId: data.userData._id,
       };
 
-      const response = await axios.post(`${API_URL}/pokemon/create`, dataToSave);
-      if (response && response.data.ok) {
+      const response = await createPokemon(dataToSave);
+      if (response && response.ok) {
         setAlert({
           severity: 'success',
           message: 'Pokemon Successfully Created',
@@ -94,11 +97,11 @@ function PokemonCreate() {
     }
   }
 
-  async function getTypes() {
+  async function getAllTypes() {
     try {
-      const response = await axios.get(`${API_URL}/type/getalltypes`);
-      if (response && response.data.ok) {
-        setTypes(response.data.data);
+      const response = await getTypes();
+      if (response && response.ok) {
+        setTypes(response.data);
       }
     } catch (e) {
       console.info('Error: ', e);
@@ -121,7 +124,7 @@ function PokemonCreate() {
 
   useEffect(() => {
     getImage();
-    getTypes();
+    getAllTypes();
   }, []);
 
   return (
@@ -231,7 +234,7 @@ function PokemonCreate() {
             </div>
             <Button
               className={styles.component__button}
-              onClick={() => createPokemon()}
+              onClick={() => makePokemon()}
             >
               Save Pokemon
             </Button>

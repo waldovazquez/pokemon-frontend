@@ -4,8 +4,6 @@ import React, {
   useContext,
 } from 'react';
 
-import axios from 'axios';
-
 import {
   Pagination,
 } from '@mui/material';
@@ -18,8 +16,9 @@ import Toast from '../../components/Toast';
 import Card from '../../components/Card';
 
 import {
-  API_URL,
-} from '../../utils/constants';
+  getFavorites,
+  deleteFavorite,
+} from '../../libs/favorite';
 
 import styles from './favorites.module.css';
 
@@ -33,13 +32,16 @@ function Favorites() {
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
 
-  async function getFavorites() {
+  async function getAllFavorites() {
     try {
       setLoading(true);
-      const response = await axios.get(`${API_URL}/favorites/getallfavorites?page=${page}?userId=${data.userData._id}`);
-      if (response && response.data) {
-        setTotalPages(response.data.totalPages);
-        setFavorites(response.data.docs);
+      const response = await getFavorites({
+        page,
+        userId: data.userData._id,
+      });
+      if (response) {
+        setTotalPages(response.totalPages);
+        setFavorites(response.docs);
       }
     } catch (e) {
       console.info('Error: ', e);
@@ -48,14 +50,11 @@ function Favorites() {
     }
   }
 
-  async function deleteFavorite(favoriteId) {
+  async function deleteFav(favoriteId) {
     try {
-      const response = await axios.delete(`${API_URL}/favorites/delete`, {
-        data: {
-          id: favoriteId,
-        },
-      });
-      if (response && response.data.ok) {
+      const response = await deleteFavorite(favoriteId);
+
+      if (response && response.ok) {
         setAlert({
           severity: 'success',
           message: 'Favorite Successfully Deleted',
@@ -64,12 +63,12 @@ function Favorites() {
     } catch (e) {
       console.info('Error: ', e);
     } finally {
-      getFavorites();
+      getAllFavorites();
     }
   }
 
   useEffect(() => {
-    getFavorites();
+    getAllFavorites();
   }, [
     page,
   ]);
@@ -95,7 +94,7 @@ function Favorites() {
                 favorite
                 title={item.pokemon.name}
                 id={item.pokemon._id}
-                onClick={() => deleteFavorite(item._id)}
+                onClick={() => deleteFav(item._id)}
               />
             </div>
           )) : (

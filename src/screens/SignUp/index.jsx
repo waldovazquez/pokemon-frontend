@@ -2,8 +2,6 @@ import React, {
   useState,
 } from 'react';
 
-import axios from 'axios';
-
 import Slider from 'react-slick';
 
 import Input from '../../components/Input';
@@ -14,11 +12,11 @@ import Screen from '../../components/Screen';
 import Pikachu from '../../assets/pikachu.png';
 
 import {
-  API_URL,
   AVATARS,
 } from '../../utils/constants';
 
 import styles from './signup.module.css';
+import { register } from '../../libs/user';
 
 function SignUp() {
   const [firstName, setFirstName] = useState('');
@@ -46,8 +44,8 @@ function SignUp() {
         avatar,
       };
 
-      const response = await axios.post(`${API_URL}/user/register`, dataToSignUp);
-      if (response && response.data.ok) {
+      const response = await register(dataToSignUp);
+      if (response && response.ok) {
         setAlert({
           severity: 'success',
           message: 'User Successfully Created',

@@ -8,8 +8,6 @@ import {
   useNavigate,
 } from 'react-router-dom';
 
-import axios from 'axios';
-
 import {
   Avatar,
 } from '@mui/material';
@@ -26,12 +24,13 @@ import User from '../../assets/user.png';
 import Key from '../../assets/key.png';
 
 import {
-  API_URL,
-} from '../../utils/constants';
-
-import {
   setSessionStorage,
 } from '../../utils/storage';
+
+import {
+  getByToken,
+  login,
+} from '../../libs/user';
 
 import styles from './signin.module.css';
 
@@ -50,18 +49,19 @@ function SignIn() {
         email,
         password,
       };
+      const response = await login(dataToSignIn);
 
-      const response = await axios.post(`${API_URL}/user/login`, dataToSignIn);
-      if (response && response.data.ok) {
-        setSessionStorage('x-access-token', response.data.token);
-        const responseData = await axios.get(`${API_URL}/user/getbytoken?token=${response.data.token}`);
-        if (responseData && responseData.data.ok) {
+      if (response && response.ok) {
+        setSessionStorage('x-access-token', response.token);
+        const userInfo = await getByToken(response.token);
+
+        if (userInfo && userInfo.ok) {
           setData({
-            userData: responseData.data.userData,
-            token: response.data.token,
+            userData: userInfo.userData,
+            token: response.token,
           });
         }
-        navigate('/home?page=1');
+        navigate('/home');
       }
     } catch (e) {
       console.info('Error', e);

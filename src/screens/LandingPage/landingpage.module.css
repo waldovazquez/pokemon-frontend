@@ -5,7 +5,7 @@
   height: 90vh;
 }
 
-.container__information{
+.container__information {
   display: flex;
   flex-direction: column;
 }
@@ -31,8 +31,13 @@
   font-size: 16px;
   cursor: pointer;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   transition: .5s all;
+}
+
+.component__left__button:hover {
+  background-color: #EDF2F4;
+  color: #2B2D42;
 }
 
 .component__right__button{
@@ -43,6 +48,11 @@
   margin-left: 10px;
   cursor: pointer;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   transition: .5s all;
+}
+
+.component__right__button:hover {
+  background-color: #EDF2F4;
+  color: #EF233C;
 }

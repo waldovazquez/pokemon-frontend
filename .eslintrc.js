@@ -24,5 +24,6 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'react/button-has-type': 'off',
     'max-len': 'off',
+    'no-param-reassign': 'off',
   },
 };

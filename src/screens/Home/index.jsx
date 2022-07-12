@@ -4,8 +4,6 @@ import React, {
   useContext,
 } from 'react';
 
-import axios from 'axios';
-
 import {
   v4 as uuidv4,
 } from 'uuid';
@@ -28,8 +26,16 @@ import Input from '../../components/Input';
 import Dropdown from '../../components/Dropdown';
 
 import {
-  API_URL,
-} from '../../utils/constants';
+  getAllPokemons,
+} from '../../libs/pokemon';
+
+import {
+  createFavorite,
+} from '../../libs/favorite';
+
+import {
+  getTypes,
+} from '../../libs/type';
 
 import Search from '../../assets/search.png';
 
@@ -58,6 +64,7 @@ function Home() {
       if (search !== '') {
         q += `name:${search},`;
       }
+
       if (typeSelected !== '') {
         q += `types.name:${typeSelected},`;
       }
@@ -67,13 +74,11 @@ function Home() {
       }
       filters.page = page;
 
-      const response = await axios.get(`${API_URL}/pokemon/getallpokemons`, {
-        params: filters,
-      });
+      const response = await getAllPokemons(filters);
 
-      if (response && response.data) {
-        setTotalPages(response.data.totalPages);
-        setPokemons(response.data.docs);
+      if (response) {
+        setTotalPages(response.totalPages);
+        setPokemons(response.docs);
       }
     } catch (e) {
       console.info('Error: ', e);
@@ -84,11 +89,11 @@ function Home() {
 
   async function addToFavorites(pokemonId) {
     try {
-      const response = await axios.post(`${API_URL}/favorites/create`, {
+      const response = await createFavorite({
         pokemonId,
         userId: data.userData._id,
       });
-      if (response && response.data.ok) {
+      if (response && response.ok) {
         setAlert({
           severity: 'success',
           message: 'Favorite Successfully Created',
@@ -99,17 +104,17 @@ function Home() {
     }
   }
 
-  async function getTypes() {
+  async function getAllTypes() {
     try {
-      const response = await axios.get(`${API_URL}/type/getalltypes`);
-      if (response && response.data.ok) {
+      const response = await getTypes();
+      if (response && response.ok) {
         const newTypes = [
           {
             label: 'All',
             value: '',
             id: uuidv4(),
           },
-          ...response.data.data.map((i) => ({
+          ...response.data.map((i) => ({
             label: i.name[0].toUpperCase() + i.name.slice(1),
             value: i.name,
             id: i._id,
@@ -181,7 +186,7 @@ function Home() {
   }
 
   useEffect(() => {
-    getTypes();
+    getAllTypes();
     handleUrl();
   }, []);
 

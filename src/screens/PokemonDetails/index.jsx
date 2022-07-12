@@ -7,14 +7,12 @@ import {
   useParams,
 } from 'react-router-dom';
 
-import axios from 'axios';
-
 import Screen from '../../components/Screen';
 import CardDetail from '../../components/CardDetail';
 
 import {
-  API_URL,
-} from '../../utils/constants';
+  getById,
+} from '../../libs/pokemon';
 
 import styles from './pokemondetails.module.css';
 
@@ -26,9 +24,9 @@ function PokemonDetails() {
 
   async function getDetails() {
     try {
-      const response = await axios.get(`${API_URL}/pokemon/getbyid?id=${id}`);
-      if (response && response.data.ok) {
-        setDetails(response.data.data);
+      const response = await getById(id);
+      if (response && response.ok) {
+        setDetails(response.data);
       }
     } catch (e) {
       console.info('Error', e);

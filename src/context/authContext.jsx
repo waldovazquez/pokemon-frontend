@@ -4,16 +4,14 @@ import {
   useEffect,
 } from 'react';
 
-import axios from 'axios';
-
 import {
   getSessionStorage,
   removeSessionStorage,
 } from '../utils/storage';
 
 import {
-  API_URL,
-} from '../utils/constants';
+  getByToken,
+} from '../libs/user';
 
 const AuthContext = createContext();
 
@@ -24,10 +22,10 @@ function AuthProvider({ children }) {
   });
 
   async function updatingUserData(newToken) {
-    const responseData = await axios.get(`${API_URL}/user/getbytoken?token=${newToken}`);
-    if (responseData && responseData.data.ok) {
+    const responseData = await getByToken(newToken);
+    if (responseData && responseData.ok) {
       setData({
-        userData: responseData.data.userData,
+        userData: responseData.userData,
         token: newToken,
       });
     }
