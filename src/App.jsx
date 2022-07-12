@@ -33,6 +33,7 @@ function ProtectedRoute({ children }) {
   const {
     data,
   } = useContext(AuthContext);
+
   if (!data.userData) {
     return <SignIn />;
   }
@@ -48,11 +49,12 @@ function App() {
 
   function init() {
     const excluded = ['sign-in', 'sign-up', 'about'];
+
     if (data.userData) {
       if (excluded.includes(location.pathname.split('/')[1])) {
-        return navigate('/home?page=1');
+        return navigate(`/home${location.search}`);
       }
-      return navigate(location.pathname);
+      return navigate(`${location.pathname}${location.search}`);
     }
     return null;
   }

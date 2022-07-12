@@ -1,0 +1,12 @@
+.container{
+    display: flex;
+    align-items: center;
+}
+
+.select {
+  width: 260px;
+  height: 36px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  margin-left: 6px;
+}

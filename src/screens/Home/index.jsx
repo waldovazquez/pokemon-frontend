@@ -7,6 +7,10 @@ import React, {
 import axios from 'axios';
 
 import {
+  v4 as uuidv4,
+} from 'uuid';
+
+import {
   useSearchParams,
 } from 'react-router-dom';
 
@@ -21,6 +25,7 @@ import Loading from '../../components/Loading';
 import Card from '../../components/Card';
 import Toast from '../../components/Toast';
 import Input from '../../components/Input';
+import Dropdown from '../../components/Dropdown';
 
 import {
   API_URL,
@@ -36,18 +41,29 @@ function Home() {
   } = useContext(AuthContext);
   const [searchParams, setSearchParams] = useSearchParams();
   const [pokemons, setPokemons] = useState([]);
+  const [types, setTypes] = useState([]);
+  const [search, setSearch] = useState('');
+  const [typeSelected, setTypeSelected] = useState('');
   const [page, setPage] = useState(1);
-  const [query, setQuery] = useState('');
-  const [loading, setLoading] = useState(false);
   const [totalPages, setTotalPages] = useState(1);
+  const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
 
   async function getPokemons() {
     try {
       setLoading(true);
       const filters = {};
-      if (query) {
-        filters.query = query;
+      let q = '';
+
+      if (search !== '') {
+        q += `name:${search},`;
+      }
+      if (typeSelected !== '') {
+        q += `types.name:${typeSelected},`;
+      }
+
+      if (q !== '') {
+        filters.query = q;
       }
       filters.page = page;
 
@@ -83,65 +99,146 @@ function Home() {
     }
   }
 
-  function handlePage(value) {
-    let search = null;
-    if (value) {
-      search = {
-        page: value,
-      };
+  async function getTypes() {
+    try {
+      const response = await axios.get(`${API_URL}/type/getalltypes`);
+      if (response && response.data.ok) {
+        const newTypes = [
+          {
+            label: 'All',
+            value: '',
+            id: uuidv4(),
+          },
+          ...response.data.data.map((i) => ({
+            label: i.name[0].toUpperCase() + i.name.slice(1),
+            value: i.name,
+            id: i._id,
+          })),
+        ];
+        setTypes(newTypes);
+      }
+    } catch (e) {
+      console.info('Error: ', e);
     }
-    setPage(value);
-    setSearchParams(search, { replace: true });
   }
+
+  function handleUrl(value = null, param = null) {
+    const newSearch = {};
+    const pageQuery = searchParams.get('page');
+    const typeQuery = searchParams.get('type');
+    const nameQuery = searchParams.get('name');
+    if (param) {
+      switch (param) {
+        case 'page':
+          newSearch.page = value;
+          if (typeQuery) {
+            newSearch.type = typeQuery;
+          }
+          if (nameQuery) {
+            newSearch.name = nameQuery;
+          }
+          setPage(Number(value));
+          break;
+        case 'type':
+          if (value !== '') {
+            newSearch.type = value;
+          }
+          setTypeSelected(value);
+          setPage(1);
+          setSearch('');
+          break;
+        case 'name':
+          if (value !== '') {
+            newSearch.name = value;
+          }
+          if (typeQuery) {
+            newSearch.type = typeQuery;
+          }
+          setSearch(value);
+          break;
+        default:
+          return null;
+      }
+    } else {
+      if (pageQuery) {
+        newSearch.page = pageQuery;
+        setPage(Number(pageQuery));
+      }
+      if (typeQuery) {
+        newSearch.type = typeQuery;
+        setTypeSelected(typeQuery);
+      }
+      if (nameQuery) {
+        newSearch.name = nameQuery;
+        setSearch(nameQuery);
+      }
+    }
+
+    setSearchParams(newSearch, {
+      replace: true,
+    });
+    return null;
+  }
+
+  useEffect(() => {
+    getTypes();
+    handleUrl();
+  }, []);
 
   useEffect(() => {
     getPokemons();
   }, [
     page,
-    query,
-  ]);
-
-  useEffect(() => {
-    const pageQuery = searchParams.get('page');
-    if (pageQuery) {
-      if (page !== Number(pageQuery)) {
-        handlePage(Number(pageQuery));
-      }
-    } else {
-      handlePage(1);
-    }
-  }, [
-    searchParams,
+    search,
+    typeSelected,
   ]);
 
   return (
     <Screen>
       <div
         style={{
-          height: pokemons.length < 12 && '90vh',
+          height: pokemons.length < 12 && '100vh',
         }}
         className={styles.container}
       >
-        <div
-          className={styles.container__search}
-        >
+        <div className={styles.container__filters}>
           <Input
             placeholder="Search..."
             activeIcon
             icon={Search}
             alt="search"
+            value={search}
             className={styles.component__input}
             onChange={(e) => {
               setPage(1);
-              setQuery(e.target.value);
+              setSearch(e.target.value);
+              handleUrl(e.target.value, 'name');
             }}
           />
+          <div style={{
+            marginLeft: '20px',
+          }}
+          >
+            <Dropdown
+              title="Types"
+              options={types}
+              value={typeSelected}
+              onChange={(e) => {
+                setPage(1);
+                setTypeSelected(e);
+                handleUrl(e, 'type');
+              }}
+            />
+          </div>
         </div>
         <div
+          style={{
+            height: pokemons.length === 0 && '90vh',
+          }}
           className={styles.container__cards}
         >
           {
-            pokemons && pokemons.map((item) => (
+            pokemons && pokemons.length > 0 ? pokemons.map((item) => (
               <div
                 key={item._id}
                 style={{
@@ -155,7 +252,17 @@ function Home() {
                   onClick={() => addToFavorites(item._id)}
                 />
               </div>
-            ))
+            )) : (
+              <p style={{
+                display: 'flex',
+                alignItems: 'center',
+                height: '100%',
+                fontSize: 24,
+              }}
+              >
+                No Pokemons
+              </p>
+            )
           }
         </div>
       </div>
@@ -170,7 +277,7 @@ function Home() {
           count={totalPages}
           page={page}
           onChange={(event, value) => {
-            handlePage(value);
+            handleUrl(value, 'page');
           }}
           sx={{
             backgroundColor: '#EFF6EE',

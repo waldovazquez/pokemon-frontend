@@ -9,6 +9,13 @@
   justify-content: center;
 }
 
+.container__filters{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6px;
+}
+
 .component__input {
   width: 260px;
   height: 36px;
@@ -21,11 +28,3 @@
   border: 2px solid #2B2D42;
   outline: none;
 }
-
-.container__search{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 6px;
-}
-
