@@ -1,6 +1,11 @@
 import React, {
   useState,
+  useEffect,
 } from 'react';
+
+import {
+  useNavigate,
+} from 'react-router-dom';
 
 import Slider from 'react-slick';
 
@@ -13,12 +18,14 @@ import Pikachu from '../../assets/pikachu.png';
 
 import {
   AVATARS,
+  LOGO_URL,
 } from '../../utils/constants';
 
 import styles from './signup.module.css';
 import { register } from '../../libs/user';
 
 function SignUp() {
+  const navigate = useNavigate();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -26,6 +33,8 @@ function SignUp() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [avatar, setAvatar] = useState(AVATARS[0]);
   const [alert, setAlert] = useState(null);
+  const [redirect, setRedirect] = useState(true);
+  const [seconds, setSeconds] = useState(null);
 
   async function handleSignUp() {
     try {
@@ -50,6 +59,8 @@ function SignUp() {
           severity: 'success',
           message: 'User Successfully Created',
         });
+        setRedirect(true);
+        setSeconds(3);
       }
     } catch (e) {
       console.info('Error', e);
@@ -61,8 +72,25 @@ function SignUp() {
     return null;
   }
 
+  useEffect(() => {
+    const myInterval = setInterval(() => {
+      if (seconds > 0) {
+        setSeconds(seconds - 1);
+      }
+    }, 1000);
+    if (seconds === 0) {
+      navigate('/sign-in');
+    }
+    return () => {
+      clearInterval(myInterval);
+    };
+  }, [seconds]);
+
   return (
-    <Screen>
+    <Screen
+      safe
+    >
+      {!redirect && (
       <form onSubmit={(e) => e.preventDefault()}>
         <div className={styles.container}>
           <div className={styles.sub__container}>
@@ -154,6 +182,21 @@ function SignUp() {
           </div>
         </div>
       </form>
+      )}
+      {redirect && (
+      <div className={styles.container__message}>
+        <div className={styles.subcontainer__message}>
+          <div className={styles.container__message__image}>
+            <img
+              src={LOGO_URL}
+              alt="logoRedirect"
+              className={styles.message__image}
+            />
+          </div>
+          <p className={styles.message}>{`You will be redirected to the login screen in ${seconds || ''} seconds`}</p>
+        </div>
+      </div>
+      )}
       {
         alert && (
         <Toast

@@ -38,7 +38,9 @@ function PokemonDetails() {
   }, []);
 
   return (
-    <Screen>
+    <Screen
+      safe
+    >
       <div
         className={styles.container}
       >

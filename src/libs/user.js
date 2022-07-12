@@ -11,7 +11,7 @@ async function getByToken(token) {
       return response.data;
     }
   } catch (e) {
-    console.info('Error', e);
+    throw new Error('Error getByToken', e);
   }
   return null;
 }
@@ -23,7 +23,7 @@ async function login(data) {
       return response.data;
     }
   } catch (e) {
-    console.info('Error', e);
+    throw new Error('Error login', e);
   }
   return null;
 }
@@ -35,7 +35,7 @@ async function register(data) {
       return response.data;
     }
   } catch (e) {
-    console.info('Error', e);
+    throw new Error('Error register', e);
   }
   return null;
 }

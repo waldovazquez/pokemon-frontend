@@ -128,7 +128,9 @@ function PokemonCreate() {
   }, []);
 
   return (
-    <Screen>
+    <Screen
+      safe
+    >
       <div className={styles.container}>
         <div className={styles.subcontainer}>
           <div className={styles.container__image}>

@@ -7,7 +7,7 @@ async function createFavorite(data) {
       return response.data;
     }
   } catch (e) {
-    console.info('Error', e);
+    throw new Error('Error createFavorite', e);
   }
   return null;
 }
@@ -24,7 +24,7 @@ async function getFavorites(filters) {
       return response.data;
     }
   } catch (e) {
-    console.info('Error', e);
+    throw new Error('Error getFavorites', e);
   }
   return null;
 }
@@ -40,7 +40,7 @@ async function deleteFavorite(id) {
       return response.data;
     }
   } catch (e) {
-    console.info('Error', e);
+    throw new Error('Error deleteFavorite', e);
   }
   return null;
 }

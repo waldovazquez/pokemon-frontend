@@ -5,6 +5,7 @@ import Footer from '../Footer';
 
 function Screen({
   children,
+  safe,
 }) {
   return (
     <div style={{
@@ -15,6 +16,7 @@ function Screen({
       <div style={{
         margin: '60px auto',
         maxWidth: '1280px',
+        height: safe && '100vh',
       }}
       >
         {children}

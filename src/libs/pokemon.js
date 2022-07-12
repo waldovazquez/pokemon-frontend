@@ -9,7 +9,7 @@ async function getAllPokemons(filters) {
       return response.data;
     }
   } catch (e) {
-    console.info('Error', e);
+    throw new Error('Error getAllPokemons', e);
   }
   return null;
 }
@@ -25,7 +25,7 @@ async function getById(id) {
       return response.data;
     }
   } catch (e) {
-    console.info('Error', e);
+    throw new Error('Error getById', e);
   }
   return null;
 }
@@ -37,7 +37,7 @@ async function getRandomImage() {
       return response.data;
     }
   } catch (e) {
-    console.info('Error', e);
+    throw new Error('Error getRandomImage', e);
   }
   return null;
 }
@@ -49,7 +49,7 @@ async function createPokemon(data) {
       return response.data;
     }
   } catch (e) {
-    console.info('Error', e);
+    throw new Error('Error createPokemon', e);
   }
   return null;
 }

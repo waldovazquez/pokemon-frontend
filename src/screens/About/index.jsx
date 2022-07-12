@@ -4,12 +4,14 @@ import Screen from '../../components/Screen';
 
 function About() {
   return (
-    <Screen>
+    <Screen
+      safe
+    >
       <div style={{
-        height: '90vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        height: '100%',
       }}
       >
         <h1>About</h1>

@@ -236,12 +236,7 @@ function Home() {
             />
           </div>
         </div>
-        <div
-          style={{
-            height: pokemons.length === 0 && '90vh',
-          }}
-          className={styles.container__cards}
-        >
+        <div className={styles.container__cards}>
           {
             pokemons && pokemons.length > 0 ? pokemons.map((item) => (
               <div

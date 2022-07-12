@@ -7,7 +7,7 @@ async function getTypes() {
       return response.data;
     }
   } catch (e) {
-    console.info('Error', e);
+    throw new Error('Error getTypes', e);
   }
   return null;
 }

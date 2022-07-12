@@ -21,7 +21,9 @@ function LandingPage() {
   } = useContext(AuthContext);
   const navigate = useNavigate();
   return (
-    <Screen>
+    <Screen
+      safe
+    >
       <div className={styles.container}>
         <div className={styles.container__information}>
           <div className={styles.container__title}>

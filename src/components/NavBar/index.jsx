@@ -12,11 +12,9 @@ import {
   Avatar,
 } from '@mui/material';
 
-import {
-  MdLogout,
-} from 'react-icons/md';
-
 import AuthContext from '../../context/authContext';
+
+import Button from '../Button';
 
 import {
   LOGO_URL,
@@ -70,12 +68,7 @@ function NavBar() {
             </div>
             {openUserMenu && (
             <div className={styles.logout}>
-              <p>
-                Logout
-              </p>
-              <IconButton aria-label="Logout" onClick={() => logout()}>
-                <MdLogout color="#2B2D42" />
-              </IconButton>
+              <Button className={styles.logout__button} onClick={() => logout()}>Logout</Button>
             </div>
             )}
           </div>
