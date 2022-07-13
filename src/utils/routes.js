@@ -13,11 +13,6 @@ function getRoutes(userData) {
     },
     {
       id: 3,
-      to: '/about',
-      label: 'About',
-    },
-    {
-      id: 4,
       to: '/pokemon/create',
       label: 'Make your pokemon',
       logged: true,

@@ -25,5 +25,6 @@ module.exports = {
     'react/button-has-type': 'off',
     'max-len': 'off',
     'no-param-reassign': 'off',
+    'react/jsx-one-expression-per-line': 'off',
   },
 };

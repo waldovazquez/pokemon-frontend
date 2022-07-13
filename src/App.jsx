@@ -20,7 +20,6 @@ import 'slick-carousel/slick/slick-theme.css';
 import Loading from './components/Loading';
 
 const Home = React.lazy(() => import('./screens/Home'));
-const About = React.lazy(() => import('./screens/About'));
 const SignIn = React.lazy(() => import('./screens/SignIn'));
 const SignUp = React.lazy(() => import('./screens/SignUp'));
 const PokemonDetails = React.lazy(() => import('./screens/PokemonDetails'));
@@ -49,7 +48,7 @@ function App() {
   const navigate = useNavigate();
 
   function init() {
-    const excluded = ['sign-in', 'sign-up', 'about'];
+    const excluded = ['sign-in', 'sign-up'];
 
     if (data.userData) {
       if (excluded.includes(location.pathname.split('/')[1])) {
@@ -80,12 +79,6 @@ function App() {
               <Home />
             </ProtectedRoute>
         )}
-        />
-        <Route
-          path="/about"
-          element={(
-            <About />
-          )}
         />
         <Route path="sign-in" element={<SignIn />} />
         <Route path="sign-up" element={<SignUp />} />

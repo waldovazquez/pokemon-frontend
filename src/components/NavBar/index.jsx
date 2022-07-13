@@ -76,7 +76,13 @@ function NavBar() {
                 aria-label="Avatar"
                 onClick={() => setOpenUserMenu(!openUserMenu)}
               >
-                <Avatar src={data.userData.avatar} />
+                <Avatar
+                  src={data.userData.avatar}
+                  sx={{
+                    width: '48px',
+                    height: '48px',
+                  }}
+                />
               </IconButton>
             </div>
             {openUserMenu && (

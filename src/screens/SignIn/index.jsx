@@ -114,7 +114,7 @@ function SignIn() {
                 to="/sign-up"
                 className={styles.component__link}
               >
-                Sign Up?
+                Need an account? Sign up
               </Link>
               <Button
                 type="submit"
