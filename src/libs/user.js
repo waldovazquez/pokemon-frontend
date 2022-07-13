@@ -40,8 +40,21 @@ async function register(data) {
   return null;
 }
 
+async function update(data) {
+  try {
+    const response = await api.put('user/update', data);
+    if (response && response.data) {
+      return response.data;
+    }
+  } catch (e) {
+    throw new Error('Error update', e);
+  }
+  return null;
+}
+
 export {
   getByToken,
   login,
   register,
+  update,
 };

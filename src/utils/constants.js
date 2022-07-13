@@ -8,6 +8,11 @@ const AVATARS = [
   'https://static.pokemonpets.com/images/avatars/319-Charmander.webp',
   'https://static.pokemonpets.com/images/avatars/320-Squirtle.webp',
   'https://static.pokemonpets.com/images/avatars/144-Pikachu.webp',
+  'https://static.pokemonpets.com/images/avatars/23-Wartortle.webp',
+  'https://static.pokemonpets.com/images/avatars/28-Raichu.webp',
+  'https://static.pokemonpets.com/images/avatars/27-Happiny.webp',
+  'https://static.pokemonpets.com/images/avatars/66-Mewtwo.webp',
+  'https://static.pokemonpets.com/images/avatars/323-Psyduck.webp',
 ];
 
 export {

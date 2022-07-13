@@ -21,7 +21,7 @@ function AuthProvider({ children }) {
     token: null,
   });
 
-  async function updatingUserData(newToken) {
+  async function updatingData(newToken) {
     const responseData = await getByToken(newToken);
     if (responseData && responseData.ok) {
       setData({
@@ -34,7 +34,7 @@ function AuthProvider({ children }) {
   useEffect(() => {
     const newToken = getSessionStorage('x-access-token');
     if (newToken) {
-      updatingUserData(newToken);
+      updatingData(newToken);
     }
   }, []);
 
@@ -43,6 +43,7 @@ function AuthProvider({ children }) {
       value={{
         data,
         setData,
+        updatingData,
         logout: () => {
           removeSessionStorage('x-access-token');
           setData({

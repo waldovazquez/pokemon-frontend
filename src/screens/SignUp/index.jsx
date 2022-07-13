@@ -33,7 +33,7 @@ function SignUp() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [avatar, setAvatar] = useState(AVATARS[0]);
   const [alert, setAlert] = useState(null);
-  const [redirect, setRedirect] = useState(true);
+  const [redirect, setRedirect] = useState(false);
   const [seconds, setSeconds] = useState(null);
 
   async function handleSignUp() {

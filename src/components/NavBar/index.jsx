@@ -5,7 +5,16 @@ import React, {
 
 import {
   NavLink,
+  useNavigate,
 } from 'react-router-dom';
+
+import {
+  CgProfile,
+} from 'react-icons/cg';
+
+import {
+  MdOutlineLogout,
+} from 'react-icons/md';
 
 import {
   IconButton,
@@ -29,6 +38,7 @@ function NavBar() {
     logout,
     data,
   } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [openUserMenu, setOpenUserMenu] = useState(false);
 
   return (
@@ -62,14 +72,34 @@ function NavBar() {
               <p>
                 {data.userData.firstName}
               </p>
-              <IconButton aria-label="Avatar" onClick={() => setOpenUserMenu(!openUserMenu)}>
+              <IconButton
+                aria-label="Avatar"
+                onClick={() => setOpenUserMenu(!openUserMenu)}
+              >
                 <Avatar src={data.userData.avatar} />
               </IconButton>
             </div>
             {openUserMenu && (
-            <div className={styles.logout}>
-              <Button className={styles.logout__button} onClick={() => logout()}>Logout</Button>
-            </div>
+              <div className={styles.menu}>
+                <div className={styles.container__profile}>
+                  <CgProfile size={24} />
+                  <Button
+                    className={styles.profile__button}
+                    onClick={() => navigate('/profile')}
+                  >
+                    Edit Profile
+                  </Button>
+                </div>
+                <div className={styles.container__logout}>
+                  <MdOutlineLogout size={24} />
+                  <Button
+                    className={styles.logout__button}
+                    onClick={() => logout()}
+                  >
+                    Log Out
+                  </Button>
+                </div>
+              </div>
             )}
           </div>
           )}
