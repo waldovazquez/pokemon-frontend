@@ -2,7 +2,7 @@ import React from 'react';
 
 import Information from './components/Information';
 
-import NotAvailable from '../../assets/imagenotavailable.png';
+import Pokebola from '../../assets/pokebola.png';
 
 import styles from './carddetail.module.css';
 
@@ -23,13 +23,13 @@ function CardDetail({
         <img
           src={image}
           alt={name}
-          height={500}
-          width={500}
+          height={450}
+          width={450}
         />
       ) : (
         <img
-          src={NotAvailable}
-          alt="notAvailable"
+          src={Pokebola}
+          alt="pokebola"
           height={500}
           width={500}
         />

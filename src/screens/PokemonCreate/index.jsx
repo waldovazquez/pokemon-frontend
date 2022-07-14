@@ -142,74 +142,82 @@ function PokemonCreate() {
             >
               Generate Pokemon
             </Button>
-            {image && (
-              <img
-                src={image}
-                alt="pokemonImage"
-                height={400}
-                width={400}
-              />
-            )}
+            <div style={{
+              height: '400px',
+              width: '400px',
+            }}
+            >
+              {image && (
+                <img
+                  src={image}
+                  alt="pokemonImage"
+                  height={400}
+                  width={400}
+                />
+              )}
+            </div>
           </div>
           <div className={styles.container__stats}>
-            <div className={styles.container__input__top}>
-              <Input
-                type="text"
-                value={name}
-                placeholder="Name *"
-                className={styles.component__input}
-                onChange={(e) => setName(e.target.value)}
-              />
-              <Input
-                type="number"
-                value={hp}
-                className={styles.component__input}
-                onChange={(e) => setHp(e.target.value)}
-                activeIcon
-                icon={Heart}
-              />
-              <Input
-                type="number"
-                value={attack}
-                className={styles.component__input}
-                onChange={(e) => setAttack(e.target.value)}
-                activeIcon
-                icon={Attack}
-              />
-              <Input
-                type="number"
-                value={defense}
-                className={styles.component__input}
-                onChange={(e) => setDefense(e.target.value)}
-                activeIcon
-                icon={Defense}
-              />
-              <Input
-                type="number"
-                value={speed}
-                className={styles.component__input}
-                onChange={(e) => setSpeed(e.target.value)}
-                activeIcon
-                icon={Speed}
-              />
-              <Input
-                type="number"
-                value={height}
-                className={styles.component__input}
-                onChange={(e) => setHeight(e.target.value)}
-                activeIcon
-                icon={Height}
-              />
-            </div>
-            <div className={styles.container__input__bottom}>
-              <Input
-                type="number"
-                value={weight}
-                className={styles.component__input}
-                onChange={(e) => setWeight(e.target.value)}
-                activeIcon
-                icon={Weight}
-              />
+            <div>
+              <div className={styles.container__input__top}>
+                <Input
+                  type="text"
+                  value={name}
+                  placeholder="Name *"
+                  className={styles.component__input}
+                  onChange={(e) => setName(e.target.value)}
+                />
+                <Input
+                  type="number"
+                  value={hp}
+                  className={styles.component__input}
+                  onChange={(e) => setHp(e.target.value)}
+                  activeIcon
+                  icon={Heart}
+                />
+                <Input
+                  type="number"
+                  value={attack}
+                  className={styles.component__input}
+                  onChange={(e) => setAttack(e.target.value)}
+                  activeIcon
+                  icon={Attack}
+                />
+                <Input
+                  type="number"
+                  value={defense}
+                  className={styles.component__input}
+                  onChange={(e) => setDefense(e.target.value)}
+                  activeIcon
+                  icon={Defense}
+                />
+                <Input
+                  type="number"
+                  value={speed}
+                  className={styles.component__input}
+                  onChange={(e) => setSpeed(e.target.value)}
+                  activeIcon
+                  icon={Speed}
+                />
+                <Input
+                  type="number"
+                  value={height}
+                  className={styles.component__input}
+                  onChange={(e) => setHeight(e.target.value)}
+                  activeIcon
+                  icon={Height}
+                />
+              </div>
+              <div className={styles.container__input__bottom}>
+                <Input
+                  type="number"
+                  value={weight}
+                  className={styles.component__input}
+                  onChange={(e) => setWeight(e.target.value)}
+                  activeIcon
+                  icon={Weight}
+                />
+              </div>
             </div>
             <div className={styles.container__types}>
               {
@@ -221,7 +229,7 @@ function PokemonCreate() {
                     <label
                       htmlFor={t.name}
                       style={{
-                        color: '#2B2D42',
+                        color: '#EFF6EE',
                       }}
                     >
                       {t.name}

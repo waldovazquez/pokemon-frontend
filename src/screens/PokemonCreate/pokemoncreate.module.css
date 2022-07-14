@@ -1,13 +1,19 @@
 .component__button {
   margin-top: 10px;
   padding: 16px 16px;
-  background-color: #EFF6EE;
+  background-color: #8D99AE;
   color: #2B2D42;
   font-size: 16px;
   cursor: pointer;
-  border: 2px solid #2B2D42;
+  border: 2px solid #EFF6EE;
   border-radius: 8px;
   transition: .5s all;
+}
+
+.component__button:hover{
+  background-color: #EFF6EE;
+  border: 2px solid #2B2D42;
+  color: #2B2D42;
 }
 
 .component__input {
@@ -19,28 +25,30 @@
 }
 
 .component__input:focus {
-  border: 2px solid #273043;
+  border: 2px solid #2B2D42;
   outline: none;
 }
 
 .container {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  height: 100%;
 }
 
 .subcontainer {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  background-color: #2B2D42;
+  border: 1px solid #EFF6EE;
+  border-radius: 8px;
+  padding: 6px;
 }
 
 .container__stats {
-  width: 500px;
+  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 }
 
 .container__input__top {
@@ -49,7 +57,7 @@
   justify-content: space-between;
 }
 
-.component__input__bottom {
+.container__input__bottom {
   display: flex;
   justify-content: center;
 }
@@ -58,6 +66,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 50%;
 }
 
 .container__checkbox {
@@ -71,4 +80,5 @@
   display: flex;
   flex-wrap: wrap;
   margin-top: 30px;
+  height: 50%;
 }

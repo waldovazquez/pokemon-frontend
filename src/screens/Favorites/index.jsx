@@ -98,14 +98,11 @@ function Favorites() {
               />
             </div>
           )) : (
-            <p style={{
-              display: 'flex',
-              alignItems: 'center',
-              fontSize: 24,
-            }}
-            >
-              You do not have favorites
-            </p>
+            <div className={styles.container__no__favorites}>
+              <p>
+                You do not have favorites
+              </p>
+            </div>
           )
         }
       </div>

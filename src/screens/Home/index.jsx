@@ -253,15 +253,11 @@ function Home() {
                 />
               </div>
             )) : (
-              <p style={{
-                display: 'flex',
-                alignItems: 'center',
-                height: '100%',
-                fontSize: 24,
-              }}
-              >
-                No Pokemons
-              </p>
+              <div className={styles.container__no__pokemons}>
+                <p>
+                  No Pokemons
+                </p>
+              </div>
             )
           }
         </div>

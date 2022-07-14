@@ -28,3 +28,14 @@
   border: 2px solid #2B2D42;
   outline: none;
 }
+
+.container__no__pokemons{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.container__no__pokemons > p{
+  font-size: 24px;
+}

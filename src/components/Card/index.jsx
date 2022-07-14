@@ -19,7 +19,7 @@ import {
 
 import Button from '../Button';
 
-import NotAvailable from '../../assets/imagenotavailable.png';
+import Pokebola from '../../assets/pokebola.png';
 
 import styles from './card.module.css';
 
@@ -43,12 +43,12 @@ function Card({
       )
         : (
           <img
-            src={NotAvailable}
+            src={Pokebola}
             alt={title}
             height={200}
             width={240}
             style={{
-              objectFit: 'cover',
+              objectFit: 'contain',
             }}
           />
         )}
