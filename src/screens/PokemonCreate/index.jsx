@@ -31,7 +31,9 @@ import {
 import styles from './pokemoncreate.module.css';
 
 function PokemonCreate() {
-  const { data } = useContext(AuthContext);
+  const {
+    data,
+  } = useContext(AuthContext);
   const [name, setName] = useState('');
   const [hp, setHp] = useState(0);
   const [attack, setAttack] = useState(0);

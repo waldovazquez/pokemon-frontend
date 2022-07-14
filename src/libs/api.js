@@ -14,7 +14,7 @@ function getToken() {
 
 const api = axios.create({
   baseURL: `${API_URL}`,
-  timeout: 1000,
+  timeout: 5000,
 });
 
 api.interceptors.request.use(

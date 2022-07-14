@@ -5,6 +5,7 @@ async function getAllPokemons(filters) {
     const response = await api.get('/pokemon/getallpokemons', {
       params: filters,
     });
+
     if (response && response.data) {
       return response.data;
     }
