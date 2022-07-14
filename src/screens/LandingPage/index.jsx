@@ -49,6 +49,7 @@ function LandingPage() {
         <img
           src={PikachuLanding}
           alt="pikachu"
+          className={styles.image}
         />
       </div>
     </Screen>

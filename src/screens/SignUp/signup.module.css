@@ -36,19 +36,13 @@
 
 .container {
   display: flex;
-  height: 100vh;
   align-items: center;
   justify-content: center;
 }
 
 .sub__container {
-  background-color: #2B2D4260;
-  border: 1px solid #EDF2F4;
-  border-radius: 10px;
   display: flex;
-  height: 500px;
-  width: 600px;
-  align-items: center;
+  flex-direction: column;
 }
 
 .container__input{
@@ -102,4 +96,114 @@
   display: flex;
   align-items: center;
   height: 50%;
+}
+
+@media only screen and (min-width: 768px) {
+.component__button {
+  margin-top: 10px;
+  padding: 16px 16px;
+  background-color: #2B2D42;
+  color: #EDF2F4;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  transition: .5s all;
+  width: 100%;
+}
+  
+.component__button:hover {
+  background-color: #EDF2F4;
+  color: #2B2D42;
+}
+  
+.component__input {
+  margin-bottom: 6px;
+  width: 260px;
+  height: 36px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  text-indent: 40px;
+}
+  
+.component__input:focus {
+  border: 2px solid #2B2D42;
+  outline: none;
+}
+  
+.component__input::placeholder {
+  padding-left: 6px;
+}
+  
+.container {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+  
+.sub__container {
+  background-color: #2B2D4260;
+  border: 1px solid #EDF2F4;
+  border-radius: 10px;
+  display: flex;
+  height: 500px;
+  width: 600px;
+  flex-direction: row;
+  align-items: center;
+}
+  
+.container__input{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+  
+.container__avatars { 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+  
+.container__message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+  
+.subcontainer__message{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 500px;
+  width: 500px;
+  background-color: #2B2D42;
+  border-radius: 10px;
+}
+  
+.message{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  height: 50%;
+  font-size: 24px;
+  background-color: #EDF2F4;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: transparent;
+}
+  
+.message__image {
+  height: 100px;
+  width: 200px;
+}
+  
+.container__message__image {
+  display: flex;
+  align-items: center;
+  height: 50%;
+}
+
 }

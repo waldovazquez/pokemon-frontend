@@ -31,6 +31,7 @@ function Card({
   onClick = () => {},
 }) {
   const navigate = useNavigate();
+
   return (
     <div className={styles.container}>
       {image ? (
