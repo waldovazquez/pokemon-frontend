@@ -7,11 +7,11 @@
 }
 
 .image{
-  width: 320px;
-  height: 320px;
+  width: 400px;
+  height: 400px;
   object-fit: contain;
 }
-  
+
 .container__buttons{
   display: flex;
   flex-direction: column;
@@ -54,66 +54,30 @@
   color: #EF233C;
 }
 
-.container__title{
-  width: 100%;
-  padding: 0px 20px;
-}
-
 .title {
   text-align: center;
   color: #EDF2F4;
-  font-size: 40px;
+  font-size: 32px;
 }
 
 
 @media only screen and (min-width: 768px) {
-.container {
-  display: flex;
-  align-items: center;
-}
-  
-.container__information {
-  display: flex;
-  flex-direction: column;
-}
-  
-.container__title{
-  width: 100%;
-}
-  
 .title {
   color: #EDF2F4;
   font-size: 40px;
 }
-  
-.component__left__button{
-  background-color: #EF233C;
-  color: #EDF2F4;
-  font-size: 18px;
-  cursor: pointer;
-  border: none;
-  border-radius: 10px;
-  transition: .5s all;
+
+.image{
+  width: 600px;
+  height: 600px;
 }
-  
-.component__left__button:hover {
-  background-color: #EDF2F4;
-  color: #2B2D42;
+
+.component__left__button{
+  font-size: 18px;
 }
   
 .component__right__button{
-  background-color: #2B2D42;
-  color: #EDF2F4;
   font-size: 18px;
-  cursor: pointer;
-  border: none;
-  border-radius: 10px;
-  transition: .5s all;
-}
-  
-.component__right__button:hover {
-  background-color: #EDF2F4;
-  color: #EF233C;
 }
 
 }
@@ -121,43 +85,36 @@
 @media only screen and (min-width: 1280px) {
 .container{
   flex-direction: row;
-  height: 100%;
 }
 
 .image{
-  width: 600px;
-  height: 600px;
-  object-fit: contain;
+  width: 800px;
+  height: 800px;
 }
 
 .container__buttons{
   margin-top: 14px;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
 }
 
 .component__left__button{
-  width: 200px;
-  margin: 0px 10px;
-  padding: 10px;
+  margin: 0px;
+  padding: 16px;
 }
   
 .component__right__button{
-  width: 200px;
   margin: 0px 10px;
-  padding: 10px;
+  padding: 16px;
 }
   
 .container__title{
-  width: 100%;
-  padding: 0px 20px;
+  padding: 0px;
 }
   
 .title {
-  text-align: center;
+  text-align: start;
   color: #EDF2F4;
-  font-size: 40px;
+  font-size: 50px;
 }
 
 }

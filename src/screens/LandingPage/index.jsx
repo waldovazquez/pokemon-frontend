@@ -11,7 +11,7 @@ import AuthContext from '../../context/authContext';
 import Screen from '../../components/Screen';
 import Button from '../../components/Button';
 
-import PikachuLanding from '../../assets/pikachuLanding.png';
+import CharizardLanding from '../../assets/charizardLanding.png';
 
 import styles from './landingpage.module.css';
 
@@ -20,10 +20,9 @@ function LandingPage() {
     data,
   } = useContext(AuthContext);
   const navigate = useNavigate();
+
   return (
-    <Screen
-      safe
-    >
+    <Screen safe>
       <div className={styles.container}>
         <div className={styles.container__information}>
           <div className={styles.container__title}>
@@ -47,8 +46,8 @@ function LandingPage() {
           )}
         </div>
         <img
-          src={PikachuLanding}
-          alt="pikachu"
+          src={CharizardLanding}
+          alt="charizard"
           className={styles.image}
         />
       </div>
