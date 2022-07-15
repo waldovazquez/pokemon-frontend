@@ -14,15 +14,18 @@ import Button from '../../components/Button';
 import Toast from '../../components/Toast';
 import Screen from '../../components/Screen';
 
-import Pikachu from '../../assets/pikachu.png';
+import PokemonSignUp from '../../assets/pokemonSignUp.png';
 
 import {
   AVATARS,
   LOGO_URL,
 } from '../../utils/constants';
 
+import {
+  register,
+} from '../../libs/user';
+
 import styles from './signup.module.css';
-import { register } from '../../libs/user';
 
 function SignUp() {
   const navigate = useNavigate();
@@ -87,27 +90,23 @@ function SignUp() {
   }, [seconds]);
 
   return (
-    <Screen
-      safe
-    >
+    <Screen safe>
       {!redirect && (
       <form onSubmit={(e) => e.preventDefault()}>
         <div className={styles.container}>
           <div className={styles.sub__container}>
-            <img
-              src={Pikachu}
-              alt="pikachu"
-              width="300px"
-            />
-            <div className={styles.container__input}>
-              <h1 style={{
-                color: '#EFF6EE',
-                marginBottom: '12px',
-              }}
-              >
+            <div className={styles.title}>
+              <p>
                 Sign Up
-              </h1>
-              <div>
+              </p>
+            </div>
+            <div className={styles.content}>
+              <img
+                src={PokemonSignUp}
+                alt="pikachu"
+                className={styles.image}
+              />
+              <div className={styles.container__input}>
                 <Input
                   type="text"
                   placeholder="Firstname *"
@@ -143,41 +142,41 @@ function SignUp() {
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   className={styles.component__input}
                 />
-              </div>
-              <div className={styles.container__avatars}>
-                <p style={{
-                  color: '#EFF6EE',
-                }}
-                >
-                  Avatar
-                </p>
-                <div style={{
-                  width: '125px',
-                }}
-                >
-                  <Slider
-                    dots={false}
-                    infinite
-                    speed={500}
-                    slidesToShow={1}
-                    slidesToScroll={1}
-                    afterChange={(index) => setAvatar(AVATARS[index])}
+                <div className={styles.container__avatars}>
+                  <p style={{
+                    color: '#EFF6EE',
+                  }}
                   >
-                    {AVATARS.map((av) => (
-                      <div key={av}>
-                        <img src={av} alt="pokemon" />
-                      </div>
-                    ))}
-                  </Slider>
+                    Avatar
+                  </p>
+                  <div style={{
+                    width: '125px',
+                  }}
+                  >
+                    <Slider
+                      dots={false}
+                      infinite
+                      speed={500}
+                      slidesToShow={1}
+                      slidesToScroll={1}
+                      afterChange={(index) => setAvatar(AVATARS[index])}
+                    >
+                      {AVATARS.map((av) => (
+                        <div key={av}>
+                          <img src={av} alt="pokemon" />
+                        </div>
+                      ))}
+                    </Slider>
+                  </div>
                 </div>
+                <Button
+                  type="submit"
+                  onClick={() => handleSignUp()}
+                  className={styles.component__button}
+                >
+                  Sign Up
+                </Button>
               </div>
-              <Button
-                type="submit"
-                onClick={() => handleSignUp()}
-                className={styles.component__button}
-              >
-                Sign Up
-              </Button>
             </div>
           </div>
         </div>
