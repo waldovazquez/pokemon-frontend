@@ -17,6 +17,10 @@ import {
 } from 'react-icons/md';
 
 import {
+  GiHamburgerMenu,
+} from 'react-icons/gi';
+
+import {
   IconButton,
   Avatar,
 } from '@mui/material';
@@ -24,6 +28,7 @@ import {
 import AuthContext from '../../context/authContext';
 
 import Button from '../Button';
+import Drawer from './Drawer';
 
 import {
   LOGO_URL,
@@ -40,31 +45,42 @@ function NavBar() {
   } = useContext(AuthContext);
   const navigate = useNavigate();
   const [openUserMenu, setOpenUserMenu] = useState(false);
+  const [openDrawer, setOpenDrawer] = useState(false);
 
   return (
     <div className={styles.container}>
       <div className={styles.subcontainer}>
-        <NavLink to="/">
+        <NavLink to="/" className={styles.container__logo}>
           <img
             src={LOGO_URL}
             alt="logoNavbar"
-            height="60px"
-            width="160px"
+            className={styles.logo}
           />
         </NavLink>
+        {data.userData && (
+          <div className={styles.container__burger}>
+            <button
+              className={styles.button__burger}
+              onClick={() => setOpenDrawer(true)}
+            >
+              <GiHamburgerMenu size={24} color="#EDF2F4" />
+            </button>
+          </div>
+        )}
+        { openDrawer && <Drawer setOpenDrawer={setOpenDrawer} /> }
         <div className={styles.container__right}>
           <div className={styles.container__link}>
             {
-          getRoutes(data.userData).map((item) => (
-            <NavLink
-              to={item.to}
-              key={item.id}
-              className={({ isActive }) => (isActive ? styles.link__is__active : styles.link__is__not__active)}
-            >
-              {item.label}
-            </NavLink>
-          ))
-          }
+              (getRoutes(data.userData) || []).map((item) => (
+                <NavLink
+                  to={item.to}
+                  key={item.id}
+                  className={({ isActive }) => (isActive ? styles.link__is__active : styles.link__is__not__active)}
+                >
+                  {item.label}
+                </NavLink>
+              ))
+            }
           </div>
           { data.userData && (
           <div className={styles.menuAvatar}>
@@ -97,13 +113,13 @@ function NavBar() {
                   </Button>
                 </div>
                 <div className={styles.container__logout}>
-                  <MdOutlineLogout size={24} />
                   <Button
                     className={styles.logout__button}
                     onClick={() => logout()}
                   >
                     Log Out
                   </Button>
+                  <MdOutlineLogout size={24} />
                 </div>
               </div>
             )}
