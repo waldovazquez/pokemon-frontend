@@ -87,7 +87,9 @@ function SignUp() {
     return () => {
       clearInterval(myInterval);
     };
-  }, [seconds]);
+  }, [
+    seconds,
+  ]);
 
   return (
     <Screen safe>
@@ -103,7 +105,7 @@ function SignUp() {
             <div className={styles.content}>
               <img
                 src={PokemonSignUp}
-                alt="pikachu"
+                alt="pokemonSignUp"
                 className={styles.image}
               />
               <div className={styles.container__input}>
