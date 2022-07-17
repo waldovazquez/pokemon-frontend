@@ -48,9 +48,9 @@ function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [pokemons, setPokemons] = useState([]);
   const [types, setTypes] = useState([]);
-  const [search, setSearch] = useState('');
-  const [typeSelected, setTypeSelected] = useState('');
-  const [page, setPage] = useState(1);
+  const [search, setSearch] = useState(searchParams.get('name') || '');
+  const [typeSelected, setTypeSelected] = useState(searchParams.get('type') || '');
+  const [page, setPage] = useState(Number(searchParams.get('page')) || 1);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
@@ -129,7 +129,6 @@ function Home() {
 
   function handleUrl(value = null, param = null) {
     const newSearch = {};
-    const pageQuery = searchParams.get('page');
     const typeQuery = searchParams.get('type');
     const nameQuery = searchParams.get('name');
     if (param) {
@@ -164,21 +163,7 @@ function Home() {
         default:
           return null;
       }
-    } else {
-      if (pageQuery) {
-        newSearch.page = pageQuery;
-        setPage(Number(pageQuery));
-      }
-      if (typeQuery) {
-        newSearch.type = typeQuery;
-        setTypeSelected(typeQuery);
-      }
-      if (nameQuery) {
-        newSearch.name = nameQuery;
-        setSearch(nameQuery);
-      }
     }
-
     setSearchParams(newSearch, {
       replace: true,
     });
@@ -187,7 +172,6 @@ function Home() {
 
   useEffect(() => {
     getAllTypes();
-    handleUrl();
   }, []);
 
   useEffect(() => {
