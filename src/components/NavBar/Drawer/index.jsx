@@ -27,10 +27,10 @@ function Drawer({
     <div className={styles.container}>
       <div className={styles.container__close__drawer}>
         <button
-          className={styles.button__burger__drawer}
+          className={styles.button__close__drawer}
           onClick={() => setOpenDrawer(false)}
         >
-          <IoMdClose size={24} color="#2B2D42" />
+          <IoMdClose size={24} color="#353535" />
         </button>
       </div>
       <div className={styles.sub__container}>
@@ -42,7 +42,9 @@ function Drawer({
                 key={item.id}
                 className={({ isActive }) => (isActive ? styles.link__is__active__drawer : styles.link__is__not__active__drawer)}
               >
-                {item.label}
+                <p>
+                  {item.label}
+                </p>
               </NavLink>
             ))
           }

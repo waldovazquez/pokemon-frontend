@@ -9,14 +9,6 @@ import {
 } from 'react-router-dom';
 
 import {
-  CgProfile,
-} from 'react-icons/cg';
-
-import {
-  MdOutlineLogout,
-} from 'react-icons/md';
-
-import {
   GiHamburgerMenu,
 } from 'react-icons/gi';
 
@@ -50,25 +42,14 @@ function NavBar() {
   return (
     <div className={styles.container}>
       <div className={styles.subcontainer}>
-        <NavLink to="/" className={styles.container__logo}>
-          <img
-            src={LOGO_URL}
-            alt="logoNavbar"
-            className={styles.logo}
-          />
-        </NavLink>
-        {data.userData && (
-          <div className={styles.container__burger}>
-            <button
-              className={styles.button__burger}
-              onClick={() => setOpenDrawer(true)}
-            >
-              <GiHamburgerMenu size={24} color="#EDF2F4" />
-            </button>
-          </div>
-        )}
-        { openDrawer && <Drawer setOpenDrawer={setOpenDrawer} /> }
-        <div className={styles.container__right}>
+        <div className={styles.container__left}>
+          <NavLink to="/" className={styles.container__logo}>
+            <img
+              src={LOGO_URL}
+              alt="logoNavbar"
+              className={styles.logo}
+            />
+          </NavLink>
           <div className={styles.container__link}>
             {
               (getRoutes(data.userData) || []).map((item) => (
@@ -82,7 +63,19 @@ function NavBar() {
               ))
             }
           </div>
-          { data.userData && (
+          {data.userData && (
+          <div className={styles.container__burger}>
+            <button
+              className={styles.button__burger}
+              onClick={() => setOpenDrawer(true)}
+            >
+              <GiHamburgerMenu size={24} color="#FFFFFF" />
+            </button>
+          </div>
+          )}
+        </div>
+        { openDrawer && <Drawer setOpenDrawer={setOpenDrawer} /> }
+        { data.userData && (
           <div className={styles.menuAvatar}>
             <div className={styles.container__menuAvatar__top}>
               <p>
@@ -103,29 +96,35 @@ function NavBar() {
             </div>
             {openUserMenu && (
               <div className={styles.menu}>
-                <div className={styles.container__profile}>
-                  <CgProfile size={24} />
+                <Avatar
+                  src={data.userData.avatar}
+                  sx={{
+                    width: '80px',
+                    height: '80px',
+                  }}
+                />
+                <div className={styles.container__menu__links}>
                   <Button
                     className={styles.profile__button}
                     onClick={() => navigate('/profile')}
                   >
-                    Edit Profile
+                    <p>
+                      Edit Profile
+                    </p>
                   </Button>
-                </div>
-                <div className={styles.container__logout}>
                   <Button
                     className={styles.logout__button}
                     onClick={() => logout()}
                   >
-                    Log Out
+                    <p>
+                      Log Out
+                    </p>
                   </Button>
-                  <MdOutlineLogout size={24} />
                 </div>
               </div>
             )}
           </div>
-          )}
-        </div>
+        )}
       </div>
     </div>
   );

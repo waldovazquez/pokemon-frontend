@@ -1,7 +1,7 @@
 .container{
   display: flex;
   flex-direction: column;
-  background-color: #EDF2F4;
+  background-color: #D9D9D9;
   height: 100vh;
   z-index: 9999;
   position: absolute;
@@ -14,18 +14,15 @@
   justify-content: flex-end;
   height: 60px;
   align-items: center;
-  border-bottom: 1px solid #2B2D42;
 }
 
-.button__burger__drawer{
-  width: 24px;
-  height: 24px;
+.button__close__drawer{
   border: none;
+  cursor: pointer;
   background-color: transparent;
   margin-right: 14px;
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 
 .container__link__drawer{
@@ -35,14 +32,20 @@
 }
 
 .link__is__active__drawer {
-  color: #D90429;
-  font-size: 14px;
+  color: #284B63;
+  font-size: 16px;
   text-transform: uppercase;
   padding: 8px 0px;
+  cursor: default;
+}
+
+.link__is__active__drawer > p {
+  width: fit-content;
+  border-bottom: 2px solid #284B63;
 }
   
 .link__is__not__active__drawer{
-  color: #2B2D42;
+  color: #353535;
   font-size: 14px;
   text-transform: uppercase;
   padding: 8px 0px;
