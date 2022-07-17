@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import {
-  getSessionStorage,
+  getLocalStorage,
 } from '../utils/storage';
 
 import {
@@ -9,7 +9,7 @@ import {
 } from '../utils/constants';
 
 function getToken() {
-  return getSessionStorage('x-access-token');
+  return getLocalStorage('x-access-token');
 }
 
 const api = axios.create({

@@ -1,19 +1,19 @@
-function setSessionStorage(key, value) {
-  sessionStorage.setItem(key, JSON.stringify(value));
+function setLocalStorage(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
 }
 
-function getSessionStorage(key) {
-  const data = sessionStorage.getItem(key);
+function getLocalStorage(key) {
+  const data = localStorage.getItem(key);
   if (data) return JSON.parse(data);
   return null;
 }
 
-function removeSessionStorage(key) {
-  sessionStorage.removeItem(key);
+function removeLocalStorage(key) {
+  localStorage.removeItem(key);
 }
 
 export {
-  setSessionStorage,
-  getSessionStorage,
-  removeSessionStorage,
+  setLocalStorage,
+  getLocalStorage,
+  removeLocalStorage,
 };

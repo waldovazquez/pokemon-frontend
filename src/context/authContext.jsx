@@ -5,8 +5,8 @@ import {
 } from 'react';
 
 import {
-  getSessionStorage,
-  removeSessionStorage,
+  getLocalStorage,
+  removeLocalStorage,
 } from '../utils/storage';
 
 import {
@@ -32,7 +32,7 @@ function AuthProvider({ children }) {
   }
 
   useEffect(() => {
-    const newToken = getSessionStorage('x-access-token');
+    const newToken = getLocalStorage('x-access-token');
     if (newToken) {
       updatingData(newToken);
     }
@@ -45,7 +45,7 @@ function AuthProvider({ children }) {
         setData,
         updatingData,
         logout: () => {
-          removeSessionStorage('x-access-token');
+          removeLocalStorage('x-access-token');
           setData({
             userData: null,
             token: null,

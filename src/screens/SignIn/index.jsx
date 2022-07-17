@@ -24,7 +24,7 @@ import User from '../../assets/user.png';
 import Key from '../../assets/key.png';
 
 import {
-  setSessionStorage,
+  setLocalStorage,
 } from '../../utils/storage';
 
 import {
@@ -52,7 +52,7 @@ function SignIn() {
       const response = await login(dataToSignIn);
 
       if (response && response.ok) {
-        setSessionStorage('x-access-token', response.token);
+        setLocalStorage('x-access-token', response.token);
         const userInfo = await getByToken(response.token);
 
         if (userInfo && userInfo.ok) {
@@ -60,8 +60,8 @@ function SignIn() {
             userData: userInfo.userData,
             token: response.token,
           });
+          navigate('/home');
         }
-        navigate('/home');
       }
     } catch (e) {
       console.info('Error', e);
@@ -84,13 +84,9 @@ function SignIn() {
                 sx={{
                   height: '128px',
                   width: '128px',
-                  marginTop: '16px',
                 }}
               />
-              <div style={{
-                marginTop: '24px',
-              }}
-              >
+              <div className={styles.container__inputs}>
                 <Input
                   type="text"
                   placeholder="Email"
