@@ -27,28 +27,27 @@ function Footer() {
         <img
           src={LOGO_URL}
           alt="logoFooter"
-          width="200px"
-          height="80px"
+          className={styles.logo}
         />
         <div>
           <Tooltip title="LinkedIn">
             <IconButton>
               <a href="https://www.linkedin.com/in/waldo-leonel-vazquez/">
-                <BsLinkedin color="#EDF2F4" />
+                <BsLinkedin color="#D9D9D9" />
               </a>
             </IconButton>
           </Tooltip>
           <Tooltip title="GitHub">
             <IconButton>
               <a href="https://github.com/waldovazquez">
-                <BsGithub color="#EDF2F4" />
+                <BsGithub color="#D9D9D9" />
               </a>
             </IconButton>
           </Tooltip>
           <Tooltip title="Email">
             <IconButton>
               <a href="mailto:waldovazquezdev@gmail.com">
-                <MdEmail color="#EDF2F4" />
+                <MdEmail color="#D9D9D9" />
               </a>
             </IconButton>
           </Tooltip>

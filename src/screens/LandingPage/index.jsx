@@ -45,11 +45,13 @@ function LandingPage() {
           </div>
           )}
         </div>
-        <img
-          src={CharizardLanding}
-          alt="charizard"
-          className={styles.image}
-        />
+        <div className={styles.container__image}>
+          <img
+            src={CharizardLanding}
+            alt="charizard"
+            className={styles.image}
+          />
+        </div>
       </div>
     </Screen>
   );

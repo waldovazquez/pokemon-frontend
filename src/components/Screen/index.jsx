@@ -9,7 +9,7 @@ function Screen({
 }) {
   return (
     <div style={{
-      backgroundColor: '#8D99AE',
+      backgroundColor: '#284B63',
     }}
     >
       <NavBar />
