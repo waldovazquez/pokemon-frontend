@@ -125,6 +125,7 @@ function Profile() {
           <div className={styles.container__input}>
             <Input
               type="text"
+              label="Firstname"
               placeholder="Firstname *"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
@@ -132,6 +133,7 @@ function Profile() {
             />
             <Input
               type="text"
+              label="Lastname"
               placeholder="Lastname *"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
@@ -139,6 +141,7 @@ function Profile() {
             />
             <Input
               type="email"
+              label="Email"
               placeholder="Email *"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -146,6 +149,7 @@ function Profile() {
             />
             <Input
               type="password"
+              label="Current Password"
               placeholder="Current Password *"
               value={currentPassword}
               onChange={(e) => setCurrentPassword(e.target.value)}
@@ -153,6 +157,7 @@ function Profile() {
             />
             <Input
               type="password"
+              label="New Password"
               placeholder="New Password *"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
@@ -160,6 +165,7 @@ function Profile() {
             />
             <Input
               type="password"
+              label="Confirm Password"
               placeholder="Confirm Password *"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
