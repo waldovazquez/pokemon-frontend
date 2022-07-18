@@ -94,12 +94,15 @@ function PokemonCreate() {
 
   async function getAllTypes() {
     try {
+      setLoading(true);
       const response = await getTypes();
       if (response && response.ok) {
         setTypes(response.data);
       }
     } catch (e) {
       console.info('Error: ', e);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -123,33 +126,26 @@ function PokemonCreate() {
   }, []);
 
   return (
-    <Screen safe>
+    <Screen>
       <div className={styles.container}>
         <div className={styles.subcontainer}>
-          <div className={styles.container__image}>
+          <div className={styles.container__left}>
             <Button
               className={styles.component__button}
               onClick={() => getImage()}
             >
               Generate Pokemon
             </Button>
-            <div style={{
-              height: '400px',
-              width: '400px',
-            }}
-            >
-              {image && (
-                <img
-                  src={image}
-                  alt="pokemonImage"
-                  height={400}
-                  width={400}
-                />
-              )}
-            </div>
+            {image && (
+            <img
+              src={image}
+              alt="pokemonImage"
+              className={styles.image}
+            />
+            )}
           </div>
           <div className={styles.container__stats}>
-            <div className={styles.container__input__top}>
+            <div className={styles.container__input}>
               <Input
                 type="text"
                 label="Name"
