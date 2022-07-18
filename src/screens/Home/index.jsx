@@ -37,8 +37,6 @@ import {
   getTypes,
 } from '../../libs/type';
 
-import Search from '../../assets/search.png';
-
 import styles from './home.module.css';
 
 function Home() {
@@ -194,9 +192,7 @@ function Home() {
           <div className={styles.container__search}>
             <Input
               placeholder="Search..."
-              activeIcon
               label="Search"
-              icon={Search}
               alt="search"
               value={search}
               className={styles.component__input}

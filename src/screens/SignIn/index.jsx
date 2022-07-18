@@ -20,8 +20,6 @@ import Screen from '../../components/Screen';
 import Toast from '../../components/Toast';
 
 import defaultAvatar from '../../assets/defaultAvatar.png';
-import User from '../../assets/user.png';
-import Key from '../../assets/key.png';
 
 import {
   setLocalStorage,
@@ -92,8 +90,6 @@ function SignIn() {
                   placeholder="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  icon={User}
-                  activeIcon
                   className={styles.component__input}
                 />
                 <Input
@@ -101,8 +97,6 @@ function SignIn() {
                   placeholder="Password"
                   value={password}
                   className={styles.component__input}
-                  activeIcon
-                  icon={Key}
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>

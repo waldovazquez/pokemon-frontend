@@ -12,13 +12,6 @@ import Screen from '../../components/Screen';
 import Loading from '../../components/Loading';
 import Button from '../../components/Button';
 
-import Heart from '../../assets/heart.png';
-import Attack from '../../assets/attack.png';
-import Defense from '../../assets/defense.png';
-import Speed from '../../assets/speed.png';
-import Height from '../../assets/height.png';
-import Weight from '../../assets/weight.png';
-
 import {
   getRandomImage,
   createPokemon,
@@ -156,66 +149,57 @@ function PokemonCreate() {
             </div>
           </div>
           <div className={styles.container__stats}>
-            <div>
-              <div className={styles.container__input__top}>
-                <Input
-                  type="text"
-                  value={name}
-                  placeholder="Name *"
-                  className={styles.component__input}
-                  onChange={(e) => setName(e.target.value)}
-                />
-                <Input
-                  type="number"
-                  value={hp}
-                  className={styles.component__input}
-                  onChange={(e) => setHp(e.target.value)}
-                  activeIcon
-                  icon={Heart}
-                />
-                <Input
-                  type="number"
-                  value={attack}
-                  className={styles.component__input}
-                  onChange={(e) => setAttack(e.target.value)}
-                  activeIcon
-                  icon={Attack}
-                />
-                <Input
-                  type="number"
-                  value={defense}
-                  className={styles.component__input}
-                  onChange={(e) => setDefense(e.target.value)}
-                  activeIcon
-                  icon={Defense}
-                />
-                <Input
-                  type="number"
-                  value={speed}
-                  className={styles.component__input}
-                  onChange={(e) => setSpeed(e.target.value)}
-                  activeIcon
-                  icon={Speed}
-                />
-                <Input
-                  type="number"
-                  value={height}
-                  className={styles.component__input}
-                  onChange={(e) => setHeight(e.target.value)}
-                  activeIcon
-                  icon={Height}
-                />
-              </div>
-              <div className={styles.container__input__bottom}>
-                <Input
-                  type="number"
-                  value={weight}
-                  className={styles.component__input}
-                  onChange={(e) => setWeight(e.target.value)}
-                  activeIcon
-                  icon={Weight}
-                />
-              </div>
+            <div className={styles.container__input__top}>
+              <Input
+                type="text"
+                label="Name"
+                value={name}
+                placeholder="Name *"
+                className={styles.component__input}
+                onChange={(e) => setName(e.target.value)}
+              />
+              <Input
+                type="number"
+                value={hp}
+                label="Health"
+                className={styles.component__input}
+                onChange={(e) => setHp(e.target.value)}
+              />
+              <Input
+                type="number"
+                value={attack}
+                label="Attack"
+                className={styles.component__input}
+                onChange={(e) => setAttack(e.target.value)}
+              />
+              <Input
+                type="number"
+                value={defense}
+                label="Defense"
+                className={styles.component__input}
+                onChange={(e) => setDefense(e.target.value)}
+              />
+              <Input
+                type="number"
+                value={speed}
+                label="Speed"
+                className={styles.component__input}
+                onChange={(e) => setSpeed(e.target.value)}
+              />
+              <Input
+                type="number"
+                value={height}
+                label="Height"
+                className={styles.component__input}
+                onChange={(e) => setHeight(e.target.value)}
+              />
+              <Input
+                type="number"
+                value={weight}
+                label="Weigth"
+                className={styles.component__input}
+                onChange={(e) => setWeight(e.target.value)}
+              />
             </div>
             <div className={styles.container__types}>
               {
@@ -242,12 +226,14 @@ function PokemonCreate() {
                 ))
               }
             </div>
-            <Button
-              className={styles.component__button}
-              onClick={() => makePokemon()}
-            >
-              Save Pokemon
-            </Button>
+            <div className={styles.container__save}>
+              <Button
+                className={styles.component__button}
+                onClick={() => makePokemon()}
+              >
+                Save Pokemon
+              </Button>
+            </div>
           </div>
         </div>
       </div>

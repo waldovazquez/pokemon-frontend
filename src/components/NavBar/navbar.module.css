@@ -70,6 +70,7 @@
 
 .logout__button > p {
   font-size: 16px;
+  border-bottom: 1px solid transparent;
 }
 
 .logout__button > p:hover {
@@ -78,6 +79,7 @@
 
 .profile__button > p {
   font-size: 16px;
+  border-bottom: 1px solid transparent;
 }
 
 .profile__button > p:hover {
