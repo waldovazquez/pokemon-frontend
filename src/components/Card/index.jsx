@@ -53,12 +53,7 @@ function Card({
             }}
           />
         )}
-      <p style={{
-        textTransform: 'uppercase',
-        color: '#2B2D42',
-        textAlign: 'center',
-      }}
-      >
+      <p className={styles.name}>
         {title}
       </p>
       <div className={styles.container__bottom}>

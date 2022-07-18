@@ -10,6 +10,33 @@
   border-radius: 10px;
 }
 
+.container:hover{
+  background-color: #353535;
+  border: 2px solid #D9D9D9;
+}
+
+.container:hover > .name {
+  color: #D9D9D9;
+}
+
+.container:hover > div > .component__button {
+  background-color: #D9D9D9;
+  color: #353535;
+}
+
+.container:hover > div > .component__button:hover {
+  background-color: #3C6E71;
+  color: #D9D9D9;
+}
+
+.container:hover > div > button > .icon {
+  color: #D9D9D9;
+}
+
+.container:hover > div > button > .icon:hover {
+  color: red;
+}
+
 .container__bottom {
   display: flex;
   align-items: center;
@@ -28,15 +55,12 @@
   transition: .5s all;
 }
 
-.component__button:hover {
-  background-color: #353535;
-  color: #D9D9D9;
+.name{
+  text-transform: uppercase;
+  color: #2B2D42;
+  text-align: center;
 }
 
 .icon {
   color: #353535;
-}
-
-.icon:hover{
-  color: #EF233C;
 }
