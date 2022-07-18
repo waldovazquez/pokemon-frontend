@@ -1,5 +1,10 @@
-.image {
-  position: absolute;
-  top: 6px;
-  left: 6px;
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.container > p {
+  color: #D9D9D9;
 }

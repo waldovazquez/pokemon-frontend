@@ -7,17 +7,15 @@ function Dropdown({
   value,
   title = '',
   onChange = () => {},
+  className,
 }) {
   return (
     <div className={styles.container}>
-      <p style={{
-        color: '#2B2D42',
-      }}
-      >
+      <p>
         {title}
       </p>
       <select
-        className={styles.select}
+        className={className}
         onChange={(e) => onChange(e.target.value)}
         name={title}
         value={value}

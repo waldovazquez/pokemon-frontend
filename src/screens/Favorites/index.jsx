@@ -77,7 +77,7 @@ function Favorites() {
     <Screen>
       <div
         style={{
-          height: favorites.length < 12 && '90vh',
+          height: favorites.length < 12 && '100vh',
         }}
         className={styles.container}
       >

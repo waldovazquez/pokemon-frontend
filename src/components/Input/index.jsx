@@ -7,26 +7,14 @@ function Input({
   onChange = () => {},
   type,
   placeholder,
-  icon,
-  activeIcon,
-  alt,
   className,
+  label = '',
 }) {
   return (
-    <div
-      style={{
-        position: activeIcon && 'relative',
-      }}
-    >
-      {icon && (
-        <img
-          src={icon}
-          alt={alt}
-          height={24}
-          width={24}
-          className={styles.image}
-        />
-      )}
+    <div className={styles.container}>
+      <p>
+        {label}
+      </p>
       <input
         placeholder={placeholder}
         min={0}
@@ -34,9 +22,6 @@ function Input({
         value={value}
         onChange={onChange}
         className={className}
-        style={{
-          textIndent: activeIcon ? '40px' : '10px',
-        }}
       />
     </div>
   );

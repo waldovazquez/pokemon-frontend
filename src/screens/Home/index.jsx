@@ -191,23 +191,23 @@ function Home() {
         className={styles.container}
       >
         <div className={styles.container__filters}>
-          <Input
-            placeholder="Search..."
-            activeIcon
-            icon={Search}
-            alt="search"
-            value={search}
-            className={styles.component__input}
-            onChange={(e) => {
-              setPage(1);
-              setSearch(e.target.value);
-              handleUrl(e.target.value, 'name');
-            }}
-          />
-          <div style={{
-            marginLeft: '20px',
-          }}
-          >
+          <div className={styles.container__search}>
+            <Input
+              placeholder="Search..."
+              activeIcon
+              label="Search"
+              icon={Search}
+              alt="search"
+              value={search}
+              className={styles.component__input}
+              onChange={(e) => {
+                setPage(1);
+                setSearch(e.target.value);
+                handleUrl(e.target.value, 'name');
+              }}
+            />
+          </div>
+          <div className={styles.container__dropdown}>
             <Dropdown
               title="Types"
               options={types}
@@ -217,18 +217,14 @@ function Home() {
                 setTypeSelected(e);
                 handleUrl(e, 'type');
               }}
+              className={styles.dropdown}
             />
           </div>
         </div>
         <div className={styles.container__cards}>
           {
             pokemons && pokemons.length > 0 ? pokemons.map((item) => (
-              <div
-                key={item._id}
-                style={{
-                  margin: '6px',
-                }}
-              >
+              <div key={item._id}>
                 <Card
                   image={item.image}
                   title={item.name}
@@ -246,13 +242,7 @@ function Home() {
           }
         </div>
       </div>
-      <div style={{
-        height: '50px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-      >
+      <div className={styles.container__pagination}>
         <Pagination
           count={totalPages}
           page={page}
