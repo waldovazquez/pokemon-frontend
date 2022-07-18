@@ -260,7 +260,7 @@ function Home() {
             handleUrl(value, 'page');
           }}
           sx={{
-            backgroundColor: '#EFF6EE',
+            backgroundColor: '#D9D9D9',
             borderRadius: '12px',
           }}
           size="medium"

@@ -1,19 +1,19 @@
 .component__button {
   margin-top: 10px;
   padding: 16px 16px;
-  background-color: #8D99AE;
-  color: #2B2D42;
+  background-color: #284B63;
+  color: #D9D9D9;
   font-size: 16px;
   cursor: pointer;
-  border: 2px solid #EFF6EE;
+  border: 1px solid #D9D9D9;
   border-radius: 8px;
   transition: .5s all;
 }
 
 .component__button:hover{
-  background-color: #EFF6EE;
-  border: 2px solid #2B2D42;
-  color: #2B2D42;
+  background-color: #D9D9D9;
+  border: 1px solid #284B63;
+  color: #284B63;
 }
 
 .component__input {
@@ -21,11 +21,11 @@
   width: 200px;
   height: 36px;
   border-radius: 8px;
-  border: 2px solid #2B2D42;
+  border: 2px solid #D9D9D9;
 }
 
 .component__input:focus {
-  border: 2px solid #2B2D42;
+  border: 1px solid #284B63;
   outline: none;
 }
 
@@ -37,8 +37,8 @@
 
 .subcontainer {
   display: flex;
-  background-color: #2B2D42;
-  border: 1px solid #EFF6EE;
+  background-color: #353535;
+  border: 1px solid #D9D9D9;
   border-radius: 8px;
   padding: 6px;
 }

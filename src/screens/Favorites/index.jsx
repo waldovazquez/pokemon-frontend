@@ -121,10 +121,10 @@ function Favorites() {
             setPage(value);
           }}
           sx={{
-            backgroundColor: '#EFF6EE',
+            backgroundColor: '#D9D9D9',
             borderRadius: '12px',
           }}
-          size="large"
+          size="medium"
         />
       </div>
       )}
