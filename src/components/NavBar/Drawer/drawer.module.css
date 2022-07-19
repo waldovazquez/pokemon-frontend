@@ -39,11 +39,11 @@
   cursor: default;
 }
 
-.link__is__active__drawer > p {
+.link__is__active__drawer>p {
   width: fit-content;
   border-bottom: 2px solid #2B2D42;
 }
-  
+
 .link__is__not__active__drawer {
   color: #8D99AE;
   font-size: 14px;

@@ -97,134 +97,131 @@ function SignUp() {
   return (
     <Screen safe>
       {!redirect && (
-      <form onSubmit={(e) => e.preventDefault()}>
-        <div className={styles.container}>
-          <div className={styles.sub__container}>
-            <div className={styles.title}>
-              <p>
-                Sign Up
-              </p>
-            </div>
-            <div className={styles.content}>
-              <img
-                src={PokemonSignUp}
-                alt="pokemonSignUp"
-                className={styles.image}
-              />
-              <div className={styles.container__content__right}>
-                <div className={styles.container__input}>
-                  <Input
-                    type="text"
-                    label="Firstname"
-                    placeholder="Firstname *"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                    className={styles.component__input}
-                  />
-                  <Input
-                    type="text"
-                    label="Lastname"
-                    placeholder="Lastname *"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                    className={styles.component__input}
-                  />
-                  <Input
-                    type="email"
-                    label="Email"
-                    placeholder="Email *"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className={styles.component__input}
-                  />
-                  <Input
-                    type="password"
-                    label="Password"
-                    placeholder="Password *"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className={styles.component__input}
-                  />
-                  <Input
-                    type="password"
-                    label="Confirm Password"
-                    placeholder="Confirm Password *"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    className={styles.component__input}
-                  />
-                </div>
-                <div className={styles.container__avatars}>
-                  <p style={{
-                    color: '#EDF2F4',
-                  }}
-                  >
-                    Avatar
-                  </p>
-                  <div style={{
-                    width: '125px',
-                  }}
-                  >
-                    <Slider
-                      dots={false}
-                      infinite
-                      speed={500}
-                      slidesToShow={1}
-                      slidesToScroll={1}
-                      afterChange={(index) => setAvatar(AVATARS[index])}
-                    >
-                      {AVATARS.map((av) => (
-                        <div key={av}>
-                          <img src={av} alt="pokemon" />
-                        </div>
-                      ))}
-                    </Slider>
+        <form onSubmit={(e) => e.preventDefault()}>
+          <div className={styles.container}>
+            <div className={styles.sub__container}>
+              <div className={styles.content}>
+                <img
+                  src={PokemonSignUp}
+                  alt="pokemonSignUp"
+                  className={styles.image}
+                />
+                <div className={styles.container__content__right}>
+                  <div className={styles.title}>
+                    <p>
+                      Sign Up
+                    </p>
                   </div>
-                </div>
-                <div className={styles.button__sign__in}>
-                  <Button
-                    type="submit"
-                    onClick={() => handleSignUp()}
-                    className={styles.component__button}
-                  >
-                    Sign Up
-                  </Button>
-                  <Link
-                    to="/sign-in"
-                    className={styles.component__link}
-                  >
-                    Already have an account ? Sign In
-                  </Link>
+                  <div className={styles.container__input}>
+                    <Input
+                      type="text"
+                      label="Firstname"
+                      placeholder="Firstname *"
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
+                      className={styles.component__input}
+                    />
+                    <Input
+                      type="text"
+                      label="Lastname"
+                      placeholder="Lastname *"
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
+                      className={styles.component__input}
+                    />
+                    <Input
+                      type="email"
+                      label="Email"
+                      placeholder="Email *"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className={styles.component__input}
+                    />
+                    <Input
+                      type="password"
+                      label="Password"
+                      placeholder="Password *"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      className={styles.component__input}
+                    />
+                    <Input
+                      type="password"
+                      label="Confirm Password"
+                      placeholder="Confirm Password *"
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                      className={styles.component__input}
+                    />
+                  </div>
+                  <div className={styles.container__avatars}>
+                    <p>
+                      Avatar
+                    </p>
+                    <div style={{
+                      width: '125px',
+                    }}
+                    >
+                      <Slider
+                        dots={false}
+                        infinite
+                        speed={500}
+                        slidesToShow={1}
+                        slidesToScroll={1}
+                        afterChange={(index) => setAvatar(AVATARS[index])}
+                      >
+                        {AVATARS.map((av) => (
+                          <div key={av}>
+                            <img src={av} alt="pokemon" />
+                          </div>
+                        ))}
+                      </Slider>
+                    </div>
+                  </div>
+                  <div className={styles.button__sign__in}>
+                    <Button
+                      type="submit"
+                      onClick={() => handleSignUp()}
+                      className={styles.component__button}
+                    >
+                      Sign Up
+                    </Button>
+                    <Link
+                      to="/sign-in"
+                      className={styles.component__link}
+                    >
+                      Already have an account ? Sign In
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </form>
+        </form>
       )}
       {redirect && (
-      <div className={styles.container__message}>
-        <div className={styles.subcontainer__message}>
-          <div className={styles.container__message__image}>
-            <img
-              src={LOGO_URL}
-              alt="logoRedirect"
-              className={styles.message__image}
-            />
+        <div className={styles.container__message}>
+          <div className={styles.subcontainer__message}>
+            <div className={styles.container__message__image}>
+              <img
+                src={LOGO_URL}
+                alt="logoRedirect"
+                className={styles.message__image}
+              />
+            </div>
+            <p className={styles.message}>{`You will be redirected to the login screen in ${seconds || ''} seconds`}</p>
           </div>
-          <p className={styles.message}>{`You will be redirected to the login screen in ${seconds || ''} seconds`}</p>
         </div>
-      </div>
       )}
       {
         alert && (
-        <Toast
-          severity={alert.severity}
-          message={alert.message}
-          onClose={() => setAlert(null)}
-        />
+          <Toast
+            severity={alert.severity}
+            message={alert.message}
+            onClose={() => setAlert(null)}
+          />
         )
-    }
+      }
     </Screen>
   );
 }

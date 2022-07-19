@@ -17,7 +17,7 @@ import getRoutes from '../../../utils/routes';
 import styles from './drawer.module.css';
 
 function Drawer({
-  setOpenDrawer = () => {},
+  setOpenDrawer = () => { },
 }) {
   const {
     data,

@@ -8,18 +8,12 @@ function Input({
   type,
   placeholder,
   label = '',
-  labelColor = '#EDF2F4',
   style,
 }) {
   return (
     <div className={styles.container}>
       {label && (
-        <p
-          style={{
-            color: labelColor,
-          }}
-          className={styles.label}
-        >
+        <p className={styles.label}>
           {label}
         </p>
       )}

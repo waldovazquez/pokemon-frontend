@@ -5,32 +5,61 @@
 }
 
 .sub__container {
-  display: flex;
-  flex-direction: column;
+  margin-top: 40px;
 }
 
-.title{
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image {
+  width: 60%;
+}
+
+.container__content__right {
+  width: 80%;
+}
+
+.title {
   text-align: center;
-  color: #EDF2F4;
+  color: #2B2D42;
   margin-bottom: 18px;
   font-size: 28px;
 }
 
-.content{
+.container__input>div>p {
+  color: #EDF2F4;
+}
+
+.container__avatars {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.container__avatars>p {
+  color: #EDF2F4;
+}
+
+.button__sign__in {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.image{
-  width: 60%;
+.button__sign__in>button {
+  background-color: #EDF2F4;
+  color: #2B2D42;
 }
 
-.container__avatars { 
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  width: 100%;
+.component__link {
+  color: #EDF2F4;
+  font-size: 14px;
+  margin-top: 6px;
+  font-style: italic;
 }
 
 .container__message {
@@ -76,110 +105,78 @@
   color: #2B2D42;
 }
 
-.component__button {
-  margin-top: 10px;
-  padding: 16px 16px;
-  background-color: #EF233C;
-  color: #EDF2F4;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-  border-radius: 8px;
-  transition: .5s all;
-  width: 100%;
-}
-
-.component__button:hover {
-  background-color: #EDF2F4;
-  color: #EF233C;
-}
-
-.component__input {
-  width: 50%;
-  height: 36px;
-  border-radius: 8px;
-  border: 2px solid transparent;
-  text-indent: 10px;
-  margin: 4px;
-}
-
-.component__input:focus {
-  border: 2px solid #EF233C;
-  outline: none;
-}
-
-.component__input::placeholder {
-  padding-left: 6px;
-}
-
-.button__sign__in{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
-.component__link{
-  color: #EDF2F4;
-  font-size: 14px;
-  margin-top: 6px;
-  font-style: italic;
-}
-
-
 @media only screen and (min-width: 768px) {
-.container{
-  justify-content: center;
-}
+  .container {
+    justify-content: center;
+  }
 
-.sub__container {
-  background-color: #8D99AE;
-  border-radius: 10px;
-  padding: 30px 10px;
-  width: 100%;
-  margin: 4px;
-}
+  .sub__container {
+    background-color: #8D99AE;
+    border-radius: 10px;
+    padding: 10px 10px;
+    width: 90%;
+    margin: 0px 4px;
+  }
 
-.content{
-  flex-direction: row;
-}
+  .content {
+    flex-direction: row;
+    margin: 0px;
+  }
 
-.image{
-  width: 50%;
-  object-fit: contain;
-  margin: 0px;
-}
+  .image {
+    width: 50%;
+    margin: 0px;
+  }
 
-.container__content__right {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+  .container__content__right {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-.container__input{
-  width: 80%;
-}
+  .title {
+    font-size: 34px;
+    margin: 0px;
+  }
 
-.container__avatars{
-  width: 60%;
-}
+  .container__input {
+    width: 60%;
+  }
 
-.container__message{
-  width: 100%;
-  justify-content: center;
-}
+  .container__input>div>p {
+    color: #2B2D42;
+  }
 
-.subcontainer__message{
-  width: 800px;
-}
+  .container__avatars {
+    width: 80%;
+  }
 
-.component__button{
-  width: 40%;
-}
+  .button__sign__in > button {
+    background-color: #2B2D42;
+    color: #EDF2F4;
+  }
 
-.component__link:hover {
-  color: #2B2D42;
-}
+  .button__sign__in > button:hover {
+    background-color: #EDF2F4;
+    color: #2B2D42;
+  }
+
+  .container__avatars>p {
+    color: #2B2D42;
+  }
+
+  .container__message {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .subcontainer__message {
+    width: 800px;
+  }
+
+  .component__link:hover {
+    color: #2B2D42;
+  }
 
 }
