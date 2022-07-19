@@ -30,7 +30,7 @@ function Drawer({
           className={styles.button__close__drawer}
           onClick={() => setOpenDrawer(false)}
         >
-          <IoMdClose size={24} color="#353535" />
+          <IoMdClose size={24} color="#2B2D42" />
         </button>
       </div>
       <div className={styles.sub__container}>

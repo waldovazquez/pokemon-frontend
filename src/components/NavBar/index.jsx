@@ -69,7 +69,7 @@ function NavBar() {
               className={styles.button__burger}
               onClick={() => setOpenDrawer(true)}
             >
-              <GiHamburgerMenu size={24} color="#FFFFFF" />
+              <GiHamburgerMenu size={24} color="#2B2D42" />
             </button>
           </div>
           )}

@@ -13,7 +13,7 @@
 .container__menuAvatar__top {
   display: flex;
   align-items: center;
-  color: #D9D9D9;
+  color: #2B2D42;
   font-size: 20px;
 }
 
@@ -27,9 +27,8 @@
   width: 250px;
   display: flex;
   justify-content: space-around;
-  background-color: #EDF2F4;
+  background-color: #8D99AE;
   border-radius: 4px;
-  color: #353535;
   position: absolute;
   right: 0px;
   top: 58px;
@@ -59,6 +58,7 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+  color: #2B2D42;
 }
 
 .logout__button {
@@ -66,6 +66,7 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+  color: #2B2D42;
 }
 
 .logout__button > p {
@@ -74,7 +75,7 @@
 }
 
 .logout__button > p:hover {
-  border-bottom: 1px solid #353535;
+  border-bottom: 1px solid #2B2D42;
 }
 
 .profile__button > p {
@@ -83,7 +84,7 @@
 }
 
 .profile__button > p:hover {
-  border-bottom: 1px solid #353535;
+  border-bottom: 1px solid #2B2D42;
 }
 
 .container__menu__links{
@@ -116,15 +117,15 @@
 }
   
 .link__is__active {
-  color: #FFFFFF;
+  color: #2B2D42;
   font-size: 20px;
   text-transform: uppercase;
-  border-bottom: 2px solid #FFFFFF;
+  border-bottom: 2px solid #2B2D42;
   padding-bottom: 3px;
 }
   
 .link__is__not__active {
-  color: #D9D9D9;
+  color: #8D99AE;
   font-size: 16px;
   text-transform: uppercase;
 }
