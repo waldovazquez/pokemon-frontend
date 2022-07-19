@@ -25,25 +25,20 @@
 }
 
 .component__input:focus {
-  border: 2px solid #353535;
+  border: 2px solid #2B2D42;
   outline: none;
 }
 
 .component__button {
   margin-top: 14px;
   padding: 16px 16px;
-  background-color: #353535;
-  color: #D9D9D9;
+  background-color: #EDF2F4;
+  color: #2B2D42;
   font-size: 16px;
   cursor: pointer;
   border: none;
   border-radius: 8px;
   transition: .5s all;
-}
-
-.component__button:hover {
-  background-color: #D9D9D9;
-  color: #353535;
 }
 
 .container__inputs{
@@ -54,27 +49,36 @@
   display: flex;
   justify-content: flex-end;
   width: 100%;
-  color: #FFFFFF;
+  color: #EDF2F4;
   font-size: 14px;
   margin-top: 6px;
   font-style: italic;
 }
 
-.component__link:hover {
-  color: #D9D9D9;
-}
-
-
 @media only screen and (min-width: 768px) {
 .sub__container {
-  background-color: #3C6E7180;
-  border: 1px solid #D9D9D9;
+  background-color: #EDF2F4;
   border-radius: 10px;
   padding: 60px;
 }
 
 .component__button {
   font-size: 18px;
+  color: #EDF2F4;
+  background-color: #2B2D42;
+}
+
+.component__button:hover {
+  background-color: #8D99AE;
+  color: #2B2D42;
+}
+
+.component__link {
+  color: #2B2D42;
+}
+
+.component__link:hover {
+  color: #8D99AE;
 }
 
 }
