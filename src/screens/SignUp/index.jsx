@@ -78,12 +78,14 @@ function SignUp() {
   useEffect(() => {
     const myInterval = setInterval(() => {
       if (seconds > 0) {
-        setSeconds(seconds - 1);
+        setSeconds((oldSecond) => oldSecond - 1);
       }
     }, 1000);
+
     if (seconds === 0) {
       navigate('/sign-in');
     }
+
     return () => {
       clearInterval(myInterval);
     };
@@ -108,45 +110,57 @@ function SignUp() {
                 alt="pokemonSignUp"
                 className={styles.image}
               />
-              <div className={styles.container__input}>
-                <Input
-                  type="text"
-                  placeholder="Firstname *"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
-                  className={styles.component__input}
-                />
-                <Input
-                  type="text"
-                  placeholder="Lastname *"
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
-                  className={styles.component__input}
-                />
-                <Input
-                  type="email"
-                  placeholder="Email *"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className={styles.component__input}
-                />
-                <Input
-                  type="password"
-                  placeholder="Password *"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className={styles.component__input}
-                />
-                <Input
-                  type="password"
-                  placeholder="Confirm Password *"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  className={styles.component__input}
-                />
+              <div className={styles.container__content__right}>
+                <div className={styles.container__input}>
+                  <Input
+                    type="text"
+                    label="Firstname"
+                    labelColor="#EDF2F4"
+                    placeholder="Firstname *"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    className={styles.component__input}
+                  />
+                  <Input
+                    type="text"
+                    label="Lastname"
+                    labelColor="#EDF2F4"
+                    placeholder="Lastname *"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                    className={styles.component__input}
+                  />
+                  <Input
+                    type="email"
+                    label="Email"
+                    labelColor="#EDF2F4"
+                    placeholder="Email *"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className={styles.component__input}
+                  />
+                  <Input
+                    type="password"
+                    label="Password"
+                    labelColor="#EDF2F4"
+                    placeholder="Password *"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className={styles.component__input}
+                  />
+                  <Input
+                    type="password"
+                    label="Confirm Password"
+                    labelColor="#EDF2F4"
+                    placeholder="Confirm Password *"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    className={styles.component__input}
+                  />
+                </div>
                 <div className={styles.container__avatars}>
                   <p style={{
-                    color: '#EFF6EE',
+                    color: '#EDF2F4',
                   }}
                   >
                     Avatar

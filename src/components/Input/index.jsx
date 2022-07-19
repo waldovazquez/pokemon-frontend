@@ -9,12 +9,18 @@ function Input({
   placeholder,
   className,
   label = '',
+  labelColor = '#F1FAEE',
 }) {
   return (
     <div className={styles.container}>
-      <p>
+      { label && (
+      <p style={{
+        color: labelColor,
+      }}
+      >
         {label}
       </p>
+      )}
       <input
         placeholder={placeholder}
         min={0}

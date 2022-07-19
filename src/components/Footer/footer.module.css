@@ -1,7 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  background-color: #353535;
+  background-color: #EDF2F4;
 }
 
 .container__image__links {
@@ -12,7 +12,7 @@
 }
 
 .container__author {
-  color: #D9D9D9;
+  color: #2B2D42;
   text-align: center;
   margin-bottom: 6px;
 }

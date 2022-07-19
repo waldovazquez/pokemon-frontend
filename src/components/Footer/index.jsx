@@ -33,21 +33,21 @@ function Footer() {
           <Tooltip title="LinkedIn">
             <IconButton>
               <a href="https://www.linkedin.com/in/waldo-leonel-vazquez/">
-                <BsLinkedin color="#D9D9D9" />
+                <BsLinkedin color="#2B2D42" />
               </a>
             </IconButton>
           </Tooltip>
           <Tooltip title="GitHub">
             <IconButton>
               <a href="https://github.com/waldovazquez">
-                <BsGithub color="#D9D9D9" />
+                <BsGithub color="#2B2D42" />
               </a>
             </IconButton>
           </Tooltip>
           <Tooltip title="Email">
             <IconButton>
               <a href="mailto:waldovazquezdev@gmail.com">
-                <MdEmail color="#D9D9D9" />
+                <MdEmail color="#2B2D42" />
               </a>
             </IconButton>
           </Tooltip>
