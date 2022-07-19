@@ -75,59 +75,48 @@ function Favorites() {
 
   return (
     <Screen>
-      <div
-        style={{
-          height: favorites.length < 12 && '100vh',
-        }}
-        className={styles.container}
-      >
-        {
-          favorites && favorites.length > 0 ? favorites.map((item) => (
-            <div
-              key={item._id}
-              style={{
-                margin: '6px',
-              }}
-            >
-              <Card
-                image={item.pokemon.image}
-                favorite
-                title={item.pokemon.name}
-                id={item.pokemon._id}
-                onClick={() => deleteFav(item._id)}
-              />
-            </div>
-          )) : (
+      <div className={styles.container}>
+        <div className={styles.container__cards}>
+          {
+            favorites && favorites.length > 0 && favorites.map((item) => (
+              <div key={item._id}>
+                <Card
+                  image={item.pokemon.image}
+                  title={item.pokemon.name}
+                  id={item.pokemon._id}
+                  favorite
+                  onClick={() => deleteFav(item._id)}
+                />
+              </div>
+            ))
+          }
+          {
+            favorites.length === 0 && !loading && (
             <div className={styles.container__no__favorites}>
               <p>
-                You do not have favorites
+                No Pokemons
               </p>
             </div>
-          )
-        }
+            )
+          }
+        </div>
+        {favorites.length > 0 && (
+        <div className={styles.container__pagination}>
+          <Pagination
+            count={totalPages}
+            page={page}
+            onChange={(_event, value) => {
+              setPage(value);
+            }}
+            sx={{
+              backgroundColor: '#EDF2F4',
+              borderRadius: '12px',
+            }}
+            size="medium"
+          />
+        </div>
+        )}
       </div>
-      {favorites && favorites.length > 0 && (
-      <div style={{
-        height: '50px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-      >
-        <Pagination
-          count={totalPages}
-          page={page}
-          onChange={(_event, value) => {
-            setPage(value);
-          }}
-          sx={{
-            backgroundColor: '#EDF2F4',
-            borderRadius: '12px',
-          }}
-          size="medium"
-        />
-      </div>
-      )}
       {
         alert && (
         <Toast

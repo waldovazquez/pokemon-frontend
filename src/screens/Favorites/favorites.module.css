@@ -1,16 +1,35 @@
 .container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
 }
 
-.container__no__favorites{
+.container__cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.container__no__favorites {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
 }
 
-.container__no__favorites > p{
-  font-size: 24px;
+.container__no__favorites > p {
+  font-size: 36px;
+  color: #EDF2F4;
+  font-weight: bold;
+}
+
+.container__pagination {
+  display: flex;
+  justify-content: center;
+}
+
+@media only screen and (min-width: 768px) {
+.container__cards{
+  height: 100vh;
+}
 }
