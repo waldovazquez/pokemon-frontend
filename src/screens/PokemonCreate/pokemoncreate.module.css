@@ -19,8 +19,9 @@
 }
 
 .image {
-  width: 80%;
+  width: 60%;
   height: 100%;
+  margin-top: 10px;
 }
 
 .container__stats {
@@ -34,11 +35,8 @@
   padding: 6px;
 }
 
-.container__checkbox {
-  width: 30%;
-  display: flex;
-  justify-content: space-between;
-  padding: 6px;
+.container__input>div>p {
+  color: #2B2D42;
 }
 
 .container__types {
@@ -48,80 +46,57 @@
   margin-top: 20px;
 }
 
+.container__checkbox {
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  padding: 6px;
+}
+
 .container__save {
   margin-top: 10px;
 }
 
-.component__button {
-  padding: 16px 16px;
-  background-color: #2B2D42;
-  color: #EDF2F4;
-  font-size: 16px;
-  cursor: pointer;
-  border: 1px solid #EDF2F4;
-  border-radius: 8px;
-  transition: .5s all;
-}
-
-.component__button:hover {
-  background-color: #EDF2F4;
-  border: 1px solid #2B2D42;
-  color: #2B2D42;
-}
-
-.component__input {
-  width: 260px;
-  height: 36px;
-  border-radius: 8px;
-  border: 2px solid transparent;
-  text-indent: 10px;
-  margin: 2px;
-}
-
-.component__input:focus {
-  border: 1px solid #2B2D42;
-  outline: none;
-}
-
 @media only screen and (min-width: 768px) {
-.container {
-  height: 100vh;  
-}
+  .container {
+    height: 100vh;
+  }
 
-.subcontainer {
-  flex-direction: row;
-  height: 70%;
-  width: 100%;
-}
+  .subcontainer {
+    flex-direction: row;
+    height: 70%;
+    width: 100%;
+  }
 
-.image {
-  width: 100%;
-  object-fit: contain;
-}
+  .container__left {
+    width: 40%;
+    height: 100%;
+    justify-content: space-around;
+  }
 
-.container__left {
-  width: 40%;
-  height: 100%;
-  justify-content: space-around;
-}
+  .image {
+    width: 90%;
+    object-fit: contain;
+    margin: 0px;
+  }
 
-.container__save {
-  margin: 0px;
-}
+  .container__stats {
+    width: 60%;
+    height: 100%;
+    justify-content: space-around;
+  }
 
-.container__stats {
-  width: 60%;
-  height: 100%;
-  justify-content: space-around;
-}
+  .container__types {
+    margin: 0px;
+  }
 
-.container__types {
-  margin: 0px;
-}
+  .container__input {
+    width: 340px;
+    padding: 0px;
+  }
 
-.container__input {
-  width: 340px;
-  padding: 0px;
-}
+  .container__save {
+    margin: 0px;
+  }
 
 }

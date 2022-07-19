@@ -137,11 +137,11 @@ function PokemonCreate() {
               Generate Pokemon
             </Button>
             {image && (
-            <img
-              src={image}
-              alt="pokemonImage"
-              className={styles.image}
-            />
+              <img
+                src={image}
+                alt="pokemonImage"
+                className={styles.image}
+              />
             )}
           </div>
           <div className={styles.container__stats}>
@@ -242,14 +242,14 @@ function PokemonCreate() {
       </div>
       {
         alert && (
-        <Toast
-          severity={alert.severity}
-          message={alert.message}
-          onClose={() => setAlert(null)}
-        />
+          <Toast
+            severity={alert.severity}
+            message={alert.message}
+            onClose={() => setAlert(null)}
+          />
         )
-    }
-      { loading && <Loading />}
+      }
+      {loading && <Loading />}
     </Screen>
   );
 }
