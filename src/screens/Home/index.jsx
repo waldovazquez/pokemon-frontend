@@ -183,6 +183,7 @@ function Home() {
   return (
     <Screen>
       <div className={styles.container}>
+        {pokemons && pokemons.length > 0 && (
         <div className={styles.container__filters}>
           <div className={styles.container__search}>
             <Input
@@ -211,6 +212,7 @@ function Home() {
             />
           </div>
         </div>
+        )}
         <div className={styles.container__cards}>
           {
             pokemons && pokemons.length > 0 ? pokemons.map((item) => (
@@ -231,6 +233,7 @@ function Home() {
             )
           }
         </div>
+        {pokemons && pokemons.length > 0 && (
         <div className={styles.container__pagination}>
           <Pagination
             count={totalPages}
@@ -245,6 +248,7 @@ function Home() {
             size="medium"
           />
         </div>
+        )}
       </div>
       {
         alert && (

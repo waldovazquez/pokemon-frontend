@@ -23,12 +23,12 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 10px;
 }
 
 .container__pagination {
   display: flex;
   justify-content: center;
-  margin-top: 14px;
 }
 
 .container__no__pokemons {
@@ -50,6 +50,10 @@
 
 .container__dropdown {
   margin: 0px 20px;
+}
+
+.container__cards {
+  height: 100vh;
 }
 
 }
