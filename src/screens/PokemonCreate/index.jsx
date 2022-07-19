@@ -148,8 +148,9 @@ function PokemonCreate() {
             <div className={styles.container__input}>
               <Input
                 type="text"
-                label="Name"
                 value={name}
+                label="Name"
+                labelColor="#2B2D42"
                 placeholder="Name *"
                 className={styles.component__input}
                 onChange={(e) => setName(e.target.value)}
@@ -158,6 +159,7 @@ function PokemonCreate() {
                 type="number"
                 value={hp}
                 label="Health"
+                labelColor="#2B2D42"
                 className={styles.component__input}
                 onChange={(e) => setHp(e.target.value)}
               />
@@ -165,6 +167,7 @@ function PokemonCreate() {
                 type="number"
                 value={attack}
                 label="Attack"
+                labelColor="#2B2D42"
                 className={styles.component__input}
                 onChange={(e) => setAttack(e.target.value)}
               />
@@ -172,6 +175,7 @@ function PokemonCreate() {
                 type="number"
                 value={defense}
                 label="Defense"
+                labelColor="#2B2D42"
                 className={styles.component__input}
                 onChange={(e) => setDefense(e.target.value)}
               />
@@ -179,6 +183,7 @@ function PokemonCreate() {
                 type="number"
                 value={speed}
                 label="Speed"
+                labelColor="#2B2D42"
                 className={styles.component__input}
                 onChange={(e) => setSpeed(e.target.value)}
               />
@@ -186,6 +191,7 @@ function PokemonCreate() {
                 type="number"
                 value={height}
                 label="Height"
+                labelColor="#2B2D42"
                 className={styles.component__input}
                 onChange={(e) => setHeight(e.target.value)}
               />
@@ -193,6 +199,7 @@ function PokemonCreate() {
                 type="number"
                 value={weight}
                 label="Weigth"
+                labelColor="#2B2D42"
                 className={styles.component__input}
                 onChange={(e) => setWeight(e.target.value)}
               />
@@ -207,7 +214,7 @@ function PokemonCreate() {
                     <label
                       htmlFor={t.name}
                       style={{
-                        color: '#EFF6EE',
+                        color: '#2B2D42',
                       }}
                     >
                       {t.name}

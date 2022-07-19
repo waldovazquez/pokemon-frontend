@@ -9,13 +9,14 @@ function Input({
   placeholder,
   className,
   label = '',
-  labelColor = '#F1FAEE',
+  labelColor = '#EDF2F4',
 }) {
   return (
     <div className={styles.container}>
       { label && (
       <p style={{
         color: labelColor,
+        width: '50%',
       }}
       >
         {label}

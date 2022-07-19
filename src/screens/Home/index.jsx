@@ -182,12 +182,7 @@ function Home() {
 
   return (
     <Screen>
-      <div
-        style={{
-          height: pokemons.length < 12 && '100vh',
-        }}
-        className={styles.container}
-      >
+      <div className={styles.container}>
         <div className={styles.container__filters}>
           <div className={styles.container__search}>
             <Input
@@ -246,7 +241,7 @@ function Home() {
             handleUrl(value, 'page');
           }}
           sx={{
-            backgroundColor: '#D9D9D9',
+            backgroundColor: '#EDF2F4',
             borderRadius: '12px',
           }}
           size="medium"

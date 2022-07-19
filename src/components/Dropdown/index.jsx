@@ -6,12 +6,17 @@ function Dropdown({
   options = [],
   value,
   title = '',
+  titleColor = '#EDF2F4',
   onChange = () => {},
   className,
 }) {
   return (
     <div className={styles.container}>
-      <p>
+      <p style={{
+        color: titleColor,
+        width: '50%',
+      }}
+      >
         {title}
       </p>
       <select

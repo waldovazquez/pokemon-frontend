@@ -115,7 +115,6 @@ function SignUp() {
                   <Input
                     type="text"
                     label="Firstname"
-                    labelColor="#EDF2F4"
                     placeholder="Firstname *"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
@@ -124,7 +123,6 @@ function SignUp() {
                   <Input
                     type="text"
                     label="Lastname"
-                    labelColor="#EDF2F4"
                     placeholder="Lastname *"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
@@ -133,7 +131,6 @@ function SignUp() {
                   <Input
                     type="email"
                     label="Email"
-                    labelColor="#EDF2F4"
                     placeholder="Email *"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -142,7 +139,6 @@ function SignUp() {
                   <Input
                     type="password"
                     label="Password"
-                    labelColor="#EDF2F4"
                     placeholder="Password *"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -151,7 +147,6 @@ function SignUp() {
                   <Input
                     type="password"
                     label="Confirm Password"
-                    labelColor="#EDF2F4"
                     placeholder="Confirm Password *"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}

@@ -5,8 +5,7 @@
 
 .subcontainer {
   display: flex;
-  background-color: #353535;
-  border: 1px solid #D9D9D9;
+  background-color: #EDF2F4;
   border-radius: 8px;
   flex-direction: column;
   padding: 6px 0px;
@@ -55,19 +54,19 @@
 
 .component__button {
   padding: 16px 16px;
-  background-color: #284B63;
-  color: #D9D9D9;
+  background-color: #2B2D42;
+  color: #EDF2F4;
   font-size: 16px;
   cursor: pointer;
-  border: 1px solid #D9D9D9;
+  border: 1px solid #EDF2F4;
   border-radius: 8px;
   transition: .5s all;
 }
 
 .component__button:hover {
-  background-color: #D9D9D9;
-  border: 1px solid #284B63;
-  color: #284B63;
+  background-color: #EDF2F4;
+  border: 1px solid #2B2D42;
+  color: #2B2D42;
 }
 
 .component__input {
@@ -80,7 +79,7 @@
 }
 
 .component__input:focus {
-  border: 1px solid #284B63;
+  border: 1px solid #2B2D42;
   outline: none;
 }
 
