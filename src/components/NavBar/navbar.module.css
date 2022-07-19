@@ -87,7 +87,7 @@
   border-bottom: 1px solid #2B2D42;
 }
 
-.container__menu__links{
+.container__menu__links {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -112,10 +112,10 @@
   width: 160px;
 }
 
-.container__left{
+.container__left {
   display: flex;
 }
-  
+
 .link__is__active {
   color: #2B2D42;
   font-size: 20px;
@@ -131,7 +131,7 @@
 }
   
 .container__link {
-  width: 400px;
+  width: 550px;
   display: flex;
   justify-content: space-around;
   align-items: center;

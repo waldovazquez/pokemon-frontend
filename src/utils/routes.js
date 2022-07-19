@@ -17,6 +17,12 @@ function getRoutes(userData) {
       label: 'Make your pokemon',
       logged: true,
     },
+    {
+      id: 4,
+      to: '/pokemon/my-pokemon',
+      label: 'Your Pokemons',
+      logged: true,
+    },
     ];
   }
   return [];

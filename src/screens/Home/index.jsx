@@ -37,6 +37,8 @@ import {
   getTypes,
 } from '../../libs/type';
 
+import useWindowDimensions from '../../customHooks/useWindowDimensions';
+
 import styles from './home.module.css';
 
 function Home() {
@@ -52,6 +54,7 @@ function Home() {
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
+  const { width } = useWindowDimensions();
 
   async function getPokemons() {
     try {
@@ -182,7 +185,12 @@ function Home() {
 
   return (
     <Screen>
-      <div className={styles.container}>
+      <div
+        style={{
+          height: width > 768 && '100vh',
+        }}
+        className={styles.container}
+      >
         {pokemons && pokemons.length > 0 && (
         <div className={styles.container__filters}>
           <div className={styles.container__search}>
@@ -238,7 +246,7 @@ function Home() {
           <Pagination
             count={totalPages}
             page={page}
-            onChange={(event, value) => {
+            onChange={(_event, value) => {
               handleUrl(value, 'page');
             }}
             sx={{

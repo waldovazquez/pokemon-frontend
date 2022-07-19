@@ -4,7 +4,7 @@
   height: 100%;
 }
 
-.subcontainer{
+.subcontainer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,7 +17,11 @@
   padding: 6px;
 }
 
-.container__input{
+.container__input {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 240px;
   margin-top: 10px;
   width: 100%;
 }
@@ -49,7 +53,7 @@
 }
 
 @media only screen and (min-width: 768px) {
-.subcontainer{
+.subcontainer {
   width: 500px;
   padding: 20px;
 }

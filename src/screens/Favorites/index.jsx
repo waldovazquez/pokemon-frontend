@@ -75,8 +75,12 @@ function Favorites() {
 
   return (
     <Screen>
-      <div className={styles.container}>
-        <div className={styles.container__cards}>
+      <div
+        className={styles.container}
+      >
+        <div
+          className={styles.container__cards}
+        >
           {
             favorites && favorites.length > 0 && favorites.map((item) => (
               <div key={item._id}>
