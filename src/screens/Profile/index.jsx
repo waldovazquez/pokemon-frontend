@@ -126,6 +126,7 @@ function Profile() {
             <Input
               type="text"
               label="Firstname"
+              labelColor="#2B2D42"
               placeholder="Firstname *"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
@@ -134,6 +135,7 @@ function Profile() {
             <Input
               type="text"
               label="Lastname"
+              labelColor="#2B2D42"
               placeholder="Lastname *"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
@@ -142,6 +144,7 @@ function Profile() {
             <Input
               type="email"
               label="Email"
+              labelColor="#2B2D42"
               placeholder="Email *"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -150,6 +153,7 @@ function Profile() {
             <Input
               type="password"
               label="Current Password"
+              labelColor="#2B2D42"
               placeholder="Current Password *"
               value={currentPassword}
               onChange={(e) => setCurrentPassword(e.target.value)}
@@ -158,6 +162,7 @@ function Profile() {
             <Input
               type="password"
               label="New Password"
+              labelColor="#2B2D42"
               placeholder="New Password *"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
@@ -166,6 +171,7 @@ function Profile() {
             <Input
               type="password"
               label="Confirm Password"
+              labelColor="#2B2D42"
               placeholder="Confirm Password *"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}

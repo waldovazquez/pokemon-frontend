@@ -11,7 +11,7 @@ function SampleNextArrow({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#353535',
+        backgroundColor: '#2B2D42',
         borderRadius: '14px',
         width: '30px',
         height: '30px',

@@ -12,9 +12,8 @@
   height: 600px;
   justify-content: center;
   margin: auto;
-  background-color: #353535;
+  background-color: #EDF2F4;
   border-radius: 10px;
-  border: 1px solid #D9D9D9;
   padding: 6px;
 }
 
@@ -35,8 +34,8 @@
 .component__button {
   margin-top: 10px;
   padding: 16px 16px;
-  background-color: #284B63;
-  color: #D9D9D9;
+  background-color: #2B2D42;
+  color: #EDF2F4;
   font-size: 16px;
   cursor: pointer;
   border: none;
@@ -45,8 +44,8 @@
 }
 
 .component__button:hover {
-  background-color: #D9D9D9;
-  color: #284B63;
+  background-color: #8D99AE;
+  color: #2B2D42;
 }
 
 @media only screen and (min-width: 768px) {
