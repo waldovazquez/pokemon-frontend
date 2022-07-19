@@ -3,10 +3,11 @@
   flex-direction: column;
 }
 
-.container__cards {
+.container__filters {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 6px;
 }
 
 .container__search {
@@ -18,32 +19,16 @@
   width: 320px;
 }
 
-.container__filters {
+.container__cards {
   display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.dropdown {
-  width: 50%;
-  height: 36px;
-  border-radius: 8px;
-  outline: none;
-  border: 2px solid transparent;
-}
-
-.component__input {
-  width: 50%;
-  height: 36px;
-  border-radius: 8px;
-  border: 2px solid transparent;
-  text-indent: 10px;
-}
-
-.component__input:focus {
-  border: 2px solid #2B2D42;
-  outline: none;
+.container__pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 14px;
 }
 
 .container__no__pokemons {
@@ -55,13 +40,6 @@
 
 .container__no__pokemons > p {
   font-size: 24px;
-}
-
-.container__pagination {
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 @media only screen and (min-width: 768px) { 

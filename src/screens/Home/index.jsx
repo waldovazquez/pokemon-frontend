@@ -208,7 +208,6 @@ function Home() {
                 setTypeSelected(e);
                 handleUrl(e, 'type');
               }}
-              className={styles.dropdown}
             />
           </div>
         </div>
@@ -232,20 +231,20 @@ function Home() {
             )
           }
         </div>
-      </div>
-      <div className={styles.container__pagination}>
-        <Pagination
-          count={totalPages}
-          page={page}
-          onChange={(event, value) => {
-            handleUrl(value, 'page');
-          }}
-          sx={{
-            backgroundColor: '#EDF2F4',
-            borderRadius: '12px',
-          }}
-          size="medium"
-        />
+        <div className={styles.container__pagination}>
+          <Pagination
+            count={totalPages}
+            page={page}
+            onChange={(event, value) => {
+              handleUrl(value, 'page');
+            }}
+            sx={{
+              backgroundColor: '#EDF2F4',
+              borderRadius: '12px',
+            }}
+            size="medium"
+          />
+        </div>
       </div>
       {
         alert && (

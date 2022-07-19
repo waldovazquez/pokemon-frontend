@@ -7,17 +7,18 @@ function Input({
   onChange = () => {},
   type,
   placeholder,
-  className,
   label = '',
   labelColor = '#EDF2F4',
+  style,
 }) {
   return (
     <div className={styles.container}>
       { label && (
-      <p style={{
-        color: labelColor,
-        width: '50%',
-      }}
+      <p
+        style={{
+          color: labelColor,
+        }}
+        className={styles.label}
       >
         {label}
       </p>
@@ -28,7 +29,8 @@ function Input({
         type={type}
         value={value}
         onChange={onChange}
-        className={className}
+        className={styles.input}
+        style={style}
       />
     </div>
   );
