@@ -8,12 +8,22 @@ function Input({
   type,
   placeholder,
   label = '',
-  style,
+  labelRow = false,
 }) {
   return (
-    <div className={styles.container}>
+    <div
+      style={{
+        flexDirection: labelRow && 'row',
+      }}
+      className={styles.container}
+    >
       {label && (
-        <p className={styles.label}>
+        <p
+          style={{
+            width: labelRow && '50%',
+          }}
+          className={styles.label}
+        >
           {label}
         </p>
       )}
@@ -24,7 +34,9 @@ function Input({
         value={value}
         onChange={onChange}
         className={styles.input}
-        style={style}
+        style={{
+          width: labelRow && '50%',
+        }}
       />
     </div>
   );

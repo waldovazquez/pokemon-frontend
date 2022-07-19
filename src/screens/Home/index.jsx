@@ -192,34 +192,35 @@ function Home() {
         className={styles.container}
       >
         {pokemons && pokemons.length > 0 && (
-        <div className={styles.container__filters}>
-          <div className={styles.container__search}>
-            <Input
-              placeholder="Search..."
-              label="Search"
-              alt="search"
-              value={search}
-              className={styles.component__input}
-              onChange={(e) => {
-                setPage(1);
-                setSearch(e.target.value);
-                handleUrl(e.target.value, 'name');
-              }}
-            />
+          <div className={styles.container__filters}>
+            <div className={styles.container__search}>
+              <Input
+                placeholder="Search..."
+                label="Search"
+                labelRow
+                alt="search"
+                value={search}
+                className={styles.component__input}
+                onChange={(e) => {
+                  setPage(1);
+                  setSearch(e.target.value);
+                  handleUrl(e.target.value, 'name');
+                }}
+              />
+            </div>
+            <div className={styles.container__dropdown}>
+              <Dropdown
+                title="Types"
+                options={types}
+                value={typeSelected}
+                onChange={(e) => {
+                  setPage(1);
+                  setTypeSelected(e);
+                  handleUrl(e, 'type');
+                }}
+              />
+            </div>
           </div>
-          <div className={styles.container__dropdown}>
-            <Dropdown
-              title="Types"
-              options={types}
-              value={typeSelected}
-              onChange={(e) => {
-                setPage(1);
-                setTypeSelected(e);
-                handleUrl(e, 'type');
-              }}
-            />
-          </div>
-        </div>
         )}
         <div className={styles.container__cards}>
           {
@@ -242,32 +243,32 @@ function Home() {
           }
         </div>
         {pokemons && pokemons.length > 0 && (
-        <div className={styles.container__pagination}>
-          <Pagination
-            count={totalPages}
-            page={page}
-            onChange={(_event, value) => {
-              handleUrl(value, 'page');
-            }}
-            sx={{
-              backgroundColor: '#EDF2F4',
-              borderRadius: '12px',
-            }}
-            size="medium"
-          />
-        </div>
+          <div className={styles.container__pagination}>
+            <Pagination
+              count={totalPages}
+              page={page}
+              onChange={(_event, value) => {
+                handleUrl(value, 'page');
+              }}
+              sx={{
+                backgroundColor: '#EDF2F4',
+                borderRadius: '12px',
+              }}
+              size="medium"
+            />
+          </div>
         )}
       </div>
       {
         alert && (
-        <Toast
-          severity={alert.severity}
-          message={alert.message}
-          onClose={() => setAlert(null)}
-        />
+          <Toast
+            severity={alert.severity}
+            message={alert.message}
+            onClose={() => setAlert(null)}
+          />
         )
-    }
-      { loading && <Loading />}
+      }
+      {loading && <Loading />}
     </Screen>
   );
 }

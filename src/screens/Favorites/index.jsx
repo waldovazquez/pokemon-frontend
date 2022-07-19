@@ -20,6 +20,8 @@ import {
   deleteFavorite,
 } from '../../libs/favorite';
 
+import useWindowDimensions from '../../customHooks/useWindowDimensions';
+
 import styles from './favorites.module.css';
 
 function Favorites() {
@@ -31,6 +33,7 @@ function Favorites() {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
+  const { width } = useWindowDimensions();
 
   async function getAllFavorites() {
     try {
@@ -76,61 +79,58 @@ function Favorites() {
   return (
     <Screen>
       <div
+        style={{
+          height: width > 768 && '100vh',
+        }}
         className={styles.container}
       >
-        <div
-          className={styles.container__cards}
-        >
+        <div className={styles.container__cards}>
           {
-            favorites && favorites.length > 0 && favorites.map((item) => (
+            favorites && favorites.length > 0 ? favorites.map((item) => (
               <div key={item._id}>
                 <Card
                   image={item.pokemon.image}
                   title={item.pokemon.name}
                   id={item.pokemon._id}
-                  favorite
                   onClick={() => deleteFav(item._id)}
                 />
               </div>
-            ))
-          }
-          {
-            favorites.length === 0 && !loading && (
-            <div className={styles.container__no__favorites}>
-              <p>
-                No Pokemons
-              </p>
-            </div>
+            )) : (
+              <div className={styles.container__no__favorites}>
+                <p>
+                  No Pokemons
+                </p>
+              </div>
             )
           }
         </div>
-        {favorites.length > 0 && (
-        <div className={styles.container__pagination}>
-          <Pagination
-            count={totalPages}
-            page={page}
-            onChange={(_event, value) => {
-              setPage(value);
-            }}
-            sx={{
-              backgroundColor: '#EDF2F4',
-              borderRadius: '12px',
-            }}
-            size="medium"
-          />
-        </div>
+        {favorites && favorites.length > 0 && (
+          <div className={styles.container__pagination}>
+            <Pagination
+              count={totalPages}
+              page={page}
+              onChange={(_event, value) => {
+                setPage(value);
+              }}
+              sx={{
+                backgroundColor: '#EDF2F4',
+                borderRadius: '12px',
+              }}
+              size="medium"
+            />
+          </div>
         )}
       </div>
       {
         alert && (
-        <Toast
-          severity={alert.severity}
-          message={alert.message}
-          onClose={() => setAlert(null)}
-        />
+          <Toast
+            severity={alert.severity}
+            message={alert.message}
+            onClose={() => setAlert(null)}
+          />
         )
-    }
-      { loading && <Loading />}
+      }
+      {loading && <Loading />}
     </Screen>
   );
 }

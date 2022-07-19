@@ -2,7 +2,6 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-top: 4px;
   width: 100%;
 }
 
@@ -24,5 +23,4 @@
   width: 100%;
   display: flex;
   text-align: start;
-  margin-left: 4px;
 }

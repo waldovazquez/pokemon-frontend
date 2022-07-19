@@ -63,16 +63,14 @@ function NavBar() {
               ))
             }
           </div>
-          {!data.userData && (
-            <div className={styles.container__burger}>
-              <button
-                className={styles.button__burger}
-                onClick={() => setOpenDrawer(true)}
-              >
-                <GiHamburgerMenu size={24} color="#2B2D42" />
-              </button>
-            </div>
-          )}
+          <div className={styles.container__burger}>
+            <button
+              className={styles.button__burger}
+              onClick={() => setOpenDrawer(true)}
+            >
+              <GiHamburgerMenu size={24} color="#2B2D42" />
+            </button>
+          </div>
         </div>
         {openDrawer && <Drawer setOpenDrawer={setOpenDrawer} />}
         {data.userData && (

@@ -5,6 +5,7 @@
   height: 100vh;
   z-index: 9999;
   position: absolute;
+  width: 140px;
   left: 0px;
   top: 0px;
 }

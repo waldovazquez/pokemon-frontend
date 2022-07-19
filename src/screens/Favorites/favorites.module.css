@@ -5,10 +5,15 @@
 
 .container__cards {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
   margin-top: 10px;
-  height: inherit;
+}
+
+.container__pagination {
+  display: flex;
+  justify-content: center;
 }
 
 .container__no__favorites {
@@ -18,20 +23,18 @@
   height: 100vh;
 }
 
-.container__no__favorites > p {
-  font-size: 36px;
-  color: #EDF2F4;
+.container__no__favorites>p {
+  font-size: 24px;
   font-weight: bold;
-}
-
-.container__pagination {
-  display: flex;
-  justify-content: center;
+  color: #EDF2F4;
 }
 
 @media only screen and (min-width: 768px) {
-.container {
-  height: 100vh;
-}
+  .container__cards {
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: flex-start;
+    height: 100vh;
+  }
 
 }

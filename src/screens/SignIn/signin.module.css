@@ -26,6 +26,10 @@
   width: 80%;
 }
 
+.container__inputs>div>p {
+  color: #2B2D42;
+}
+
 .component__link {
   display: flex;
   justify-content: flex-end;
