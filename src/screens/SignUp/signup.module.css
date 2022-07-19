@@ -112,6 +112,21 @@
   padding-left: 6px;
 }
 
+.button__sign__in{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.component__link{
+  color: #EDF2F4;
+  font-size: 14px;
+  margin-top: 6px;
+  font-style: italic;
+}
+
+
 @media only screen and (min-width: 768px) {
 .container{
   justify-content: center;
@@ -161,6 +176,10 @@
 
 .component__button{
   width: 40%;
+}
+
+.component__link:hover {
+  color: #2B2D42;
 }
 
 }

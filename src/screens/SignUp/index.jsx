@@ -5,6 +5,7 @@ import React, {
 
 import {
   useNavigate,
+  Link,
 } from 'react-router-dom';
 
 import Slider from 'react-slick';
@@ -180,13 +181,21 @@ function SignUp() {
                     </Slider>
                   </div>
                 </div>
-                <Button
-                  type="submit"
-                  onClick={() => handleSignUp()}
-                  className={styles.component__button}
-                >
-                  Sign Up
-                </Button>
+                <div className={styles.button__sign__in}>
+                  <Button
+                    type="submit"
+                    onClick={() => handleSignUp()}
+                    className={styles.component__button}
+                  >
+                    Sign Up
+                  </Button>
+                  <Link
+                    to="/sign-in"
+                    className={styles.component__link}
+                  >
+                    Already have an account ? Sign In
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
