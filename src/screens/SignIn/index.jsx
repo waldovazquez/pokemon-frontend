@@ -87,29 +87,32 @@ function SignIn() {
               <div className={styles.container__inputs}>
                 <Input
                   type="text"
+                  label="Email"
+                  labelColor="#2B2D42"
                   placeholder="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className={styles.component__input}
                 />
                 <Input
                   type="password"
+                  label="Password"
+                  labelColor="#2B2D42"
                   placeholder="Password"
                   value={password}
-                  className={styles.component__input}
                   onChange={(e) => setPassword(e.target.value)}
                 />
+                <div className={styles.container__link}>
+                  <Link
+                    to="/sign-up"
+                    className={styles.component__link}
+                  >
+                    Need an account? Sign up
+                  </Link>
+                </div>
               </div>
-              <Link
-                to="/sign-up"
-                className={styles.component__link}
-              >
-                Need an account? Sign up
-              </Link>
               <Button
                 type="submit"
                 onClick={() => handleSignIn()}
-                className={styles.component__button}
               >
                 Sign In
               </Button>
@@ -119,13 +122,13 @@ function SignIn() {
       </form>
       {
         alert && (
-        <Toast
-          severity={alert.severity}
-          message={alert.message}
-          onClose={() => setAlert(null)}
-        />
+          <Toast
+            severity={alert.severity}
+            message={alert.message}
+            onClose={() => setAlert(null)}
+          />
         )
-    }
+      }
     </Screen>
   );
 }

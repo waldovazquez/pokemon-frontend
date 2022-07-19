@@ -4,7 +4,7 @@ import styles from './input.module.css';
 
 function Input({
   value,
-  onChange = () => {},
+  onChange = () => { },
   type,
   placeholder,
   label = '',
@@ -13,15 +13,15 @@ function Input({
 }) {
   return (
     <div className={styles.container}>
-      { label && (
-      <p
-        style={{
-          color: labelColor,
-        }}
-        className={styles.label}
-      >
-        {label}
-      </p>
+      {label && (
+        <p
+          style={{
+            color: labelColor,
+          }}
+          className={styles.label}
+        >
+          {label}
+        </p>
       )}
       <input
         placeholder={placeholder}
