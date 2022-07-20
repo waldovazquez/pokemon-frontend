@@ -27,7 +27,7 @@ function Card({
   image,
   title,
   id,
-  favorite = false,
+  toDelete = false,
   onClick = () => {},
 }) {
   const navigate = useNavigate();
@@ -57,7 +57,7 @@ function Card({
         {title}
       </p>
       <div className={styles.container__bottom}>
-        {!favorite ? (
+        {!toDelete ? (
           <Tooltip title="Favorite">
             <IconButton aria-label="Favorite" onClick={() => onClick()}>
               <MdFavorite className={styles.icon} />

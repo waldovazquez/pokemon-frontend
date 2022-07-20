@@ -91,6 +91,7 @@ function Favorites() {
                 <Card
                   image={item.pokemon.image}
                   title={item.pokemon.name}
+                  toDelete
                   id={item.pokemon._id}
                   onClick={() => deleteFav(item._id)}
                 />

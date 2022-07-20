@@ -21,6 +21,10 @@
   justify-content: center;
 }
 
+.content > button {
+  margin-top: 10px;
+}
+
 .container__inputs {
   margin-top: 24px;
   width: 80%;

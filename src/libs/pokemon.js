@@ -31,6 +31,39 @@ async function getById(id) {
   return null;
 }
 
+async function getByUserId(userId) {
+  try {
+    const response = await api.get('/pokemon/getbyuserid', {
+      params: {
+        userId,
+      },
+    });
+    if (response && response.data) {
+      return response.data;
+    }
+  } catch (e) {
+    throw new Error('Error getByUserId', e);
+  }
+  return null;
+}
+
+async function deletePokemon(id, userId) {
+  try {
+    const response = await api.delete('/pokemon/delete', {
+      data: {
+        id,
+        userId,
+      },
+    });
+    if (response && response.data) {
+      return response.data;
+    }
+  } catch (e) {
+    throw new Error('Error deletePokemon', e);
+  }
+  return null;
+}
+
 async function getRandomImage() {
   try {
     const response = await api.get('/pokemon/getimage');
@@ -60,4 +93,6 @@ export {
   getRandomImage,
   createPokemon,
   getById,
+  getByUserId,
+  deletePokemon,
 };

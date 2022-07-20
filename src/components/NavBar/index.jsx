@@ -19,7 +19,6 @@ import {
 
 import AuthContext from '../../context/authContext';
 
-import Button from '../Button';
 import Drawer from './Drawer';
 
 import {
@@ -102,22 +101,22 @@ function NavBar() {
                   }}
                 />
                 <div className={styles.container__menu__links}>
-                  <Button
+                  <button
                     className={styles.profile__button}
                     onClick={() => navigate('/profile')}
                   >
                     <p>
                       Edit Profile
                     </p>
-                  </Button>
-                  <Button
+                  </button>
+                  <button
                     className={styles.logout__button}
                     onClick={() => logout()}
                   >
                     <p>
                       Log Out
                     </p>
-                  </Button>
+                  </button>
                 </div>
               </div>
             )}
