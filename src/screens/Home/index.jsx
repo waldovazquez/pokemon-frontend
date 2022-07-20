@@ -56,6 +56,8 @@ function Home() {
   const [alert, setAlert] = useState(null);
   const { width } = useWindowDimensions();
 
+  console.info('width', width);
+
   async function getPokemons() {
     try {
       setLoading(true);
@@ -185,42 +187,35 @@ function Home() {
 
   return (
     <Screen>
-      <div
-        style={{
-          height: width > 768 && '100vh',
-        }}
-        className={styles.container}
-      >
-        {pokemons && pokemons.length > 0 && (
-          <div className={styles.container__filters}>
-            <div className={styles.container__search}>
-              <Input
-                placeholder="Search..."
-                label="Search"
-                labelRow
-                alt="search"
-                value={search}
-                onChange={(e) => {
-                  setPage(1);
-                  setSearch(e.target.value);
-                  handleUrl(e.target.value, 'name');
-                }}
-              />
-            </div>
-            <div className={styles.container__dropdown}>
-              <Dropdown
-                title="Types"
-                options={types}
-                value={typeSelected}
-                onChange={(e) => {
-                  setPage(1);
-                  setTypeSelected(e);
-                  handleUrl(e, 'type');
-                }}
-              />
-            </div>
+      <div className={styles.container}>
+        <div className={styles.container__filters}>
+          <div className={styles.container__search}>
+            <Input
+              placeholder="Search..."
+              label="Search"
+              labelRow
+              alt="search"
+              value={search}
+              onChange={(e) => {
+                setPage(1);
+                setSearch(e.target.value);
+                handleUrl(e.target.value, 'name');
+              }}
+            />
           </div>
-        )}
+          <div className={styles.container__dropdown}>
+            <Dropdown
+              title="Types"
+              options={types}
+              value={typeSelected}
+              onChange={(e) => {
+                setPage(1);
+                setTypeSelected(e);
+                handleUrl(e, 'type');
+              }}
+            />
+          </div>
+        </div>
         <div className={styles.container__cards}>
           {
             pokemons && pokemons.length > 0 ? pokemons.map((item) => (

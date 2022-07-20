@@ -4,6 +4,8 @@
   position: absolute;
   top: 0;
   width: 100%;
+  border-bottom: 2px solid #EDF2F4;
+  box-shadow: 0px 0px 10px 0px #EDF2F4;
 }
 
 .container__link {

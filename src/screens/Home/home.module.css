@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-top: 6px;
+  margin-top: 10px;
 }
 
 .container__search {
