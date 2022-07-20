@@ -200,7 +200,6 @@ function Home() {
                 labelRow
                 alt="search"
                 value={search}
-                className={styles.component__input}
                 onChange={(e) => {
                   setPage(1);
                   setSearch(e.target.value);

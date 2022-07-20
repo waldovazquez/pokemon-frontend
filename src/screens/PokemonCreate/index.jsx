@@ -131,7 +131,6 @@ function PokemonCreate() {
         <div className={styles.subcontainer}>
           <div className={styles.container__left}>
             <Button
-              className={styles.component__button}
               onClick={() => getImage()}
             >
               Generate Pokemon
@@ -152,7 +151,6 @@ function PokemonCreate() {
                 label="Name"
                 labelColor="#2B2D42"
                 placeholder="Name *"
-                className={styles.component__input}
                 onChange={(e) => setName(e.target.value)}
               />
               <Input
@@ -160,7 +158,6 @@ function PokemonCreate() {
                 value={hp}
                 label="Health"
                 labelColor="#2B2D42"
-                className={styles.component__input}
                 onChange={(e) => setHp(e.target.value)}
               />
               <Input
@@ -168,7 +165,6 @@ function PokemonCreate() {
                 value={attack}
                 label="Attack"
                 labelColor="#2B2D42"
-                className={styles.component__input}
                 onChange={(e) => setAttack(e.target.value)}
               />
               <Input
@@ -176,7 +172,6 @@ function PokemonCreate() {
                 value={defense}
                 label="Defense"
                 labelColor="#2B2D42"
-                className={styles.component__input}
                 onChange={(e) => setDefense(e.target.value)}
               />
               <Input
@@ -184,7 +179,6 @@ function PokemonCreate() {
                 value={speed}
                 label="Speed"
                 labelColor="#2B2D42"
-                className={styles.component__input}
                 onChange={(e) => setSpeed(e.target.value)}
               />
               <Input
@@ -192,7 +186,6 @@ function PokemonCreate() {
                 value={height}
                 label="Height"
                 labelColor="#2B2D42"
-                className={styles.component__input}
                 onChange={(e) => setHeight(e.target.value)}
               />
               <Input
@@ -200,7 +193,6 @@ function PokemonCreate() {
                 value={weight}
                 label="Weigth"
                 labelColor="#2B2D42"
-                className={styles.component__input}
                 onChange={(e) => setWeight(e.target.value)}
               />
             </div>
@@ -231,7 +223,6 @@ function PokemonCreate() {
             </div>
             <div className={styles.container__save}>
               <Button
-                className={styles.component__button}
                 onClick={() => makePokemon()}
               >
                 Save Pokemon

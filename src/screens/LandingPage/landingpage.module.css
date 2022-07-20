@@ -14,6 +14,26 @@
   justify-content: center;
 }
 
+.title {
+  text-align: center;
+  color: #EDF2F4;
+  font-size: 32px;
+}
+
+.container__buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.container__buttons>button {
+  background-color: #EDF2F4;
+  color: #2B2D42;
+  margin-top: 20px;
+  width: 40%;
+}
+
 .container__image {
   height: 60%;
 }
@@ -24,116 +44,48 @@
   object-fit: cover;
 }
 
-.container__buttons {
-  display: flex;
-  margin-top: 30px;
-  flex-direction: column;
-  align-items: center;
-}
-
-.component__left__button {
-  width: 200px;
-  padding: 10px;
-  background-color: #EF233C;
-  color: #EDF2F4;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-  border-radius: 10px;
-  transition: .5s all;
-}
-
-.component__right__button {
-  width: 200px;
-  padding: 10px;
-  background-color: #EDF2F4;
-  color: #2B2D42;
-  font-size: 16px;
-  margin-top: 10px;
-  cursor: pointer;
-  border: none;
-  border-radius: 10px;
-  transition: .5s all;
-}
-
-.title {
-  text-align: center;
-  color: #EDF2F4;
-  font-size: 32px;
-}
-
-
 @media only screen and (min-width: 768px) {
-.title {
-  font-size: 40px;
-}
+  .container__information {
+    height: 30%;
+  }
 
-.container__information {
-  height: 30%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+  .title {
+    font-size: 40px;
+  }
 
-.container__image {
-  height: 70%;
-}
+  .container__buttons {
+    flex-direction: row;
+    justify-content: space-around;
+  }
 
-.image {
-  width: 100%;
-  height: 100%;
-}
-
-.component__left__button {
-  font-size: 18px;
-}
-  
-.component__right__button {
-  font-size: 18px;
-}
-
+  .container__image {
+    height: 70%;
+  }
 }
 
 @media only screen and (min-width: 1280px) {
-.container {
-  flex-direction: row;
-}
+  .container {
+    flex-direction: row;
+  }
 
-.container__information {
-  width: 50%;
-}
+  .container__information {
+    width: 50%;
+  }
 
-.image {
-  width: 100%;
-  height: 100%;
-}
+  .container__image {
+    width: 50%;
+  }
 
-.container__image {
-  width: 50%;
-}
+  .container__title {
+    padding: 0px;
+  }
 
-.container__buttons {
-  margin-top: 30px;
-  flex-direction: row;
-}
+  .title {
+    text-align: start;
+    font-size: 50px;
+  }
 
-.component__left__button {
-  margin: 0px;
-  padding: 16px;
-}
-  
-.component__right__button {
-  margin: 0px 20px;
-  padding: 16px;
-}
-  
-.container__title {
-  padding: 0px;
-}
-  
-.title {
-  text-align: start;
-  font-size: 50px;
-}
-
+  .container__buttons {
+    width: 50%;
+  }
 }

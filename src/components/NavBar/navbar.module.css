@@ -128,6 +128,11 @@
     color: #8D99AE;
     font-size: 16px;
     text-transform: uppercase;
+    border-bottom: 2px solid transparent;
+  }
+
+  .link__is__not__active:hover {
+    border-bottom: 2px solid #8D99AE;
   }
 
   .container__link {

@@ -31,13 +31,11 @@ function LandingPage() {
           {!data.userData && (
           <div className={styles.container__buttons}>
             <Button
-              className={styles.component__left__button}
               onClick={() => navigate('/sign-in')}
             >
               Sign In
             </Button>
             <Button
-              className={styles.component__right__button}
               onClick={() => navigate('/sign-up')}
             >
               Sign Up
