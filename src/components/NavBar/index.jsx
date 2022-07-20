@@ -93,13 +93,15 @@ function NavBar() {
             </div>
             {openUserMenu && (
               <div className={styles.menu}>
-                <Avatar
-                  src={data.userData.avatar}
-                  sx={{
-                    width: '80px',
-                    height: '80px',
-                  }}
-                />
+                <div>
+                  <Avatar
+                    src={data.userData.avatar}
+                    sx={{
+                      width: '80px',
+                      height: '80px',
+                    }}
+                  />
+                </div>
                 <div className={styles.container__menu__links}>
                   <button
                     className={styles.profile__button}

@@ -26,6 +26,7 @@ import styles from './card.module.css';
 function Card({
   image,
   title,
+  attack,
   id,
   toDelete = false,
   onClick = () => {},
@@ -34,6 +35,11 @@ function Card({
 
   return (
     <div className={styles.container}>
+      <div className={styles.attack}>
+        <p className={styles.attack__number}>
+          {attack}
+        </p>
+      </div>
       {image ? (
         <img
           src={image}

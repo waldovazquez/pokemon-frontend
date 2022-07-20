@@ -37,8 +37,6 @@ import {
   getTypes,
 } from '../../libs/type';
 
-import useWindowDimensions from '../../customHooks/useWindowDimensions';
-
 import styles from './home.module.css';
 
 function Home() {
@@ -50,13 +48,11 @@ function Home() {
   const [types, setTypes] = useState([]);
   const [search, setSearch] = useState(searchParams.get('name') || '');
   const [typeSelected, setTypeSelected] = useState(searchParams.get('type') || '');
+  const [orderSelected, setOrderSelected] = useState(searchParams.get('attack') || '');
   const [page, setPage] = useState(Number(searchParams.get('page')) || 1);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
-  const { width } = useWindowDimensions();
-
-  console.info('width', width);
 
   async function getPokemons() {
     try {
@@ -72,9 +68,14 @@ function Home() {
         q += `types.name:${typeSelected},`;
       }
 
+      if (orderSelected !== '') {
+        q += `attack:${orderSelected},`;
+      }
+
       if (q !== '') {
         filters.query = q;
       }
+
       filters.page = page;
 
       const response = await getAllPokemons(filters);
@@ -134,34 +135,57 @@ function Home() {
     const newSearch = {};
     const typeQuery = searchParams.get('type');
     const nameQuery = searchParams.get('name');
+    const attackQuery = searchParams.get('attack');
     if (param) {
       switch (param) {
         case 'page':
-          newSearch.page = value;
+          if (value) {
+            newSearch.page = value;
+          }
           if (typeQuery) {
             newSearch.type = typeQuery;
           }
           if (nameQuery) {
             newSearch.name = nameQuery;
           }
-          setPage(Number(value));
+          if (attackQuery) {
+            newSearch.attack = attackQuery;
+          }
           break;
         case 'type':
           if (value !== '') {
             newSearch.type = value;
           }
-          setTypeSelected(value);
+          if (nameQuery) {
+            newSearch.name = nameQuery;
+          }
+          if (attackQuery) {
+            newSearch.attack = attackQuery;
+          }
           setPage(1);
-          setSearch('');
+          break;
+        case 'attack':
+          if (value !== '') {
+            newSearch.attack = value;
+          }
+          if (nameQuery) {
+            newSearch.name = nameQuery;
+          }
+          if (typeQuery) {
+            newSearch.type = typeQuery;
+          }
+          setPage(1);
           break;
         case 'name':
-          if (value !== '') {
+          if (value) {
             newSearch.name = value;
           }
           if (typeQuery) {
             newSearch.type = typeQuery;
           }
-          setSearch(value);
+          if (attackQuery) {
+            newSearch.attack = attackQuery;
+          }
           break;
         default:
           return null;
@@ -183,6 +207,7 @@ function Home() {
     page,
     search,
     typeSelected,
+    orderSelected,
   ]);
 
   return (
@@ -197,21 +222,45 @@ function Home() {
               alt="search"
               value={search}
               onChange={(e) => {
-                setPage(1);
                 setSearch(e.target.value);
                 handleUrl(e.target.value, 'name');
               }}
             />
           </div>
-          <div className={styles.container__dropdown}>
+          <div className={styles.container__dropdown__types}>
             <Dropdown
               title="Types"
               options={types}
               value={typeSelected}
               onChange={(e) => {
-                setPage(1);
                 setTypeSelected(e);
                 handleUrl(e, 'type');
+              }}
+            />
+          </div>
+          <div className={styles.container__dropdown__attack}>
+            <Dropdown
+              title="Order by Attack"
+              options={[
+                {
+                  label: 'All',
+                  value: '',
+                  id: uuidv4(),
+                },
+                {
+                  label: 'Highest',
+                  value: 'desc',
+                  id: uuidv4(),
+                }, {
+                  label: 'Lowest',
+                  value: 'asc',
+                  id: uuidv4(),
+                },
+              ]}
+              value={orderSelected}
+              onChange={(e) => {
+                setOrderSelected(e);
+                handleUrl(e, 'attack');
               }}
             />
           </div>
@@ -222,6 +271,7 @@ function Home() {
               <div key={item._id}>
                 <Card
                   image={item.image}
+                  attack={item.attack || 0}
                   title={item.name}
                   id={item._id}
                   onClick={() => addToFavorites(item._id)}
@@ -242,6 +292,7 @@ function Home() {
               count={totalPages}
               page={page}
               onChange={(_event, value) => {
+                setPage(Number(value));
                 handleUrl(value, 'page');
               }}
               sx={{

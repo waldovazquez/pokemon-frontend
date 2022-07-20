@@ -26,7 +26,7 @@
 }
 
 .menu {
-  width: 300px;
+  width: 260px;
   display: flex;
   justify-content: space-around;
   background-color: #8D99AE;
@@ -34,7 +34,7 @@
   position: absolute;
   right: 0px;
   top: 58px;
-  padding: 14px;
+  z-index: 9999;
 }
 
 .subcontainer {

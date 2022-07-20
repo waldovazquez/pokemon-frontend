@@ -11,12 +11,17 @@
 }
 
 .container__search {
-  width: 320px;
+  width: 33%;
 }
 
-.container__dropdown {
+.container__dropdown__types {
   margin-top: 6px;
-  width: 320px;
+  width: 33%;
+}
+
+.container__dropdown__attack {
+  margin-top: 6px;
+  width: 33%;
 }
 
 .container__cards {
@@ -51,7 +56,11 @@
     flex-direction: row;
   }
 
-  .container__dropdown {
+  .container__dropdown__types {
+    margin: 0px 20px;
+  }
+
+  .container__dropdown__attack {
     margin: 0px 20px;
   }
 

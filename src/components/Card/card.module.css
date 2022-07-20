@@ -3,11 +3,31 @@
   width: 240px;
   background-color: #EDF2F4;
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
   margin: 4px;
+}
+
+.attack{
+  border: 1px solid #2B2D42;
+  background-color: #2B2D42;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.attack__number{
+  font-family: 'Roboto';
+  color: #EDF2F4;
 }
 
 .container__bottom {
