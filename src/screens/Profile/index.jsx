@@ -130,7 +130,6 @@ function Profile() {
               placeholder="Firstname *"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
-              className={styles.component__input}
             />
             <Input
               type="text"
@@ -139,7 +138,6 @@ function Profile() {
               placeholder="Lastname *"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
-              className={styles.component__input}
             />
             <Input
               type="email"
@@ -148,7 +146,6 @@ function Profile() {
               placeholder="Email *"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className={styles.component__input}
             />
             <Input
               type="password"
@@ -157,7 +154,6 @@ function Profile() {
               placeholder="Current Password *"
               value={currentPassword}
               onChange={(e) => setCurrentPassword(e.target.value)}
-              className={styles.component__input}
             />
             <Input
               type="password"
@@ -166,7 +162,6 @@ function Profile() {
               placeholder="New Password *"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
-              className={styles.component__input}
             />
             <Input
               type="password"
@@ -175,13 +170,11 @@ function Profile() {
               placeholder="Confirm Password *"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className={styles.component__input}
             />
           </div>
           <Button
             type="submit"
             onClick={() => handleProfileUpdate()}
-            className={styles.component__button}
           >
             Update Profile
           </Button>
@@ -189,13 +182,13 @@ function Profile() {
       </div>
       {
         alert && (
-        <Toast
-          severity={alert.severity}
-          message={alert.message}
-          onClose={() => setAlert(null)}
-        />
+          <Toast
+            severity={alert.severity}
+            message={alert.message}
+            onClose={() => setAlert(null)}
+          />
         )
-    }
+      }
     </Screen>
   );
 }
