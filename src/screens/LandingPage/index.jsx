@@ -29,18 +29,18 @@ function LandingPage() {
             <p className={styles.title}>Discover And Collect Your Pokémon</p>
           </div>
           {!data.userData && (
-          <div className={styles.container__buttons}>
-            <Button
-              onClick={() => navigate('/sign-in')}
-            >
-              Sign In
-            </Button>
-            <Button
-              onClick={() => navigate('/sign-up')}
-            >
-              Sign Up
-            </Button>
-          </div>
+            <div className={styles.container__buttons}>
+              <Button
+                onClick={() => navigate('/sign-in')}
+              >
+                Sign In
+              </Button>
+              <Button
+                onClick={() => navigate('/sign-up')}
+              >
+                Sign Up
+              </Button>
+            </div>
           )}
         </div>
         <div className={styles.container__image}>

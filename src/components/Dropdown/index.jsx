@@ -7,7 +7,7 @@ function Dropdown({
   value,
   title = '',
   titleColor = '#EDF2F4',
-  onChange = () => {},
+  onChange = () => { },
   style,
 }) {
   return (
@@ -27,8 +27,8 @@ function Dropdown({
         value={value}
       >
         {
-        options.map((op) => <option key={op.id} value={op.value}>{op.label}</option>)
-      }
+          options.map((op) => <option key={op.id} value={op.value}>{op.label}</option>)
+        }
       </select>
     </div>
   );

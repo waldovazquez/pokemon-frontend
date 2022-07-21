@@ -29,7 +29,7 @@ function Card({
   attack,
   id,
   toDelete = false,
-  onClick = () => {},
+  onClick = () => { },
 }) {
   const navigate = useNavigate();
 

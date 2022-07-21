@@ -45,17 +45,17 @@ function PokemonDetails() {
         className={styles.container}
       >
         {details && (
-        <CardDetail
-          attack={details.attack}
-          defense={details.defense}
-          height={details.height}
-          hp={details.hp}
-          image={details.image}
-          name={details.name}
-          speed={details.speed}
-          types={details.types}
-          weight={details.weight}
-        />
+          <CardDetail
+            attack={details.attack}
+            defense={details.defense}
+            height={details.height}
+            hp={details.hp}
+            image={details.image}
+            name={details.name}
+            speed={details.speed}
+            types={details.types}
+            weight={details.weight}
+          />
         )}
       </div>
     </Screen>

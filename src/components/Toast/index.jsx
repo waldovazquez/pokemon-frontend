@@ -8,7 +8,7 @@ import {
 function Toast({
   severity = 'error',
   message = 'default',
-  onClose = () => {},
+  onClose = () => { },
 }) {
   setTimeout(() => {
     onClose();

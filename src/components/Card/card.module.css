@@ -11,7 +11,7 @@
   margin: 4px;
 }
 
-.attack{
+.attack {
   background-color: #2B2D42;
   border-radius: 50%;
   position: absolute;
@@ -25,7 +25,7 @@
   border: 1px solid #EF233C;
 }
 
-.attack__number{
+.attack__number {
   font-family: 'Roboto';
   color: #EDF2F4;
 }
@@ -48,7 +48,7 @@
   transition: .5s all;
 }
 
-.name{
+.name {
   text-transform: uppercase;
   color: #2B2D42;
   text-align: center;

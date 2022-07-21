@@ -15,7 +15,9 @@ import {
 
 const AuthContext = createContext();
 
-function AuthProvider({ children }) {
+function AuthProvider({
+  children,
+}) {
   const [data, setData] = useState({
     userData: null,
     token: null,
@@ -28,6 +30,8 @@ function AuthProvider({ children }) {
         userData: responseData.userData,
         token: newToken,
       });
+    } else {
+      removeLocalStorage('x-access-token');
     }
   }
 

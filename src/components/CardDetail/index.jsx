@@ -51,7 +51,7 @@ function CardDetail({
                 <p>{item.name}</p>
               </div>
             ))
-        }
+          }
         </div>
       </div>
     </div>
