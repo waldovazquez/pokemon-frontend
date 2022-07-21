@@ -59,16 +59,16 @@ function App() {
     <Suspense fallback={<Loading />}>
       <Routes>
         <Route element={<ProtectedRoute />}>
-          <Route element={<Home />} path="home" />
-          <Route element={<Favorites />} path="favorites" />
-          <Route element={<MyPokemon />} path="pokemon/my-pokemon" />
-          <Route element={<PokemonDetails />} path="pokemon/:id" />
-          <Route element={<PokemonCreate />} path="pokemon/create" />
-          <Route element={<Profile />} path="profile" />
+          <Route element={<Home />} path="/home" />
+          <Route element={<Favorites />} path="/favorites" />
+          <Route element={<MyPokemon />} path="/pokemon/my-pokemon" />
+          <Route element={<PokemonDetails />} path="/pokemon/:id" />
+          <Route element={<PokemonCreate />} path="/pokemon/create" />
+          <Route element={<Profile />} path="/profile" />
         </Route>
         <Route path="/" element={(<LandingPage />)} />
-        <Route path="sign-in" element={<SignIn />} />
-        <Route path="sign-up" element={<SignUp />} />
+        <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/sign-up" element={<SignUp />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
