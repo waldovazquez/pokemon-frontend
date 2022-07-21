@@ -8,10 +8,6 @@ import {
   useNavigate,
 } from 'react-router-dom';
 
-import {
-  Avatar,
-} from '@mui/material';
-
 import AuthContext from '../../context/authContext';
 
 import Input from '../../components/Input';
@@ -19,7 +15,7 @@ import Button from '../../components/Button';
 import Screen from '../../components/Screen';
 import Toast from '../../components/Toast';
 
-import defaultAvatar from '../../assets/defaultAvatar.png';
+import ashSignIn from '../../assets/ash.png';
 
 import {
   setLocalStorage,
@@ -76,13 +72,10 @@ function SignIn() {
         <div className={styles.container}>
           <div className={styles.sub__container}>
             <div className={styles.content}>
-              <Avatar
-                alt="Avatar"
-                src={defaultAvatar}
-                sx={{
-                  height: '128px',
-                  width: '128px',
-                }}
+              <img
+                src={ashSignIn}
+                alt="ash"
+                className={styles.image}
               />
               <div className={styles.container__inputs}>
                 <Input

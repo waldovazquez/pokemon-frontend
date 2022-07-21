@@ -11,17 +11,17 @@
 }
 
 .container__search {
-  width: 33%;
+  width: 80%;
 }
 
 .container__dropdown__types {
   margin-top: 6px;
-  width: 33%;
+  width: 80%;
 }
 
 .container__dropdown__attack {
   margin-top: 6px;
-  width: 33%;
+  width: 80%;
 }
 
 .container__cards {
@@ -54,6 +54,18 @@
   .container__filters {
     justify-content: center;
     flex-direction: row;
+  }
+
+  .container__search {
+    width: 33%;
+  }
+  
+  .container__dropdown__types {
+    width: 33%;
+  }
+  
+  .container__dropdown__attack {
+    width: 33%;
   }
 
   .container__dropdown__types {
