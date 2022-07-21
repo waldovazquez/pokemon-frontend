@@ -53,7 +53,7 @@ function MyPokemon() {
 
   async function deleteMyPokemon(pokemonId) {
     try {
-      const response = await deletePokemon(pokemonId, data.userData._id);
+      const response = await deletePokemon(pokemonId);
 
       if (response && response.ok) {
         setAlert({
@@ -89,6 +89,7 @@ function MyPokemon() {
                 <Card
                   image={item.image}
                   title={item.name}
+                  attack={item.attack}
                   id={item._id}
                   toDelete
                   onClick={() => deleteMyPokemon(item._id)}

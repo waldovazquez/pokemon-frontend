@@ -47,12 +47,11 @@ async function getByUserId(userId) {
   return null;
 }
 
-async function deletePokemon(id, userId) {
+async function deletePokemon(id) {
   try {
     const response = await api.delete('/pokemon/delete', {
       data: {
         id,
-        userId,
       },
     });
     if (response && response.data) {

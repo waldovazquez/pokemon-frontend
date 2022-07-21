@@ -76,7 +76,7 @@ function NavBar() {
           <div className={styles.menuAvatar}>
             <div className={styles.container__menuAvatar__top}>
               <p>
-                {data.userData.firstName}
+                {data.userData.firstName} {data.userData.lastName}
               </p>
               <IconButton
                 aria-label="Avatar"
