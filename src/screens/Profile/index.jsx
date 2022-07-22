@@ -26,7 +26,7 @@ import {
 function Profile() {
   const {
     data,
-    updatingData,
+    validateToken,
   } = useContext(AuthContext);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -72,7 +72,7 @@ function Profile() {
         setLoading(true);
         const response = await update(dataToSave);
         if (response && response.ok) {
-          updatingData(data.token);
+          validateToken(data.token);
           setAlert({
             severity: 'success',
             message: 'User Successfully Updated',

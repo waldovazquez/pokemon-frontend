@@ -107,6 +107,10 @@ function Home() {
           severity: 'success',
           message: 'Favorite Successfully Created',
         });
+      } else {
+        setAlert({
+          message: 'You already have this pokemon in your favorites list',
+        });
       }
     } catch (e) {
       console.info('Error: ', e);

@@ -23,22 +23,25 @@ function AuthProvider({
     token: null,
   });
 
-  async function updatingData(newToken) {
-    const responseData = await getByToken(newToken);
-    if (responseData && responseData.ok) {
-      setData({
-        userData: responseData.userData,
-        token: newToken,
-      });
-    } else {
+  async function validateToken(authToken) {
+    try {
+      const responseData = await getByToken(authToken);
+      if (responseData && responseData.ok) {
+        setData({
+          userData: responseData.userData,
+          token: authToken,
+        });
+      }
+    } catch (e) {
+      console.info('Error', e);
       removeLocalStorage('x-access-token');
     }
   }
 
   useEffect(() => {
-    const newToken = getLocalStorage('x-access-token');
-    if (newToken) {
-      updatingData(newToken);
+    const authToken = getLocalStorage('x-access-token');
+    if (authToken) {
+      validateToken(authToken);
     }
   }, []);
 
@@ -47,7 +50,7 @@ function AuthProvider({
       value={{
         data,
         setData,
-        updatingData,
+        validateToken,
         logout: () => {
           removeLocalStorage('x-access-token');
           setData({

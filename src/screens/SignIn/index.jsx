@@ -22,7 +22,6 @@ import {
 } from '../../utils/storage';
 
 import {
-  getByToken,
   login,
 } from '../../libs/user';
 
@@ -30,7 +29,7 @@ import styles from './signin.module.css';
 
 function SignIn() {
   const {
-    setData,
+    validateToken,
   } = useContext(AuthContext);
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
@@ -49,15 +48,8 @@ function SignIn() {
 
       if (response && response.ok) {
         setLocalStorage('x-access-token', response.token);
-        const userInfo = await getByToken(response.token);
-
-        if (userInfo && userInfo.ok) {
-          setData({
-            userData: userInfo.userData,
-            token: response.token,
-          });
-          navigate('/home');
-        }
+        await validateToken(response.token);
+        navigate('/home');
       }
     } catch (e) {
       console.info('Error', e);
