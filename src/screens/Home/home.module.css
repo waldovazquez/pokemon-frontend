@@ -54,6 +54,7 @@
   .container__filters {
     justify-content: center;
     flex-direction: row;
+    margin-left: 20px;
   }
 
   .container__search {

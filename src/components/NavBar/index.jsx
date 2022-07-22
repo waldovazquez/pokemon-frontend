@@ -27,6 +27,8 @@ import {
 
 import getRoutes from '../../utils/routes';
 
+import useWindowDimensions from '../../customHooks/useWindowDimensions';
+
 import styles from './navbar.module.css';
 
 function NavBar() {
@@ -37,6 +39,11 @@ function NavBar() {
   const navigate = useNavigate();
   const [openUserMenu, setOpenUserMenu] = useState(false);
   const [openDrawer, setOpenDrawer] = useState(false);
+  const { width } = useWindowDimensions();
+
+  if (openDrawer === true && width > 1280) {
+    setOpenDrawer(false);
+  }
 
   return (
     <div className={styles.container}>
