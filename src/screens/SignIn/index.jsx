@@ -35,10 +35,12 @@ function SignIn() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
 
   async function handleSignIn() {
     try {
+      setLoading(true);
       const dataToSignIn = {
         email,
         password,
@@ -63,6 +65,8 @@ function SignIn() {
         severity: 'error',
         message: 'Something is wrong',
       });
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -106,6 +110,7 @@ function SignIn() {
               <Button
                 type="submit"
                 onClick={() => handleSignIn()}
+                disabled={loading}
               >
                 Sign In
               </Button>

@@ -8,6 +8,11 @@
   transition: .5s all;
 }
 
+button:disabled {
+  background-color: #CCC;
+  cursor: not-allowed;
+}
+
 @media only screen and (min-width: 768px) {
   .button {
     font-size: 18px;

@@ -40,10 +40,12 @@ function Profile() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [avatar, setAvatar] = useState(AVATARS[AVATARS.indexOf(data.userData.avatar)] || AVATARS[0]);
   const [initialSlide] = useState(AVATARS.indexOf(data.userData.avatar) || 0);
+  const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
 
   async function getProfile() {
     try {
+      setLoading(true);
       const response = await getByToken(data.token);
       if (response && response.ok) {
         setFirstName(response.userData.firstName);
@@ -52,6 +54,8 @@ function Profile() {
       }
     } catch (e) {
       console.info('Error', e);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -67,6 +71,7 @@ function Profile() {
           password: newPassword,
           userId: data.userData._id,
         };
+        setLoading(true);
         const response = await update(dataToSave);
         if (response && response.ok) {
           updatingData(data.token);
@@ -87,6 +92,8 @@ function Profile() {
         severity: 'error',
         message: 'Something is wrong',
       });
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -175,6 +182,7 @@ function Profile() {
           <Button
             type="submit"
             onClick={() => handleProfileUpdate()}
+            disabled={loading}
           >
             Update Profile
           </Button>

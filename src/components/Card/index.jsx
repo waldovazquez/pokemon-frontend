@@ -23,6 +23,10 @@ import Pokebola from '../../assets/pokebola.png';
 
 import styles from './card.module.css';
 
+import {
+  getFormat,
+} from '../../utils/formats';
+
 function Card({
   image,
   title,
@@ -37,7 +41,7 @@ function Card({
     <div className={styles.container}>
       <div className={styles.attack}>
         <p className={styles.attack__number}>
-          {attack}
+          {getFormat(attack, 'card')}
         </p>
       </div>
       {image ? (

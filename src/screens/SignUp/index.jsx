@@ -38,6 +38,7 @@ function SignUp() {
   const [avatar, setAvatar] = useState(AVATARS[0]);
   const [alert, setAlert] = useState(null);
   const [redirect, setRedirect] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [seconds, setSeconds] = useState(null);
 
   async function handleSignUp() {
@@ -57,6 +58,8 @@ function SignUp() {
         avatar,
       };
 
+      setLoading(true);
+
       const response = await register(dataToSignUp);
       if (response && response.ok) {
         setAlert({
@@ -72,6 +75,8 @@ function SignUp() {
         severity: 'error',
         message: 'Something is wrong',
       });
+    } finally {
+      setLoading(false);
     }
     return null;
   }
@@ -183,6 +188,7 @@ function SignUp() {
                       type="submit"
                       onClick={() => handleSignUp()}
                       className={styles.component__button}
+                      disabled={loading}
                     >
                       Sign Up
                     </Button>

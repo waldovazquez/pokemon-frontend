@@ -132,6 +132,7 @@ function PokemonCreate() {
           <div className={styles.container__left}>
             <Button
               onClick={() => getImage()}
+              disabled={loading}
             >
               Generate Pokemon
             </Button>
@@ -224,6 +225,7 @@ function PokemonCreate() {
             <div className={styles.container__save}>
               <Button
                 onClick={() => makePokemon()}
+                disabled={loading}
               >
                 Save Pokemon
               </Button>

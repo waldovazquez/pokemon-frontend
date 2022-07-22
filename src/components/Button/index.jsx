@@ -6,6 +6,7 @@ function Button({
   type,
   children,
   style,
+  disabled = false,
   onClick = () => { },
 }) {
   return (
@@ -14,6 +15,7 @@ function Button({
       type={type}
       onClick={onClick}
       className={styles.button}
+      disabled={disabled}
     >
       {children}
     </button>

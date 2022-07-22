@@ -59,11 +59,11 @@
   .container__search {
     width: 33%;
   }
-  
+
   .container__dropdown__types {
     width: 33%;
   }
-  
+
   .container__dropdown__attack {
     width: 33%;
   }
@@ -80,7 +80,6 @@
     flex-wrap: wrap;
     flex-direction: row;
     align-items: flex-start;
-    height: 100vh;
   }
 
 }

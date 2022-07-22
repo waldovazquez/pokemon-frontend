@@ -2,10 +2,6 @@ import React from 'react';
 
 import styles from './information.module.css';
 
-import {
-  getFormat,
-} from '../../../../utils/functions';
-
 function Information({
   title,
   value,
@@ -13,11 +9,13 @@ function Information({
   return (
     <div className={styles.container__information}>
       <div className={styles.title__container}>
-        <p className={styles.title}>{title}</p>
+        <p className={styles.title}>
+          {title}
+        </p>
       </div>
       <div className={styles.container__text}>
         <p className={styles.value}>
-          {getFormat(title, value)}
+          {value}
         </p>
       </div>
     </div>

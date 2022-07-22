@@ -14,6 +14,11 @@ import {
   getById,
 } from '../../libs/pokemon';
 
+import {
+  measurementFormat,
+  getFormat,
+} from '../../utils/formats';
+
 import styles from './pokemondetails.module.css';
 
 function PokemonDetails() {
@@ -38,23 +43,19 @@ function PokemonDetails() {
   }, []);
 
   return (
-    <Screen
-      safe
-    >
-      <div
-        className={styles.container}
-      >
+    <Screen>
+      <div className={styles.container}>
         {details && (
           <CardDetail
-            attack={details.attack}
-            defense={details.defense}
-            height={details.height}
-            hp={details.hp}
+            attack={getFormat(details.attack)}
+            defense={getFormat(details.defense)}
+            height={measurementFormat(details.height, 'height')}
+            hp={getFormat(details.hp)}
             image={details.image}
             name={details.name}
-            speed={details.speed}
+            speed={getFormat(details.speed, 'speed')}
             types={details.types}
-            weight={details.weight}
+            weight={measurementFormat(details.weight, 'weight')}
           />
         )}
       </div>

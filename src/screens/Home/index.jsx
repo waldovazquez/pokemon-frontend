@@ -37,13 +37,18 @@ import {
   getTypes,
 } from '../../libs/type';
 
+import useHandleUrl from '../../customHooks/useHandleUrl';
+
 import styles from './home.module.css';
 
 function Home() {
   const {
     data,
   } = useContext(AuthContext);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
+  const {
+    handleUrl,
+  } = useHandleUrl();
   const [pokemons, setPokemons] = useState([]);
   const [types, setTypes] = useState([]);
   const [search, setSearch] = useState(searchParams.get('name') || '');
@@ -60,23 +65,23 @@ function Home() {
       const filters = {};
       let q = '';
 
-      if (search !== '') {
-        q += `name:${search},`;
+      if (searchParams.get('name')) {
+        q += `name:${searchParams.get('name')},`;
       }
 
-      if (typeSelected !== '') {
-        q += `types.name:${typeSelected},`;
+      if (searchParams.get('type')) {
+        q += `types.name:${searchParams.get('type')},`;
       }
 
-      if (orderSelected !== '') {
-        q += `attack:${orderSelected},`;
+      if (searchParams.get('attack')) {
+        q += `attack:${searchParams.get('attack')},`;
       }
 
       if (q !== '') {
         filters.query = q;
       }
 
-      filters.page = page;
+      filters.page = Number(searchParams.get('page')) || 1;
 
       const response = await getAllPokemons(filters);
 
@@ -131,83 +136,21 @@ function Home() {
     }
   }
 
-  function handleUrl(value = null, param = null) {
-    const newSearch = {};
-    const typeQuery = searchParams.get('type');
-    const nameQuery = searchParams.get('name');
-    const attackQuery = searchParams.get('attack');
-    if (param) {
-      switch (param) {
-        case 'page':
-          if (value) {
-            newSearch.page = value;
-          }
-          if (typeQuery) {
-            newSearch.type = typeQuery;
-          }
-          if (nameQuery) {
-            newSearch.name = nameQuery;
-          }
-          if (attackQuery) {
-            newSearch.attack = attackQuery;
-          }
-          break;
-        case 'type':
-          if (value !== '') {
-            newSearch.type = value;
-          }
-          if (nameQuery) {
-            newSearch.name = nameQuery;
-          }
-          if (attackQuery) {
-            newSearch.attack = attackQuery;
-          }
-          setPage(1);
-          break;
-        case 'attack':
-          if (value !== '') {
-            newSearch.attack = value;
-          }
-          if (nameQuery) {
-            newSearch.name = nameQuery;
-          }
-          if (typeQuery) {
-            newSearch.type = typeQuery;
-          }
-          setPage(1);
-          break;
-        case 'name':
-          if (value) {
-            newSearch.name = value;
-          }
-          if (typeQuery) {
-            newSearch.type = typeQuery;
-          }
-          if (attackQuery) {
-            newSearch.attack = attackQuery;
-          }
-          break;
-        default:
-          return null;
-      }
-    }
-    setSearchParams(newSearch, {
-      replace: true,
-    });
-    return null;
-  }
-
   useEffect(() => {
     getAllTypes();
   }, []);
 
   useEffect(() => {
+    setOrderSelected(searchParams.get('attack') || '');
+    setTypeSelected(searchParams.get('type') || '');
+    setPage(Number(searchParams.get('page')) || 1);
+    setSearch(searchParams.get('name') || '');
     getPokemons();
   }, [
-    page,
-    search,
-    typeSelected,
-    orderSelected,
+    searchParams.get('type'),
+    searchParams.get('attack'),
+    searchParams.get('name'),
+    searchParams.get('page'),
   ]);
 
   return (
@@ -224,6 +167,7 @@ function Home() {
               onChange={(e) => {
                 setSearch(e.target.value);
                 handleUrl(e.target.value, 'name');
+                if (page !== 1) setPage(1);
               }}
             />
           </div>
@@ -235,6 +179,7 @@ function Home() {
               onChange={(e) => {
                 setTypeSelected(e);
                 handleUrl(e, 'type');
+                if (page !== 1) setPage(1);
               }}
             />
           </div>
@@ -261,6 +206,7 @@ function Home() {
               onChange={(e) => {
                 setOrderSelected(e);
                 handleUrl(e, 'attack');
+                if (page !== 1) setPage(1);
               }}
             />
           </div>

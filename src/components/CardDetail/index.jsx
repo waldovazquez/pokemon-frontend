@@ -37,10 +37,10 @@ function CardDetail({
       <div className={styles.subcontainer}>
         <Information title="attack" value={attack} />
         <Information title="defense" value={defense} />
-        <Information title="height" value={Math.floor(height * 3.93701)} />
+        <Information title="height" value={height} />
         <Information title="hp" value={hp} />
         <Information title="speed" value={speed} />
-        <Information title="weight" value={Math.floor(weight / 4.536)} />
+        <Information title="weight" value={weight} />
         <div className={styles.container__types}>
           <p className={styles.type__title}>
             TYPES
@@ -50,7 +50,7 @@ function CardDetail({
               <div key={item._id} className={styles.types}>
                 <p>{item.name}</p>
               </div>
-            )) : <p>No Types</p>
+            )) : <p>Doesn&apos;t have</p>
           }
         </div>
       </div>
