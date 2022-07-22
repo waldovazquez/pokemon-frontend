@@ -4,17 +4,13 @@ import React, {
   useEffect,
 } from 'react';
 
-import Slider from 'react-slick';
-
 import AuthContext from '../../context/authContext';
 
 import Screen from '../../components/Screen';
 import Input from '../../components/Input';
 import Toast from '../../components/Toast';
 import Button from '../../components/Button';
-
-import NextArrow from './components/nextArrow';
-import PrevArrow from './components/prevArrow';
+import Carousel from '../../components/Carousel';
 
 import styles from './profile.module.css';
 
@@ -38,8 +34,8 @@ function Profile() {
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [avatar, setAvatar] = useState(AVATARS[AVATARS.indexOf(data.userData.avatar)] || AVATARS[0]);
-  const [initialSlide] = useState(AVATARS.indexOf(data.userData.avatar) || 0);
+  const [avatar, setAvatar] = useState(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
 
@@ -51,6 +47,8 @@ function Profile() {
         setFirstName(response.userData.firstName);
         setLastName(response.userData.lastName);
         setEmail(response.userData.email);
+        setAvatar(response.userData.avatar);
+        setCurrentSlide(AVATARS.findIndex((av) => av.image === data.userData.avatar));
       }
     } catch (e) {
       console.info('Error', e);
@@ -98,37 +96,26 @@ function Profile() {
   }
 
   useEffect(() => {
-    getProfile();
-  }, []);
+    if (data.userData) {
+      getProfile();
+    }
+  }, [data.userData]);
 
   return (
-    <Screen
-      safe
-    >
+    <Screen safe>
       <div className={styles.container}>
         <div className={styles.subcontainer}>
-          <div style={{
-            width: '125px',
-          }}
-          >
-            <Slider
-              dots={false}
-              infinite
-              speed={500}
-              initialSlide={initialSlide}
-              slidesToShow={1}
-              slidesToScroll={1}
-              afterChange={(index) => setAvatar(AVATARS[index])}
-              nextArrow={<NextArrow />}
-              prevArrow={<PrevArrow />}
-            >
-              {AVATARS.map((av) => (
-                <div key={av}>
-                  <img src={av} alt="pokemon" />
-                </div>
-              ))}
-            </Slider>
-          </div>
+          <Carousel
+            slides={AVATARS}
+            currentSlide={currentSlide}
+            setCurrentSlide={(value) => {
+              setCurrentSlide(value);
+              setAvatar(AVATARS[value].image);
+            }}
+            style={{
+              width: '100%',
+            }}
+          />
           <div className={styles.container__input}>
             <Input
               type="text"

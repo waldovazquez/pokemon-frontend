@@ -46,7 +46,7 @@ function NavBar() {
   }
 
   return (
-    <div className={styles.container}>
+    <header className={styles.container}>
       <div className={styles.subcontainer}>
         <div className={styles.container__left}>
           <NavLink to="/" className={styles.container__logo}>
@@ -132,7 +132,7 @@ function NavBar() {
           </div>
         )}
       </div>
-    </div>
+    </header>
   );
 }
 

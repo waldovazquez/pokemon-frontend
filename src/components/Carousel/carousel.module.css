@@ -1,0 +1,20 @@
+.slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image {
+    width: 125px;
+    height: 125px;
+}
+
+.right__arrow {
+    cursor: pointer;
+    user-select: none;
+}
+
+.left__arrow {
+    cursor: pointer;
+    user-select: none;
+}

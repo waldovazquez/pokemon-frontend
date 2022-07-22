@@ -8,12 +8,11 @@ import {
   Link,
 } from 'react-router-dom';
 
-import Slider from 'react-slick';
-
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import Toast from '../../components/Toast';
 import Screen from '../../components/Screen';
+import Carousel from '../../components/Carousel';
 
 import PokemonSignUp from '../../assets/pokemonSignUp.png';
 
@@ -26,6 +25,8 @@ import {
   register,
 } from '../../libs/user';
 
+import useWindowDimensions from '../../customHooks/useWindowDimensions';
+
 import styles from './signup.module.css';
 
 function SignUp() {
@@ -36,6 +37,8 @@ function SignUp() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [avatar, setAvatar] = useState(AVATARS[0]);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const { width } = useWindowDimensions();
   const [alert, setAlert] = useState(null);
   const [redirect, setRedirect] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -160,28 +163,21 @@ function SignUp() {
                     />
                   </div>
                   <div className={styles.container__avatars}>
-                    <p>
-                      Avatar
-                    </p>
-                    <div style={{
-                      width: '125px',
-                    }}
-                    >
-                      <Slider
-                        dots={false}
-                        infinite
-                        speed={500}
-                        slidesToShow={1}
-                        slidesToScroll={1}
-                        afterChange={(index) => setAvatar(AVATARS[index])}
-                      >
-                        {AVATARS.map((av) => (
-                          <div key={av}>
-                            <img src={av} alt="pokemon" />
-                          </div>
-                        ))}
-                      </Slider>
+                    <div className={styles.container__label__avatar}>
+                      <p>
+                        Avatar
+                      </p>
                     </div>
+                    <Carousel
+                      slides={AVATARS}
+                      colorLeft={width < 768 ? '#EDF2F4' : '#2B2D42'}
+                      colorRight={width < 768 ? '#EDF2F4' : '#2B2D42'}
+                      currentSlide={currentSlide}
+                      setCurrentSlide={(value) => {
+                        setCurrentSlide(value);
+                        setAvatar(AVATARS[value].image);
+                      }}
+                    />
                   </div>
                   <div className={styles.button__sign__in}>
                     <Button

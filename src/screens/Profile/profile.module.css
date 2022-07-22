@@ -17,6 +17,10 @@
   padding: 6px;
 }
 
+.carousel {
+  width: 100%;
+}
+
 .container__input {
   display: flex;
   flex-direction: column;

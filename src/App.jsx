@@ -13,13 +13,11 @@ import {
 
 import AuthContext from './context/authContext';
 
-import './App.css';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-
 import Loading from './components/Loading';
 
 import ProtectedRoute from './utils/ProtectedRoute';
+
+import './App.css';
 
 const Home = React.lazy(() => import('./screens/Home'));
 const SignIn = React.lazy(() => import('./screens/SignIn'));

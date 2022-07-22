@@ -48,24 +48,21 @@ function Card({
         <img
           src={image}
           alt={title}
-          height={200}
-          width={200}
+          className={styles.image}
         />
       )
         : (
           <img
             src={Pokebola}
             alt={title}
-            height={200}
-            width={240}
-            style={{
-              objectFit: 'contain',
-            }}
+            className={styles.image}
           />
         )}
-      <p className={styles.name}>
-        {title}
-      </p>
+      <div className={styles.container__name}>
+        <p>
+          {title}
+        </p>
+      </div>
       <div className={styles.container__bottom}>
         {!toDelete ? (
           <Tooltip title="Favorite">

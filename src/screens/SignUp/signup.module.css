@@ -44,6 +44,15 @@
   color: #EDF2F4;
 }
 
+.container__label__avatar {
+  width: 50%;
+  color: #EDF2F4;
+}
+
+.carousel {
+  width: 50%;
+}
+
 .button__sign__in {
   display: flex;
   flex-direction: column;
@@ -149,7 +158,20 @@
   }
 
   .container__avatars {
-    width: 80%;
+    width: 60%;
+  }
+
+  .container__label__avatar {
+    width: 40%;
+    color: #2B2D42;
+  }
+
+  .carousel {
+    width: 60%;
+  }
+
+  .container__avatars>p {
+    color: #2B2D42;
   }
 
   .button__sign__in>button {
@@ -159,10 +181,6 @@
 
   .button__sign__in>button:hover {
     background-color: #EDF2F4;
-    color: #2B2D42;
-  }
-
-  .container__avatars>p {
     color: #2B2D42;
   }
 
