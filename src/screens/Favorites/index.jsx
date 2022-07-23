@@ -1,14 +1,11 @@
 import React, {
   useState,
   useEffect,
-  useContext,
 } from 'react';
 
 import {
   Pagination,
 } from '@mui/material';
-
-import AuthContext from '../../context/authContext';
 
 import Screen from '../../components/Screen';
 import Loading from '../../components/Loading';
@@ -25,23 +22,28 @@ import useWindowDimensions from '../../customHooks/useWindowDimensions';
 import styles from './favorites.module.css';
 
 function Favorites() {
-  const {
-    data,
-  } = useContext(AuthContext);
   const [favorites, setFavorites] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
-  const { width } = useWindowDimensions();
+  const {
+    width,
+  } = useWindowDimensions();
 
   async function getAllFavorites() {
     try {
       setLoading(true);
-      const response = await getFavorites({
+      const query = {
         page,
-        userId: data.userData._id,
-      });
+      };
+
+      if (page !== 1 && favorites.length === 1) {
+        query.page = 1;
+      }
+
+      const response = await getFavorites(query);
+
       if (response) {
         setTotalPages(response.totalPages);
         setFavorites(response.docs);
@@ -79,49 +81,56 @@ function Favorites() {
   return (
     <Screen>
       <div
-        style={{
-          height: width > 768 && '100vh',
-        }}
         className={styles.container}
+        style={{
+          height: favorites.length <= 12 && width > 992 && '90vh',
+        }}
       >
-        <div className={styles.container__cards}>
-          {
-            favorites && favorites.length > 0 ? favorites.map((item) => (
-              <div key={item._id}>
-                <Card
-                  image={item.pokemon.image}
-                  title={item.pokemon.name}
-                  attack={item.pokemon.attack}
-                  toDelete
-                  id={item.pokemon._id}
-                  onClick={() => deleteFav(item._id)}
-                />
-              </div>
-            )) : (
-              <div className={styles.container__no__favorites}>
-                <p>
-                  No Pokemons
-                </p>
-              </div>
-            )
-          }
-        </div>
         {favorites && favorites.length > 0 && (
-          <div className={styles.container__pagination}>
-            <Pagination
-              count={totalPages}
-              page={page}
-              onChange={(_event, value) => {
-                setPage(value);
-              }}
-              sx={{
-                backgroundColor: '#EDF2F4',
-                borderRadius: '12px',
-              }}
-              size="medium"
-            />
+          <div>
+            <div className={styles.container__pagination}>
+              <Pagination
+                count={totalPages}
+                page={page}
+                onChange={(_event, value) => {
+                  setPage(value);
+                }}
+                sx={{
+                  backgroundColor: '#EDF2F4',
+                  borderRadius: '12px',
+                }}
+                size="medium"
+              />
+            </div>
+            <div
+              className={styles.container__cards}
+            >
+              {
+                favorites.map((item) => (
+                  <div key={item._id} className={styles.container__card}>
+                    <Card
+                      image={item.pokemon.image}
+                      title={item.pokemon.name}
+                      attack={item.pokemon.attack}
+                      toDelete
+                      id={item.pokemon._id}
+                      onClick={() => deleteFav(item._id)}
+                    />
+                  </div>
+                ))
+              }
+            </div>
           </div>
         )}
+        {
+          favorites && favorites.length === 0 && (
+            <div className={styles.container__no__favorites}>
+              <p>
+                No Pokemons
+              </p>
+            </div>
+          )
+        }
       </div>
       {
         alert && (

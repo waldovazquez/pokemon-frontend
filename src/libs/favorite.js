@@ -17,7 +17,6 @@ async function getFavorites(filters) {
     const response = await api.get('/favorites/getallfavorites', {
       params: {
         page: filters.page,
-        userId: filters.userId,
       },
     });
     if (response && response.data) {
