@@ -78,7 +78,10 @@ function Home() {
       }
 
       if (searchParams.get('attack')) {
-        q += `attack:${searchParams.get('attack')},`;
+        filters.sort = {
+          by: 'attack',
+          value: searchParams.get('attack'),
+        };
       }
 
       if (q !== '') {
