@@ -37,10 +37,7 @@ function MyPokemon() {
       const query = {
         page,
       };
-      if (page !== 1 && pokemons.length === 1) {
-        query.page = 1;
-        setPage(1);
-      }
+
       const response = await getMyPokemons(query);
 
       if (response) {
@@ -57,6 +54,10 @@ function MyPokemon() {
   async function deleteMyPokemon(pokemonId) {
     try {
       const response = await deletePokemon(pokemonId);
+
+      if (page !== 1 && pokemons.length === 1) {
+        setPage((oldPage) => oldPage - 1);
+      }
 
       if (response && response.ok) {
         setAlert({
@@ -85,7 +86,7 @@ function MyPokemon() {
         }}
         className={styles.container}
       >
-        {pokemons && pokemons.length > 0 && (
+        {pokemons.length > 0 && (
           <div>
             <div className={styles.container__pagination}>
               <Pagination
@@ -101,45 +102,37 @@ function MyPokemon() {
                 size="medium"
               />
             </div>
-            <div
-              className={styles.container__cards}
-            >
-              {
-                pokemons.map((item) => (
-                  <div key={item._id} className={styles.container__card}>
-                    <Card
-                      image={item.image}
-                      title={item.name}
-                      attack={item.attack}
-                      toDelete
-                      id={item._id}
-                      onClick={() => deleteMyPokemon(item._id)}
-                    />
-                  </div>
-                ))
-              }
+            <div className={styles.container__cards}>
+              {pokemons.map((item) => (
+                <div key={item._id} className={styles.container__card}>
+                  <Card
+                    image={item.image}
+                    title={item.name}
+                    attack={item.attack}
+                    toDelete
+                    id={item._id}
+                    onClick={() => deleteMyPokemon(item._id)}
+                  />
+                </div>
+              ))}
             </div>
           </div>
         )}
-        {
-          pokemons && pokemons.length === 0 && (
-            <div className={styles.container__no__mypokemon}>
-              <p>
-                No Pokemons
-              </p>
-            </div>
-          )
-        }
+        {pokemons.length === 0 && (
+          <div className={styles.container__no__mypokemon}>
+            <p>
+              No Pokemons
+            </p>
+          </div>
+        )}
       </div>
-      {
-        alert && (
-          <Toast
-            severity={alert.severity}
-            message={alert.message}
-            onClose={() => setAlert(null)}
-          />
-        )
-      }
+      {alert && (
+        <Toast
+          severity={alert.severity}
+          message={alert.message}
+          onClose={() => setAlert(null)}
+        />
+      )}
       {loading && <Loading />}
     </Screen>
   );

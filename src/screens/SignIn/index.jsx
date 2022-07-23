@@ -110,15 +110,13 @@ function SignIn() {
           </div>
         </div>
       </form>
-      {
-        alert && (
-          <Toast
-            severity={alert.severity}
-            message={alert.message}
-            onClose={() => setAlert(null)}
-          />
-        )
-      }
+      {alert && (
+        <Toast
+          severity={alert.severity}
+          message={alert.message}
+          onClose={() => setAlert(null)}
+        />
+      )}
     </Screen>
   );
 }

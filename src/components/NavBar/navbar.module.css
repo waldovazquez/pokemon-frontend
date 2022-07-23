@@ -5,7 +5,7 @@
   top: 0;
   width: 100%;
   border-bottom: 2px solid #EDF2F4;
-  box-shadow: 0px 0px 10px 0px #EDF2F4;
+  box-shadow: 0px 0px 20px 0px #EDF2F4;
 }
 
 .container__link {
@@ -16,13 +16,25 @@
   display: flex;
   align-items: center;
   color: #2B2D42;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .menuAvatar {
   display: flex;
   align-items: center;
   position: relative;
+}
+
+.avatar {
+  border-radius: 50%;
+  height: 48px;
+  width: 48px;
+}
+
+.avatar__menu {
+  border-radius: 50%;
+  height: 72px;
+  width: 72px;
 }
 
 .menu {
@@ -42,7 +54,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0px 10px;
-  height: 60px;
+  height: 56px;
 }
 
 .button__burger {
@@ -110,17 +122,19 @@
   }
 
   .logo {
-    height: 57px;
+    height: 100%;
     width: 160px;
   }
 
   .container__left {
     display: flex;
     width: 80%;
+    height: 100%;
   }
 
   .menuAvatar {
     width: 20%;
+    height: 100%;
     justify-content: flex-end;
   }
 

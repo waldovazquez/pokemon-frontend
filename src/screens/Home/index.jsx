@@ -164,10 +164,10 @@ function Home() {
   return (
     <Screen>
       <div
-        className={styles.container}
         style={{
           height: ((pokemons.length >= 0 && pokemons.length <= 8) && (width > 768)) ? '100vh' : ((pokemons.length >= 8 && pokemons.length <= 12) && (width > 992)) && '100vh',
         }}
+        className={styles.container}
       >
         <div className={styles.container__filters}>
           <div className={styles.container__search}>
@@ -224,7 +224,7 @@ function Home() {
             />
           </div>
         </div>
-        {pokemons && pokemons.length > 0 && (
+        {pokemons.length > 0 && (
           <div>
             <div className={styles.container__pagination}>
               <Pagination
@@ -241,44 +241,36 @@ function Home() {
                 size="medium"
               />
             </div>
-            <div
-              className={styles.container__cards}
-            >
-              {
-                pokemons.map((item) => (
-                  <div key={item._id} className={styles.container__card}>
-                    <Card
-                      image={item.image}
-                      title={item.name}
-                      attack={item.attack || 0}
-                      id={item._id}
-                      onClick={() => addToFavorites(item._id)}
-                    />
-                  </div>
-                ))
-              }
+            <div className={styles.container__cards}>
+              {pokemons.map((item) => (
+                <div key={item._id} className={styles.container__card}>
+                  <Card
+                    image={item.image}
+                    title={item.name}
+                    attack={item.attack || 0}
+                    id={item._id}
+                    onClick={() => addToFavorites(item._id)}
+                  />
+                </div>
+              ))}
             </div>
           </div>
         )}
-        {
-          pokemons && pokemons.length === 0 && (
-            <div className={styles.container__no__pokemons}>
-              <p>
-                No Pokemons
-              </p>
-            </div>
-          )
-        }
+        {pokemons.length === 0 && (
+          <div className={styles.container__no__pokemons}>
+            <p>
+              No Pokemons
+            </p>
+          </div>
+        )}
       </div>
-      {
-        alert && (
-          <Toast
-            severity={alert.severity}
-            message={alert.message}
-            onClose={() => setAlert(null)}
-          />
-        )
-      }
+      {alert && (
+        <Toast
+          severity={alert.severity}
+          message={alert.message}
+          onClose={() => setAlert(null)}
+        />
+      )}
       {loading && <Loading />}
     </Screen>
   );

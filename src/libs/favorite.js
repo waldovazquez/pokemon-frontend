@@ -12,11 +12,11 @@ async function createFavorite(data) {
   return null;
 }
 
-async function getFavorites(filters) {
+async function getFavorites(data) {
   try {
     const response = await api.get('/favorites/getallfavorites', {
       params: {
-        page: filters.page,
+        page: data.page,
       },
     });
     if (response && response.data) {

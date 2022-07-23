@@ -46,7 +46,7 @@ function LandingPage() {
         <div className={styles.container__image}>
           <img
             src={CharizardLanding}
-            alt="charizard"
+            alt="charizard__landing"
             className={styles.image}
           />
         </div>

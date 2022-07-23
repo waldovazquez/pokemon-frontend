@@ -72,10 +72,6 @@
     width: 50%;
   }
 
-  .container__image {
-    width: 50%;
-  }
-
   .container__title {
     padding: 0px;
   }
@@ -86,6 +82,10 @@
   }
 
   .container__buttons {
+    width: 50%;
+  }
+
+  .container__image {
     width: 50%;
   }
 }

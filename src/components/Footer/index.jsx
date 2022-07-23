@@ -29,6 +29,7 @@ function Footer() {
             src={LOGO_URL}
             alt="logoFooter"
             className={styles.logo}
+            loading="lazy"
           />
           <div>
             <Tooltip title="LinkedIn">

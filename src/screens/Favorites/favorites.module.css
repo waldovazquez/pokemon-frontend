@@ -3,6 +3,12 @@
   flex-direction: column;
 }
 
+.container__pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 14px;
+}
+
 .container__cards {
   display: flex;
   justify-content: center;
@@ -13,12 +19,6 @@
 
 .container__card {
   height: 300px;
-}
-
-.container__pagination {
-  display: flex;
-  justify-content: center;
-  margin-top: 14px;
 }
 
 .container__no__favorites {

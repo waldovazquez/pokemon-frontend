@@ -38,11 +38,6 @@ function Favorites() {
         page,
       };
 
-      if (page !== 1 && favorites.length === 1) {
-        query.page = 1;
-        setPage(1);
-      }
-
       const response = await getFavorites(query);
 
       if (response) {
@@ -59,6 +54,10 @@ function Favorites() {
   async function deleteFav(favoriteId) {
     try {
       const response = await deleteFavorite(favoriteId);
+
+      if (page !== 1 && favorites.length === 1) {
+        setPage((oldPage) => oldPage - 1);
+      }
 
       if (response && response.ok) {
         setAlert({
@@ -87,7 +86,7 @@ function Favorites() {
           height: ((favorites.length >= 0 && favorites.length <= 8) && (width > 768)) ? '100vh' : ((favorites.length >= 8 && favorites.length <= 12) && (width > 992)) && '100vh',
         }}
       >
-        {favorites && favorites.length > 0 && (
+        {favorites.length > 0 && (
           <div>
             <div className={styles.container__pagination}>
               <Pagination
@@ -124,7 +123,7 @@ function Favorites() {
           </div>
         )}
         {
-          favorites && favorites.length === 0 && (
+          favorites.length === 0 && (
             <div className={styles.container__no__favorites}>
               <p>
                 No Pokemons

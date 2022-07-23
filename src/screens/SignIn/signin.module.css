@@ -51,13 +51,7 @@
 
 @media only screen and (min-width: 768px) {
   .sub__container {
-    height: 60%;
     width: 40%;
-  }
-
-  .content {
-    display: flex;
-    flex-direction: column;
   }
 
   .image {
@@ -81,6 +75,4 @@
   .component__link:hover {
     color: #8D99AE;
   }
-
-
 }

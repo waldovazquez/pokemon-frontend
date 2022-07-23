@@ -121,8 +121,10 @@ function PokemonCreate() {
   };
 
   useEffect(() => {
-    getImage();
-    getAllTypes();
+    Promise.all([
+      getImage(),
+      getAllTypes(),
+    ]);
   }, []);
 
   return (
@@ -198,29 +200,27 @@ function PokemonCreate() {
               />
             </div>
             <div className={styles.container__types}>
-              {
-                types && types.map((t) => (
-                  <div
-                    key={t._id}
-                    className={styles.container__checkbox}
+              {types && types.map((t) => (
+                <div
+                  key={t._id}
+                  className={styles.container__checkbox}
+                >
+                  <label
+                    htmlFor={t.name}
+                    style={{
+                      color: '#2B2D42',
+                    }}
                   >
-                    <label
-                      htmlFor={t.name}
-                      style={{
-                        color: '#2B2D42',
-                      }}
-                    >
-                      {t.name}
-                    </label>
-                    <input
-                      id={t.name}
-                      type="checkbox"
-                      checked={selectedTypes.filter((item) => item._id === t._id).length > 0}
-                      onChange={() => handleTypes(t)}
-                    />
-                  </div>
-                ))
-              }
+                    {t.name}
+                  </label>
+                  <input
+                    id={t.name}
+                    type="checkbox"
+                    checked={selectedTypes.filter((item) => item._id === t._id).length > 0}
+                    onChange={() => handleTypes(t)}
+                  />
+                </div>
+              ))}
             </div>
             <div className={styles.container__save}>
               <Button
@@ -233,15 +233,13 @@ function PokemonCreate() {
           </div>
         </div>
       </div>
-      {
-        alert && (
-          <Toast
-            severity={alert.severity}
-            message={alert.message}
-            onClose={() => setAlert(null)}
-          />
-        )
-      }
+      {alert && (
+        <Toast
+          severity={alert.severity}
+          message={alert.message}
+          onClose={() => setAlert(null)}
+        />
+      )}
       {loading && <Loading />}
     </Screen>
   );

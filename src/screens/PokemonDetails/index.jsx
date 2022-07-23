@@ -47,11 +47,9 @@ function PokemonDetails() {
   }, []);
 
   return (
-    <Screen
-      safe={details.types?.length <= 10 || loading}
-    >
+    <Screen safe={(details && details.types && details.types.length <= 10) || loading}>
       <div className={styles.container}>
-        {details && (
+        {Object.keys(details).length > 0 && (
           <CardDetail
             attack={getFormat(details.attack)}
             defense={getFormat(details.defense)}

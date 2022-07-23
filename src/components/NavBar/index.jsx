@@ -12,11 +12,6 @@ import {
   GiHamburgerMenu,
 } from 'react-icons/gi';
 
-import {
-  IconButton,
-  Avatar,
-} from '@mui/material';
-
 import AuthContext from '../../context/authContext';
 
 import Drawer from './Drawer';
@@ -85,28 +80,27 @@ function NavBar() {
               <p>
                 {data.userData.firstName} {data.userData.lastName}
               </p>
-              <IconButton
-                aria-label="Avatar"
+              <button
+                style={{
+                  border: 'none',
+                  cursor: 'pointer',
+                }}
                 onClick={() => setOpenUserMenu(!openUserMenu)}
               >
-                <Avatar
+                <img
                   src={data.userData.avatar}
-                  sx={{
-                    width: '48px',
-                    height: '48px',
-                  }}
+                  alt="avatar"
+                  className={styles.avatar}
                 />
-              </IconButton>
+              </button>
             </div>
             {openUserMenu && (
               <div className={styles.menu}>
                 <div>
-                  <Avatar
+                  <img
                     src={data.userData.avatar}
-                    sx={{
-                      width: '80px',
-                      height: '80px',
-                    }}
+                    alt="avatar"
+                    className={styles.avatar__menu}
                   />
                 </div>
                 <div className={styles.container__menu__links}>

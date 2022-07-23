@@ -48,6 +48,7 @@ function Card({
         <img
           src={image}
           alt={title}
+          loading="lazy"
           className={styles.image}
         />
       )
@@ -55,6 +56,7 @@ function Card({
           <img
             src={Pokebola}
             alt={title}
+            loading="lazy"
             className={styles.image}
           />
         )}
@@ -81,7 +83,7 @@ function Card({
           onClick={() => navigate(`/pokemon/${id}`)}
           className={styles.component__button}
         >
-          More Details
+          Learn More
         </Button>
       </div>
     </div>

@@ -24,6 +24,12 @@
   width: 80%;
 }
 
+.container__pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 14px;
+}
+
 .container__cards {
   display: flex;
   justify-content: center;
@@ -34,12 +40,6 @@
 
 .container__card {
   height: 300px;
-}
-
-.container__pagination {
-  display: flex;
-  justify-content: center;
-  margin-top: 14px;
 }
 
 .container__no__pokemons {
@@ -68,17 +68,11 @@
 
   .container__dropdown__types {
     width: 33%;
-  }
-
-  .container__dropdown__attack {
-    width: 33%;
-  }
-
-  .container__dropdown__types {
     margin: 0px 20px;
   }
 
   .container__dropdown__attack {
+    width: 33%;
     margin: 0px 20px;
   }
 
