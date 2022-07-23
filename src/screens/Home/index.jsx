@@ -40,6 +40,10 @@ import {
 import useHandleUrl from '../../customHooks/useHandleUrl';
 import useWindowDimensions from '../../customHooks/useWindowDimensions';
 
+import {
+  getHeight,
+} from '../../utils/formats';
+
 import styles from './home.module.css';
 
 function Home() {
@@ -168,7 +172,7 @@ function Home() {
     <Screen>
       <div
         style={{
-          height: ((pokemons.length >= 0 && pokemons.length <= 8) && (width > 768)) ? '100vh' : ((pokemons.length >= 8 && pokemons.length <= 12) && (width > 992)) && '100vh',
+          height: getHeight(pokemons, width),
         }}
         className={styles.container}
       >

@@ -19,6 +19,10 @@ import {
 
 import useWindowDimensions from '../../customHooks/useWindowDimensions';
 
+import {
+  getHeight,
+} from '../../utils/formats';
+
 import styles from './favorites.module.css';
 
 function Favorites() {
@@ -83,7 +87,7 @@ function Favorites() {
       <div
         className={styles.container}
         style={{
-          height: ((favorites.length >= 0 && favorites.length <= 8) && (width > 768)) ? '100vh' : ((favorites.length >= 8 && favorites.length <= 12) && (width > 992)) && '100vh',
+          height: getHeight(favorites, width),
         }}
       >
         {favorites.length > 0 && (

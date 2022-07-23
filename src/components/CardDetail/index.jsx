@@ -47,7 +47,7 @@ function CardDetail({
           TYPES
         </p>
         {
-          types && types.filter((item) => item !== null).length > 0 ? types.map((item) => (
+          types && types.filter((item) => item !== null).length > 0 ? types.filter((item) => item !== null).map((item) => (
             <div key={item._id} className={styles.types}>
               <p>{item.name}</p>
             </div>

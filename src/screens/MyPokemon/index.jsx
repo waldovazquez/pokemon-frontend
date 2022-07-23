@@ -21,6 +21,10 @@ import useWindowDimensions from '../../customHooks/useWindowDimensions';
 
 import styles from './mypokemon.module.css';
 
+import {
+  getHeight,
+} from '../../utils/formats';
+
 function MyPokemon() {
   const [pokemons, setPokemons] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
@@ -82,7 +86,7 @@ function MyPokemon() {
     <Screen>
       <div
         style={{
-          height: ((pokemons.length >= 0 && pokemons.length <= 8) && (width > 768)) ? '100vh' : ((pokemons.length >= 8 && pokemons.length <= 12) && (width > 992)) && '100vh',
+          height: getHeight(pokemons, width),
         }}
         className={styles.container}
       >
