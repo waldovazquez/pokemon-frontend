@@ -36,7 +36,7 @@ function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [avatar, setAvatar] = useState(AVATARS[0]);
+  const [avatar, setAvatar] = useState(AVATARS[0].image);
   const [currentSlide, setCurrentSlide] = useState(0);
   const { width } = useWindowDimensions();
   const [alert, setAlert] = useState(null);
