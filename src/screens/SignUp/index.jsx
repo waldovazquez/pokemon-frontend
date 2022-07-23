@@ -46,6 +46,13 @@ function SignUp() {
 
   async function handleSignUp() {
     try {
+      if (password.length < 6) {
+        return setAlert({
+          severity: 'error',
+          message: 'Password must be more than 5 characters',
+        });
+      }
+
       if (password !== confirmPassword) {
         return setAlert({
           severity: 'error',
