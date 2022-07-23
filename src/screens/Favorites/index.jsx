@@ -40,6 +40,7 @@ function Favorites() {
 
       if (page !== 1 && favorites.length === 1) {
         query.page = 1;
+        setPage(1);
       }
 
       const response = await getFavorites(query);
@@ -83,7 +84,7 @@ function Favorites() {
       <div
         className={styles.container}
         style={{
-          height: favorites.length <= 12 && width > 992 && '90vh',
+          height: ((favorites.length >= 0 && favorites.length <= 8) && (width > 768)) ? '100vh' : ((favorites.length >= 8 && favorites.length <= 12) && (width > 992)) && '100vh',
         }}
       >
         {favorites && favorites.length > 0 && (

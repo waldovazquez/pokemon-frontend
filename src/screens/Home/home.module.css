@@ -32,9 +32,14 @@
   margin-top: 10px;
 }
 
+.container__card {
+  height: 300px;
+}
+
 .container__pagination {
   display: flex;
   justify-content: center;
+  margin-top: 14px;
 }
 
 .container__no__pokemons {

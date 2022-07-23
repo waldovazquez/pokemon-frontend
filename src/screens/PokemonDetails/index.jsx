@@ -26,15 +26,19 @@ function PokemonDetails() {
   const {
     id,
   } = useParams();
+  const [loading, setLoading] = useState(false);
 
   async function getDetails() {
     try {
+      setLoading(true);
       const response = await getById(id);
       if (response && response.ok) {
         setDetails(response.data);
       }
     } catch (e) {
       console.info('Error', e);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -43,7 +47,9 @@ function PokemonDetails() {
   }, []);
 
   return (
-    <Screen>
+    <Screen
+      safe={details.types?.length <= 10 || loading}
+    >
       <div className={styles.container}>
         {details && (
           <CardDetail

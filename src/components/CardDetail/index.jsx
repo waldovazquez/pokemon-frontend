@@ -41,18 +41,18 @@ function CardDetail({
         <Information title="hp" value={hp} />
         <Information title="speed" value={speed} />
         <Information title="weight" value={weight} />
-        <div className={styles.container__types}>
-          <p className={styles.type__title}>
-            TYPES
-          </p>
-          {
-            types && types.filter((item) => item !== null).length > 0 ? types.map((item) => (
-              <div key={item._id} className={styles.types}>
-                <p>{item.name}</p>
-              </div>
-            )) : <p>Doesn&apos;t have</p>
-          }
-        </div>
+      </div>
+      <div className={styles.container__types}>
+        <p className={styles.type__title}>
+          TYPES
+        </p>
+        {
+          types && types.filter((item) => item !== null).length > 0 ? types.map((item) => (
+            <div key={item._id} className={styles.types}>
+              <p>{item.name}</p>
+            </div>
+          )) : <p>Doesn&apos;t have</p>
+        }
       </div>
     </div>
   );

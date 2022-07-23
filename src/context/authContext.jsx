@@ -5,6 +5,10 @@ import {
 } from 'react';
 
 import {
+  useNavigate,
+} from 'react-router-dom';
+
+import {
   getLocalStorage,
   removeLocalStorage,
 } from '../utils/storage';
@@ -22,7 +26,7 @@ function AuthProvider({
     userData: null,
     token: null,
   });
-
+  const navigate = useNavigate();
   async function validateToken(authToken) {
     try {
       const responseData = await getByToken(authToken);
@@ -35,6 +39,7 @@ function AuthProvider({
     } catch (e) {
       console.info('Error', e);
       removeLocalStorage('x-access-token');
+      navigate('/sign-in');
     }
   }
 

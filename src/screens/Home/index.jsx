@@ -38,6 +38,7 @@ import {
 } from '../../libs/type';
 
 import useHandleUrl from '../../customHooks/useHandleUrl';
+import useWindowDimensions from '../../customHooks/useWindowDimensions';
 
 import styles from './home.module.css';
 
@@ -58,6 +59,9 @@ function Home() {
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
+  const {
+    width,
+  } = useWindowDimensions();
 
   async function getPokemons() {
     try {
@@ -159,7 +163,12 @@ function Home() {
 
   return (
     <Screen>
-      <div className={styles.container}>
+      <div
+        className={styles.container}
+        style={{
+          height: ((pokemons.length >= 0 && pokemons.length <= 8) && (width > 768)) ? '100vh' : ((pokemons.length >= 8 && pokemons.length <= 12) && (width > 992)) && '100vh',
+        }}
+      >
         <div className={styles.container__filters}>
           <div className={styles.container__search}>
             <Input
@@ -215,44 +224,51 @@ function Home() {
             />
           </div>
         </div>
-        <div className={styles.container__cards}>
-          {
-            pokemons && pokemons.length > 0 ? pokemons.map((item) => (
-              <div key={item._id}>
-                <Card
-                  image={item.image}
-                  attack={item.attack || 0}
-                  title={item.name}
-                  id={item._id}
-                  onClick={() => addToFavorites(item._id)}
-                />
-              </div>
-            )) : (
-              <div className={styles.container__no__pokemons}>
-                <p>
-                  No Pokemons
-                </p>
-              </div>
-            )
-          }
-        </div>
         {pokemons && pokemons.length > 0 && (
-          <div className={styles.container__pagination}>
-            <Pagination
-              count={totalPages}
-              page={page}
-              onChange={(_event, value) => {
-                setPage(Number(value));
-                handleUrl(value, 'page');
-              }}
-              sx={{
-                backgroundColor: '#EDF2F4',
-                borderRadius: '12px',
-              }}
-              size="medium"
-            />
+          <div>
+            <div className={styles.container__pagination}>
+              <Pagination
+                count={totalPages}
+                page={page}
+                onChange={(_event, value) => {
+                  setPage(Number(value));
+                  handleUrl(value, 'page');
+                }}
+                sx={{
+                  backgroundColor: '#EDF2F4',
+                  borderRadius: '12px',
+                }}
+                size="medium"
+              />
+            </div>
+            <div
+              className={styles.container__cards}
+            >
+              {
+                pokemons.map((item) => (
+                  <div key={item._id} className={styles.container__card}>
+                    <Card
+                      image={item.image}
+                      title={item.name}
+                      attack={item.attack || 0}
+                      id={item._id}
+                      onClick={() => addToFavorites(item._id)}
+                    />
+                  </div>
+                ))
+              }
+            </div>
           </div>
         )}
+        {
+          pokemons && pokemons.length === 0 && (
+            <div className={styles.container__no__pokemons}>
+              <p>
+                No Pokemons
+              </p>
+            </div>
+          )
+        }
       </div>
       {
         alert && (

@@ -31,18 +31,18 @@ async function getById(id) {
   return null;
 }
 
-async function getByUserId(userId) {
+async function getMyPokemons(filters) {
   try {
-    const response = await api.get('/pokemon/getbyuserid', {
+    const response = await api.get('/pokemon/getmypokemons', {
       params: {
-        userId,
+        page: filters.page,
       },
     });
     if (response && response.data) {
       return response.data;
     }
   } catch (e) {
-    throw new Error('Error getByUserId', e);
+    throw new Error('Error getMyPokemons', e);
   }
   return null;
 }
@@ -92,6 +92,6 @@ export {
   getRandomImage,
   createPokemon,
   getById,
-  getByUserId,
+  getMyPokemons,
   deletePokemon,
 };
