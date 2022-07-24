@@ -12,6 +12,4 @@ async function getTypes() {
   return null;
 }
 
-export {
-  getTypes,
-};
+export default getTypes;

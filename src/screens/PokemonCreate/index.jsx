@@ -17,9 +17,7 @@ import {
   createPokemon,
 } from '../../libs/pokemon';
 
-import {
-  getTypes,
-} from '../../libs/type';
+import getTypes from '../../libs/type';
 
 import styles from './pokemoncreate.module.css';
 
@@ -94,15 +92,12 @@ function PokemonCreate() {
 
   async function getAllTypes() {
     try {
-      setLoading(true);
       const response = await getTypes();
       if (response && response.ok) {
         setTypes(response.data);
       }
     } catch (e) {
       console.info('Error: ', e);
-    } finally {
-      setLoading(false);
     }
   }
 
@@ -240,7 +235,7 @@ function PokemonCreate() {
           onClose={() => setAlert(null)}
         />
       )}
-      {loading && <Loading />}
+      <Loading />
     </Screen>
   );
 }

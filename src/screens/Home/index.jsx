@@ -5,10 +5,6 @@ import React, {
 } from 'react';
 
 import {
-  v4 as uuidv4,
-} from 'uuid';
-
-import {
   useSearchParams,
 } from 'react-router-dom';
 
@@ -33,9 +29,7 @@ import {
   createFavorite,
 } from '../../libs/favorite';
 
-import {
-  getTypes,
-} from '../../libs/type';
+import getTypes from '../../libs/type';
 
 import useHandleUrl from '../../customHooks/useHandleUrl';
 import useWindowDimensions from '../../customHooks/useWindowDimensions';
@@ -61,7 +55,6 @@ function Home() {
   const [orderSelected, setOrderSelected] = useState(searchParams.get('attack') || '');
   const [page, setPage] = useState(Number(searchParams.get('page')) || 1);
   const [totalPages, setTotalPages] = useState(1);
-  const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
   const {
     width,
@@ -69,7 +62,6 @@ function Home() {
 
   async function getPokemons() {
     try {
-      setLoading(true);
       const filters = {};
       let q = '';
 
@@ -102,8 +94,6 @@ function Home() {
       }
     } catch (e) {
       console.info('Error: ', e);
-    } finally {
-      setLoading(false);
     }
   }
 
@@ -136,7 +126,7 @@ function Home() {
           {
             label: 'All',
             value: '',
-            id: uuidv4(),
+            id: Math.floor(Math.random() * Date.now()),
           },
           ...response.data.map((i) => ({
             label: i.name[0].toUpperCase() + i.name.slice(1),
@@ -210,16 +200,16 @@ function Home() {
                 {
                   label: 'All',
                   value: '',
-                  id: uuidv4(),
+                  id: Math.floor(Math.random() * Date.now()),
                 },
                 {
                   label: 'Highest',
                   value: 'desc',
-                  id: uuidv4(),
+                  id: Math.floor(Math.random() * Date.now()),
                 }, {
                   label: 'Lowest',
                   value: 'asc',
-                  id: uuidv4(),
+                  id: Math.floor(Math.random() * Date.now()),
                 },
               ]}
               value={orderSelected}
@@ -278,7 +268,7 @@ function Home() {
           onClose={() => setAlert(null)}
         />
       )}
-      {loading && <Loading />}
+      <Loading />
     </Screen>
   );
 }

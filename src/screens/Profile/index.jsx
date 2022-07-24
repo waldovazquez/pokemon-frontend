@@ -41,7 +41,6 @@ function Profile() {
 
   async function getProfile() {
     try {
-      setLoading(true);
       const response = await getByToken(data.token);
       if (response && response.ok) {
         setFirstName(response.userData.firstName);
@@ -52,8 +51,6 @@ function Profile() {
       }
     } catch (e) {
       console.info('Error', e);
-    } finally {
-      setLoading(false);
     }
   }
 

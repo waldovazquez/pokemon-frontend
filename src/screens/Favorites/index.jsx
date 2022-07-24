@@ -29,7 +29,6 @@ function Favorites() {
   const [favorites, setFavorites] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
   const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
   const {
     width,
@@ -37,7 +36,6 @@ function Favorites() {
 
   async function getAllFavorites() {
     try {
-      setLoading(true);
       const query = {
         page,
       };
@@ -50,8 +48,6 @@ function Favorites() {
       }
     } catch (e) {
       console.info('Error: ', e);
-    } finally {
-      setLoading(false);
     }
   }
 
@@ -109,43 +105,37 @@ function Favorites() {
             <div
               className={styles.container__cards}
             >
-              {
-                favorites.map((item) => (
-                  <div key={item._id} className={styles.container__card}>
-                    <Card
-                      image={item.pokemon.image}
-                      title={item.pokemon.name}
-                      attack={item.pokemon.attack}
-                      toDelete
-                      id={item.pokemon._id}
-                      onClick={() => deleteFav(item._id)}
-                    />
-                  </div>
-                ))
-              }
+              {favorites.map((item) => (
+                <div key={item._id} className={styles.container__card}>
+                  <Card
+                    image={item.pokemon.image}
+                    title={item.pokemon.name}
+                    attack={item.pokemon.attack}
+                    toDelete
+                    id={item.pokemon._id}
+                    onClick={() => deleteFav(item._id)}
+                  />
+                </div>
+              ))}
             </div>
           </div>
         )}
-        {
-          favorites.length === 0 && (
-            <div className={styles.container__no__favorites}>
-              <p>
-                No Pokemons
-              </p>
-            </div>
-          )
-        }
+        {favorites.length === 0 && (
+          <div className={styles.container__no__favorites}>
+            <p>
+              No Pokemons
+            </p>
+          </div>
+        )}
       </div>
-      {
-        alert && (
-          <Toast
-            severity={alert.severity}
-            message={alert.message}
-            onClose={() => setAlert(null)}
-          />
-        )
-      }
-      {loading && <Loading />}
+      {alert && (
+        <Toast
+          severity={alert.severity}
+          message={alert.message}
+          onClose={() => setAlert(null)}
+        />
+      )}
+      <Loading />
     </Screen>
   );
 }

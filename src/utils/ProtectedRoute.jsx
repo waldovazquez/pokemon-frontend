@@ -12,9 +12,10 @@ import {
 function ProtectedRoute() {
   const authToken = getLocalStorage('x-access-token');
 
-  return (
-    authToken ? <Outlet /> : <Navigate to="/sign-in" />
-  );
+  if (authToken) {
+    return <Outlet />;
+  }
+  return <Navigate to="/sign-in" />;
 }
 
 export default ProtectedRoute;

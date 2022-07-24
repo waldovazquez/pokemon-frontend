@@ -50,7 +50,7 @@ function App() {
   }
 
   useEffect(() => {
-    init();
+    if (data.userData) init();
   }, [data.userData]);
 
   return (

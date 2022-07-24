@@ -29,7 +29,6 @@ function MyPokemon() {
   const [pokemons, setPokemons] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
   const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
   const {
     width,
@@ -37,7 +36,6 @@ function MyPokemon() {
 
   async function getAllMyPokemons() {
     try {
-      setLoading(true);
       const query = {
         page,
       };
@@ -50,8 +48,6 @@ function MyPokemon() {
       }
     } catch (e) {
       console.info('Error: ', e);
-    } finally {
-      setLoading(false);
     }
   }
 
@@ -137,7 +133,7 @@ function MyPokemon() {
           onClose={() => setAlert(null)}
         />
       )}
-      {loading && <Loading />}
+      <Loading />
     </Screen>
   );
 }
