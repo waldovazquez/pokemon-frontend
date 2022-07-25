@@ -87,7 +87,7 @@ function Favorites() {
         }}
       >
         {favorites.length > 0 && (
-          <div>
+          <>
             <div className={styles.container__pagination}>
               <Pagination
                 count={totalPages}
@@ -105,11 +105,9 @@ function Favorites() {
                 size="small"
               />
             </div>
-            <div
-              className={styles.container__cards}
-            >
+            <div className={styles.container__cards}>
               {favorites.map((item) => (
-                <div key={item._id} className={styles.container__card}>
+                <div key={item._id}>
                   <Card
                     image={item.pokemon.image}
                     title={item.pokemon.name}
@@ -121,7 +119,7 @@ function Favorites() {
                 </div>
               ))}
             </div>
-          </div>
+          </>
         )}
         {favorites.length === 0 && (
           <div className={styles.container__no__favorites}>

@@ -17,10 +17,6 @@
   margin-top: 10px;
 }
 
-.container__card {
-  height: 300px;
-}
-
 .container__no__mypokemon {
   display: flex;
   align-items: center;

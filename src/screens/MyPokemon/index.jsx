@@ -87,7 +87,7 @@ function MyPokemon() {
         className={styles.container}
       >
         {pokemons.length > 0 && (
-          <div>
+          <>
             <div className={styles.container__pagination}>
               <Pagination
                 count={totalPages}
@@ -107,7 +107,7 @@ function MyPokemon() {
             </div>
             <div className={styles.container__cards}>
               {pokemons.map((item) => (
-                <div key={item._id} className={styles.container__card}>
+                <div key={item._id}>
                   <Card
                     image={item.image}
                     title={item.name}
@@ -119,7 +119,7 @@ function MyPokemon() {
                 </div>
               ))}
             </div>
-          </div>
+          </>
         )}
         {pokemons.length === 0 && (
           <div className={styles.container__no__mypokemon}>

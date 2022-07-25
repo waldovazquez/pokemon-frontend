@@ -223,7 +223,7 @@ function Home() {
           </div>
         </div>
         {pokemons.length > 0 && (
-          <div>
+          <>
             <div className={styles.container__pagination}>
               <Pagination
                 count={totalPages}
@@ -255,7 +255,7 @@ function Home() {
                 </div>
               ))}
             </div>
-          </div>
+          </>
         )}
         {pokemons.length === 0 && (
           <div className={styles.container__no__pokemons}>
