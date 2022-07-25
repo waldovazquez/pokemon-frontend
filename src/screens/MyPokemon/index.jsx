@@ -98,8 +98,11 @@ function MyPokemon() {
                 sx={{
                   backgroundColor: '#EDF2F4',
                   borderRadius: '12px',
+                  height: '40px',
+                  display: 'flex',
+                  alignItems: 'center',
                 }}
-                size="medium"
+                size="small"
               />
             </div>
             <div className={styles.container__cards}>

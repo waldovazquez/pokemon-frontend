@@ -1,10 +1,11 @@
 import React, {
   useState,
   useEffect,
-  useContext,
 } from 'react';
 
-import AuthContext from '../../context/authContext';
+import {
+  useForm,
+} from 'react-hook-form';
 
 import Input from '../../components/Input';
 import Toast from '../../components/Toast';
@@ -23,15 +24,20 @@ import styles from './pokemoncreate.module.css';
 
 function PokemonCreate() {
   const {
-    data,
-  } = useContext(AuthContext);
-  const [name, setName] = useState('');
-  const [hp, setHp] = useState(0);
-  const [attack, setAttack] = useState(0);
-  const [defense, setDefense] = useState(0);
-  const [speed, setSpeed] = useState(0);
-  const [height, setHeight] = useState(0);
-  const [weight, setWeight] = useState(0);
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm({
+    defaultValues: {
+      name: '',
+      hp: 1,
+      attack: 1,
+      defense: 1,
+      speed: 1,
+      height: 1,
+      weight: 1,
+    },
+  });
   const [types, setTypes] = useState([]);
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [image, setImage] = useState('');
@@ -52,23 +58,15 @@ function PokemonCreate() {
     }
   }
 
-  async function makePokemon() {
+  async function makePokemon(data) {
     try {
       setLoading(true);
-      const dataToSave = {
-        name,
-        hp,
-        attack,
-        defense,
-        speed,
-        height,
-        weight,
+
+      const response = await createPokemon({
+        ...data,
         types: selectedTypes,
         image,
-        userId: data.userData._id,
-      };
-
-      const response = await createPokemon(dataToSave);
+      });
       if (response && response.ok) {
         setAlert({
           severity: 'success',
@@ -78,13 +76,6 @@ function PokemonCreate() {
     } catch (e) {
       console.info('Error: ', e);
     } finally {
-      setName('');
-      setHp(0);
-      setAttack(0);
-      setDefense(0);
-      setSpeed(0);
-      setHeight(0);
-      setWeight(0);
       setSelectedTypes([]);
       setLoading(false);
     }
@@ -133,99 +124,174 @@ function PokemonCreate() {
             >
               Generate Pokemon
             </Button>
-            {image && (
-              <img
-                src={image}
-                alt="pokemonImage"
-                className={styles.image}
-              />
-            )}
-          </div>
-          <div className={styles.container__stats}>
-            <div className={styles.container__input}>
-              <Input
-                type="text"
-                value={name}
-                label="Name"
-                labelColor="#2B2D42"
-                placeholder="Name *"
-                onChange={(e) => setName(e.target.value)}
-              />
-              <Input
-                type="number"
-                value={hp}
-                label="Health"
-                labelColor="#2B2D42"
-                onChange={(e) => setHp(e.target.value)}
-              />
-              <Input
-                type="number"
-                value={attack}
-                label="Attack"
-                labelColor="#2B2D42"
-                onChange={(e) => setAttack(e.target.value)}
-              />
-              <Input
-                type="number"
-                value={defense}
-                label="Defense"
-                labelColor="#2B2D42"
-                onChange={(e) => setDefense(e.target.value)}
-              />
-              <Input
-                type="number"
-                value={speed}
-                label="Speed"
-                labelColor="#2B2D42"
-                onChange={(e) => setSpeed(e.target.value)}
-              />
-              <Input
-                type="number"
-                value={height}
-                label="Height"
-                labelColor="#2B2D42"
-                onChange={(e) => setHeight(e.target.value)}
-              />
-              <Input
-                type="number"
-                value={weight}
-                label="Weigth"
-                labelColor="#2B2D42"
-                onChange={(e) => setWeight(e.target.value)}
-              />
+            <div className={styles.container__image}>
+              {image && (
+                <img
+                  src={image}
+                  alt="pokemonImage"
+                  className={styles.image}
+                />
+              )}
             </div>
-            <div className={styles.container__types}>
-              {types && types.map((t) => (
-                <div
-                  key={t._id}
-                  className={styles.container__checkbox}
-                >
-                  <label
-                    htmlFor={t.name}
-                    style={{
-                      color: '#2B2D42',
+          </div>
+          <form className={styles.form} onSubmit={handleSubmit(makePokemon)}>
+            <div className={styles.container__stats}>
+              <div className={styles.container__inputs}>
+                <div className={styles.container__input}>
+                  <Input
+                    type="text"
+                    name="name"
+                    label="Name"
+                    placeholder="Name *"
+                    register={register}
+                    registerProps={{
+                      required: true,
                     }}
-                  >
-                    {t.name}
-                  </label>
-                  <input
-                    id={t.name}
-                    type="checkbox"
-                    checked={selectedTypes.filter((item) => item._id === t._id).length > 0}
-                    onChange={() => handleTypes(t)}
                   />
+                  {
+                    errors.name?.type === 'required'
+                    && <p className={styles.error}>Name is required</p>
+                  }
                 </div>
-              ))}
+                <div className={styles.container__input}>
+                  <Input
+                    type="number"
+                    name="hp"
+                    label="Health"
+                    register={register}
+                    registerProps={{
+                      min: 1,
+                      required: true,
+                    }}
+                  />
+                  {
+                    errors.hp?.type === 'required'
+                      ? <p className={styles.error}>Health is required</p>
+                      : errors.hp?.type === 'min'
+                      && <p className={styles.error}>You need a health greater than or equal to 1</p>
+                  }
+                </div>
+                <div className={styles.container__input}>
+                  <Input
+                    type="number"
+                    name="attack"
+                    label="Attack"
+                    register={register}
+                    registerProps={{
+                      min: 1,
+                      required: true,
+                    }}
+                  />
+                  {
+                    errors.attack?.type === 'required'
+                      ? <p className={styles.error}>Attack is required</p>
+                      : errors.attack?.type === 'min'
+                      && <p className={styles.error}>You need a attack greater than or equal to 1</p>
+                  }
+                </div>
+                <div className={styles.container__input}>
+                  <Input
+                    type="number"
+                    name="defense"
+                    label="Defense"
+                    register={register}
+                    registerProps={{
+                      min: 1,
+                      required: true,
+                    }}
+                  />
+                  {
+                    errors.defense?.type === 'required'
+                      ? <p className={styles.error}>Defense is required</p>
+                      : errors.defense?.type === 'min'
+                      && <p className={styles.error}>You need a defense greater than or equal to 1</p>
+                  }
+                </div>
+                <div className={styles.container__input}>
+                  <Input
+                    type="number"
+                    name="speed"
+                    label="Speed"
+                    register={register}
+                    registerProps={{
+                      min: 1,
+                      required: true,
+                    }}
+                  />
+                  {
+                    errors.speed?.type === 'required'
+                      ? <p className={styles.error}>Speed is required</p>
+                      : errors.speed?.type === 'min'
+                      && <p className={styles.error}>You need a speed greater than or equal to 1</p>
+                  }
+                </div>
+                <div className={styles.container__input}>
+                  <Input
+                    type="number"
+                    name="height"
+                    label="Height"
+                    register={register}
+                    registerProps={{
+                      min: 1,
+                      required: true,
+                    }}
+                  />
+                  {
+                    errors.height?.type === 'required'
+                      ? <p className={styles.error}>Height is required</p>
+                      : errors.height?.type === 'min'
+                      && <p className={styles.error}>You need a height greater than or equal to 1</p>
+                  }
+                </div>
+                <div className={styles.container__input}>
+                  <Input
+                    type="number"
+                    name="weight"
+                    label="Weigth"
+                    register={register}
+                    registerProps={{
+                      min: 1,
+                      required: true,
+                    }}
+                  />
+                  {
+                    errors.weight?.type === 'required'
+                      ? <p className={styles.error}>Weight is required</p>
+                      : errors.weight?.type === 'min'
+                      && <p className={styles.error}>You need a weight greater than or equal to 1</p>
+                  }
+                </div>
+              </div>
+              <div className={styles.container__types}>
+                {types && types.map((t) => (
+                  <div
+                    key={t._id}
+                    className={styles.container__checkbox}
+                  >
+                    <label
+                      htmlFor={t.name}
+                      style={{
+                        color: '#2B2D42',
+                      }}
+                    >
+                      {t.name}
+                    </label>
+                    <input
+                      id={t.name}
+                      type="checkbox"
+                      checked={selectedTypes.filter((item) => item._id === t._id).length > 0}
+                      onChange={() => handleTypes(t)}
+                    />
+                  </div>
+                ))}
+              </div>
+              <input
+                type="submit"
+                className={styles.input__submit}
+                value="Save Pokemon"
+              />
             </div>
-            <div className={styles.container__save}>
-              <Button
-                onClick={() => makePokemon()}
-                disabled={loading}
-              >
-                Save Pokemon
-              </Button>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
       {alert && (

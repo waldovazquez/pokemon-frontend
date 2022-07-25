@@ -102,6 +102,7 @@ function SignUp() {
                         name="firstName"
                         label="First Name"
                         placeholder="First Name *"
+                        register={register}
                         registerProps={{
                           required: true,
                         }}
@@ -117,6 +118,7 @@ function SignUp() {
                         name="lastName"
                         label="Last Name"
                         placeholder="Last Name *"
+                        register={register}
                         registerProps={{
                           required: true,
                         }}
@@ -132,6 +134,7 @@ function SignUp() {
                         name="email"
                         label="Email Address"
                         placeholder="Email Address *"
+                        register={register}
                         registerProps={{
                           required: true,
                         }}
@@ -166,6 +169,7 @@ function SignUp() {
                         name="confirmPassword"
                         label="Confirm Password"
                         placeholder="Confirm Password *"
+                        register={register}
                         registerProps={{
                           required: true,
                         }}

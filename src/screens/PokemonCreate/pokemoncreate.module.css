@@ -19,10 +19,22 @@
   align-items: center;
 }
 
-.image {
-  width: 60%;
-  height: 100%;
+.container__image {
+  display: flex;
+  justify-content: center;
+  width: 100%;
   margin-top: 10px;
+}
+
+.image {
+  width: 50%;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .container__stats {
@@ -31,9 +43,12 @@
   align-items: center;
 }
 
+.container__inputs {
+  width: 70%;
+}
+
 .container__input {
-  width: 100%;
-  padding: 6px;
+  height: 74px;
 }
 
 .container__input>div>p {
@@ -54,8 +69,18 @@
   padding: 6px;
 }
 
-.container__save {
-  margin-top: 10px;
+.error {
+  color: #D90429;
+  font-size: 14px;
+}
+
+.input__submit {
+  width: 50%;
+  height: 40px;
+  border-radius: 8px;
+  margin: 10px auto;
+  cursor: pointer;
+  border: 2px solid #2B2D42;
 }
 
 @media only screen and (min-width: 768px) {
@@ -65,23 +90,23 @@
 
   .subcontainer {
     flex-direction: row;
-    height: 80%;
   }
 
   .container__left {
-    width: 40%;
-    height: 100%;
-    justify-content: space-around;
+    width: 50%;
   }
 
   .image {
-    width: 90%;
+    width: 80%;
     object-fit: contain;
     margin: 0px;
   }
 
+  .form {
+    width: 50%;
+  }
+
   .container__stats {
-    width: 60%;
     height: 100%;
     justify-content: space-around;
   }
@@ -90,7 +115,7 @@
     margin: 0px;
   }
 
-  .container__input {
+  .container__inputs {
     width: 340px;
     padding: 0px;
   }
