@@ -11,7 +11,7 @@ import AuthContext from '../../context/authContext';
 import Screen from '../../components/Screen';
 import Button from '../../components/Button';
 
-import CharizardLanding from '../../assets/charizardLanding.png';
+import CharizardLanding from '../../assets/charizardLanding.webp';
 
 import styles from './landingpage.module.css';
 

@@ -15,7 +15,7 @@ import Toast from '../../components/Toast';
 import Screen from '../../components/Screen';
 import Carousel from '../../components/Carousel';
 
-import PokemonSignUp from '../../assets/pokemonSignUp.png';
+import PokemonSignUp from '../../assets/pokemonSignUp.webp';
 
 import {
   AVATARS,

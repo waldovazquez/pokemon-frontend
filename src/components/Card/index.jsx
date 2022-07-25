@@ -19,7 +19,7 @@ import {
 
 import Button from '../Button';
 
-import Pokebola from '../../assets/pokebola.png';
+import Pokebola from '../../assets/pokebola.webp';
 
 import styles from './card.module.css';
 

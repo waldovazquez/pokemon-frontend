@@ -15,7 +15,7 @@ import Button from '../../components/Button';
 import Screen from '../../components/Screen';
 import Toast from '../../components/Toast';
 
-import ashSignIn from '../../assets/ash.png';
+import ashSignIn from '../../assets/ash.webp';
 
 import {
   setLocalStorage,
