@@ -26,11 +26,15 @@ function Loading() {
     }, (error) => Promise.reject(error));
   }, []);
 
-  return (
-    <div className={styles.loading}>
-      {loading && <CircularProgress />}
-    </div>
-  );
+  if (loading) {
+    return (
+      <div className={styles.loading}>
+        {loading && <CircularProgress />}
+      </div>
+    );
+  }
+
+  return null;
 }
 
 export default Loading;

@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-top: 10px;
+  margin: 10px 20px;
 }
 
 .container__search {
@@ -27,7 +27,6 @@
 .container__pagination {
   display: flex;
   justify-content: center;
-  margin-top: 14px;
 }
 
 .container__cards {
@@ -36,10 +35,6 @@
   flex-direction: column;
   align-items: center;
   margin-top: 10px;
-}
-
-.container__card {
-  height: 300px;
 }
 
 .container__no__pokemons {
@@ -59,7 +54,6 @@
   .container__filters {
     justify-content: center;
     flex-direction: row;
-    margin-left: 20px;
   }
 
   .container__search {
@@ -73,7 +67,7 @@
 
   .container__dropdown__attack {
     width: 33%;
-    margin: 0px 20px;
+    margin: 0px;
   }
 
   .container__cards {

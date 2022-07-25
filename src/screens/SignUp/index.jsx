@@ -58,6 +58,12 @@ function SignUp() {
         avatar,
       });
 
+      if (response && !response.ok) {
+        return setAlert({
+          message: 'There is already a user with that email',
+        });
+      }
+
       if (response && response.ok) {
         setAlert({
           severity: 'success',

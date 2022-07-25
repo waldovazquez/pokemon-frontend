@@ -244,7 +244,7 @@ function Home() {
             </div>
             <div className={styles.container__cards}>
               {pokemons.map((item) => (
-                <div key={item._id} className={styles.container__card}>
+                <div key={item._id}>
                   <Card
                     image={item.image}
                     title={item.name}

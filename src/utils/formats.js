@@ -21,7 +21,7 @@ function measurementFormat(value, title) {
 function getHeight(data, width) {
   if (((data.length >= 0 && data.length <= 8) && (width > 768))
     || ((data.length >= 8 && data.length <= 12) && (width > 992))
-    || ((data.length >= 0 && data.length <= 3) && (width < 768))) {
+    || ((data.length >= 0 && data.length <= 2) && (width < 768))) {
     return '100vh';
   }
   return 'auto';
