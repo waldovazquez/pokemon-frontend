@@ -2,7 +2,7 @@ import React from 'react';
 
 import Information from './components/Information';
 
-import Pokebola from '../../assets/pokebola.png';
+import Pokebola from '../../assets/pokebola.webp';
 
 import styles from './carddetail.module.css';
 
