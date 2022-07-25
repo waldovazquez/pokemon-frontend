@@ -28,7 +28,7 @@ async function login(data) {
   return null;
 }
 
-async function register(data) {
+async function registerUser(data) {
   try {
     const response = await api.post('user/register', data);
     if (response && response.data) {
@@ -55,6 +55,6 @@ async function update(data) {
 export {
   getByToken,
   login,
-  register,
+  registerUser,
   update,
 };

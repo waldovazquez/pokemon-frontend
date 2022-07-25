@@ -173,6 +173,7 @@ function Home() {
               label="Search"
               labelRow
               alt="search"
+              labelColor="#EDF2F4"
               value={search}
               onChange={(e) => {
                 setSearch(e.target.value);
