@@ -102,8 +102,9 @@ function SignUp() {
                         name="firstName"
                         label="First Name"
                         placeholder="First Name *"
-                        register={register}
-                        required
+                        registerProps={{
+                          required: true,
+                        }}
                       />
                       {
                         errors.firstName?.type === 'required'
@@ -116,8 +117,9 @@ function SignUp() {
                         name="lastName"
                         label="Last Name"
                         placeholder="Last Name *"
-                        register={register}
-                        required
+                        registerProps={{
+                          required: true,
+                        }}
                       />
                       {
                         errors.lastName?.type === 'required'
@@ -130,8 +132,9 @@ function SignUp() {
                         name="email"
                         label="Email Address"
                         placeholder="Email Address *"
-                        register={register}
-                        required
+                        registerProps={{
+                          required: true,
+                        }}
                       />
                       {
                         errors.email?.type === 'required'
@@ -147,8 +150,8 @@ function SignUp() {
                         register={register}
                         registerProps={{
                           minLength: 6,
+                          required: true,
                         }}
-                        required
                       />
                       {
                         errors.password?.type === 'required'
@@ -163,8 +166,9 @@ function SignUp() {
                         name="confirmPassword"
                         label="Confirm Password"
                         placeholder="Confirm Password *"
-                        register={register}
-                        required
+                        registerProps={{
+                          required: true,
+                        }}
                       />
                       {
                         errors.confirmPassword?.type === 'required'

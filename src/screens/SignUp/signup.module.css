@@ -36,13 +36,17 @@
   font-size: 28px;
 }
 
-.container__inputs>label {
-  color: #EDF2F4;
-}
-
 .container__inputs {
   display: flex;
   flex-direction: column;
+}
+
+.container__input {
+  height: 74px;
+}
+
+.container__input>div>p {
+  color: #EDF2F4;
 }
 
 .container__avatars {
@@ -81,7 +85,7 @@
   border-radius: 8px;
   margin: 10px auto;
   cursor: pointer;
-  border: 2px solid #2B2D42
+  border: 2px solid #2B2D42;
 }
 
 @media only screen and (min-width: 768px) {
@@ -124,12 +128,8 @@
     width: 330px;
   }
 
-  .container__inputs>label {
+  .container__input>div>p {
     color: #2B2D42;
-  }
-
-  .container__input {
-    height: 72px;
   }
 
   .container__label__avatar {

@@ -5,10 +5,9 @@ import styles from './input.module.css';
 function Input({
   value,
   type,
-  required,
   placeholder,
   label = '',
-  labelColor = '#2B2D42',
+  labelColor,
   labelRow = false,
   onChange = () => { },
   register = () => { },
@@ -33,7 +32,6 @@ function Input({
         placeholder={placeholder}
         min={0}
         {...register(name, {
-          required,
           ...registerProps,
         })}
         type={type}
