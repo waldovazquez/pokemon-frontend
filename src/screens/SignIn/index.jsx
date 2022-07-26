@@ -37,6 +37,7 @@ function SignIn() {
     register,
     formState: { errors },
     handleSubmit,
+    clearErrors,
   } = useForm();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -49,8 +50,10 @@ function SignIn() {
 
       if (response && response.ok) {
         setLocalStorage('x-access-token', response.token);
-        await validateToken(response.token);
-        navigate('/home');
+        const isValid = await validateToken(response.token);
+        if (isValid) {
+          navigate('/home');
+        }
       }
     } catch (e) {
       console.info('Error', e);
@@ -84,8 +87,9 @@ function SignIn() {
                   <input
                     placeholder="Email *"
                     type="email"
-                    className={styles.input}
+                    className={styles.component__input}
                     {...register('email', { required: true })}
+                    onFocus={() => clearErrors('email')}
                   />
                   {
                     errors.email?.type === 'required'
@@ -100,8 +104,9 @@ function SignIn() {
                     label="Password"
                     placeholder="Password *"
                     type="password"
-                    className={styles.input}
+                    className={styles.component__input}
                     {...register('password', { required: true })}
+                    onFocus={() => clearErrors('password')}
                   />
                   {
                     errors.password?.type === 'required'

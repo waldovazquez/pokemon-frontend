@@ -14,8 +14,9 @@ import Input from '../../components/Input';
 import Toast from '../../components/Toast';
 import Screen from '../../components/Screen';
 import Carousel from '../../components/Carousel';
+import Message from './components/Message';
 
-import PokemonSignUp from '../../assets/pokemonSignUp.webp';
+import useWindowDimensions from '../../customHooks/useWindowDimensions';
 
 import {
   AVATARS,
@@ -25,16 +26,17 @@ import {
   registerUser,
 } from '../../libs/user';
 
-import useWindowDimensions from '../../customHooks/useWindowDimensions';
+import PokemonSignUp from '../../assets/pokemonSignUp.webp';
 
 import styles from './signup.module.css';
-import Message from './components/Message';
 
 function SignUp() {
   const {
     register,
     formState: { errors },
     handleSubmit,
+    clearErrors,
+    watch,
   } = useForm();
   const [avatar, setAvatar] = useState(AVATARS[0].image);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -46,12 +48,6 @@ function SignUp() {
 
   async function handleSignUp(data) {
     try {
-      if (data.password !== data.confirmPassword) {
-        return setAlert({
-          message: 'Passwords do not match',
-        });
-      }
-
       const response = await registerUser({
         ...data,
         avatar,
@@ -109,6 +105,7 @@ function SignUp() {
                       registerProps={{
                         required: true,
                       }}
+                      onFocus={() => clearErrors('firstName')}
                     />
                     {
                       errors.firstName?.type === 'required'
@@ -125,6 +122,7 @@ function SignUp() {
                       registerProps={{
                         required: true,
                       }}
+                      onFocus={() => clearErrors('lastName')}
                     />
                     {
                       errors.lastName?.type === 'required'
@@ -141,6 +139,7 @@ function SignUp() {
                       registerProps={{
                         required: true,
                       }}
+                      onFocus={() => clearErrors('email')}
                     />
                     {
                       errors.email?.type === 'required'
@@ -158,6 +157,7 @@ function SignUp() {
                         minLength: 6,
                         required: true,
                       }}
+                      onFocus={() => clearErrors('password')}
                     />
                     {
                       errors.password?.type === 'required'
@@ -175,11 +175,15 @@ function SignUp() {
                       register={register}
                       registerProps={{
                         required: true,
+                        validate: (value) => value === watch('password'),
                       }}
+                      onFocus={() => clearErrors('confirmPassword')}
                     />
                     {
                       errors.confirmPassword?.type === 'required'
-                      && <p className={styles.error}>Confirm Password is required</p>
+                        ? <p className={styles.error}>Confirm Password is required</p>
+                        : errors.confirmPassword?.type === 'validate'
+                        && <p className={styles.error}>Passwords do not match</p>
                     }
                   </div>
                   <div className={styles.container__avatars}>

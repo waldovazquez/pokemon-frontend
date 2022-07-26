@@ -69,11 +69,6 @@
   padding: 6px;
 }
 
-.error {
-  color: #D90429;
-  font-size: 14px;
-}
-
 .input__submit {
   width: 50%;
   height: 40px;
@@ -81,6 +76,11 @@
   margin: 10px auto;
   cursor: pointer;
   border: 2px solid #2B2D42;
+}
+
+.error {
+  color: #D90429;
+  font-size: 14px;
 }
 
 @media only screen and (min-width: 768px) {

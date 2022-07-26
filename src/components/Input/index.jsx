@@ -11,6 +11,7 @@ function Input({
   labelRow = false,
   onChange = () => { },
   register = () => { },
+  onFocus = () => { },
   name,
   registerProps,
 }) {
@@ -41,6 +42,7 @@ function Input({
         style={{
           width: labelRow && '50%',
         }}
+        onFocus={onFocus}
       />
     </div>
   );

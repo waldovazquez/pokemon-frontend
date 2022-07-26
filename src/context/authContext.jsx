@@ -36,12 +36,15 @@ function AuthProvider({
           userData: responseData.userData,
           token: authToken,
         });
+        return true;
       }
+      return false;
     } catch (e) {
       console.info('Error', e);
       removeLocalStorage('x-access-token');
       navigate('/sign-in');
     }
+    return false;
   }
 
   useEffect(() => {

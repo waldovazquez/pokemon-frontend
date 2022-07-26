@@ -36,7 +36,8 @@ function Profile() {
     formState: { errors },
     handleSubmit,
     setValue,
-    getValues,
+    watch,
+    reset,
   } = useForm();
   const [avatar, setAvatar] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -83,9 +84,11 @@ function Profile() {
         message: 'Something is wrong',
       });
     } finally {
-      setValue('currentPassword', '');
-      setValue('newPassword', '');
-      setValue('confirmPassword', '');
+      reset({
+        currentPassword: '',
+        newPassword: '',
+        confirmPassword: '',
+      });
     }
   }
 
@@ -193,7 +196,7 @@ function Profile() {
                 placeholder="Confirm Password *"
                 register={register}
                 registerProps={{
-                  validate: (value) => value === getValues('newPassword'),
+                  validate: (value) => value === watch('newPassword'),
                 }}
               />
               {

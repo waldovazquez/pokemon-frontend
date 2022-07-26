@@ -12,8 +12,8 @@
 }
 
 .container__image {
-  height: 100%;
   width: 80%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,6 +65,15 @@
   width: 50%;
 }
 
+.input__submit {
+  width: 50%;
+  height: 40px;
+  border-radius: 8px;
+  margin: 10px auto;
+  cursor: pointer;
+  border: 2px solid #2B2D42;
+}
+
 .component__link {
   color: #EDF2F4;
   font-size: 14px;
@@ -79,15 +88,6 @@
   font-size: 14px;
 }
 
-.input__submit {
-  width: 50%;
-  height: 40px;
-  border-radius: 8px;
-  margin: 10px auto;
-  cursor: pointer;
-  border: 2px solid #2B2D42;
-}
-
 @media only screen and (min-width: 768px) {
   .content {
     flex-direction: row;
@@ -97,11 +97,6 @@
     padding: 10px 10px;
     width: 100%;
     margin: 0px 4px;
-  }
-
-  .container__image {
-    width: 80%;
-    height: 100%;
   }
 
   .container__content__right {

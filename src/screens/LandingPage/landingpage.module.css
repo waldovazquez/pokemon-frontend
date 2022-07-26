@@ -39,6 +39,7 @@
 .container__buttons>button {
   background-color: #EDF2F4;
   color: #2B2D42;
+  font-size: 16px;
   width: 40%;
 }
 
@@ -59,6 +60,8 @@
 
   .container__title {
     height: auto;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
 
   .title {
@@ -67,13 +70,13 @@
 
   .container__buttons {
     flex-direction: row;
-    justify-content: space-around;
     height: auto;
     margin-top: 20px;
   }
 
   .container__buttons>button {
     width: 30%;
+    font-size: 18px;
   }
 
   .container__image {
