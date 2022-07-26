@@ -36,6 +36,7 @@ function Profile() {
     formState: { errors },
     handleSubmit,
     setValue,
+    getValues,
   } = useForm();
   const [avatar, setAvatar] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -59,32 +60,21 @@ function Profile() {
 
   async function handleProfileUpdate(dataForm) {
     try {
-      if (dataForm.newPassword === dataForm.confirmPassword) {
-        const dataToSave = {
-          firstName: dataForm.firstName,
-          lastName: dataForm.lastName,
-          email: dataForm.email,
-          avatar,
-          currentPassword: dataForm.currentPassword,
-          password: dataForm.newPassword,
-          userId: data.userData._id,
-        };
-        const response = await update(dataToSave);
-        if (response && response.ok) {
-          validateToken(data.token);
-          setAlert({
-            severity: 'success',
-            message: 'User Successfully Updated',
-          });
-        }
-        if (response && !response.ok) {
-          setAlert({
-            message: 'The passwords are equal',
-          });
-        }
-      } else {
+      const response = await update({
+        ...dataForm,
+        avatar,
+        userId: data.userData._id,
+      });
+      if (response && response.ok) {
+        validateToken(data.token);
         setAlert({
-          message: 'Passwords do not match',
+          severity: 'success',
+          message: 'User Successfully Updated',
+        });
+      }
+      if (response && !response.ok) {
+        setAlert({
+          message: 'The passwords are equal',
         });
       }
     } catch (e) {
@@ -202,10 +192,15 @@ function Profile() {
                 label="Confirm Password"
                 placeholder="Confirm Password *"
                 register={register}
+                registerProps={{
+                  validate: (value) => value === getValues('newPassword'),
+                }}
               />
               {
                 errors.confirmPassword?.type === 'required'
-                && <p className={styles.error}>Confirm Password is required</p>
+                  ? <p className={styles.error}>Confirm Password is required</p>
+                  : errors.confirmPassword?.type === 'validate'
+                  && <p className={styles.error}>Passwords do not match</p>
               }
             </div>
             <input

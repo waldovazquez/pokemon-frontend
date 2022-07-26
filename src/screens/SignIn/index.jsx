@@ -62,8 +62,6 @@ function SignIn() {
     }
   }
 
-  console.info('errors', errors);
-
   return (
     <Screen safe>
       <div className={styles.container}>

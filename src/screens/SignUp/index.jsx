@@ -83,140 +83,138 @@ function SignUp() {
     <Screen safe>
       {!redirect && (
         <div className={styles.container}>
-          {/* <div className={styles.sub__container}> */}
-            <div className={styles.content}>
-              <div className={styles.container__image}>
-                <img
-                  src={PokemonSignUp}
-                  alt="pokemonSignUp"
-                  className={styles.image}
-                />
+          <div className={styles.content}>
+            <div className={styles.container__image}>
+              <img
+                src={PokemonSignUp}
+                alt="pokemonSignUp"
+                className={styles.image}
+              />
+            </div>
+            <div className={styles.container__content__right}>
+              <div className={styles.title}>
+                <p>
+                  Sign Up
+                </p>
               </div>
-              <div className={styles.container__content__right}>
-                <div className={styles.title}>
-                  <p>
-                    Sign Up
-                  </p>
-                </div>
-                <form onSubmit={handleSubmit(handleSignUp)}>
-                  <div className={styles.container__inputs}>
-                    <div className={styles.container__input}>
-                      <Input
-                        type="text"
-                        name="firstName"
-                        label="First Name"
-                        placeholder="First Name *"
-                        register={register}
-                        registerProps={{
-                          required: true,
-                        }}
-                      />
-                      {
-                        errors.firstName?.type === 'required'
-                        && <p className={styles.error}>First Name is required</p>
-                      }
+              <form onSubmit={handleSubmit(handleSignUp)}>
+                <div className={styles.container__inputs}>
+                  <div className={styles.container__input}>
+                    <Input
+                      type="text"
+                      name="firstName"
+                      label="First Name"
+                      placeholder="First Name *"
+                      register={register}
+                      registerProps={{
+                        required: true,
+                      }}
+                    />
+                    {
+                      errors.firstName?.type === 'required'
+                      && <p className={styles.error}>First Name is required</p>
+                    }
+                  </div>
+                  <div className={styles.container__input}>
+                    <Input
+                      type="text"
+                      name="lastName"
+                      label="Last Name"
+                      placeholder="Last Name *"
+                      register={register}
+                      registerProps={{
+                        required: true,
+                      }}
+                    />
+                    {
+                      errors.lastName?.type === 'required'
+                      && <p className={styles.error}>Last Name is required</p>
+                    }
+                  </div>
+                  <div className={styles.container__input}>
+                    <Input
+                      type="email"
+                      name="email"
+                      label="Email Address"
+                      placeholder="Email Address *"
+                      register={register}
+                      registerProps={{
+                        required: true,
+                      }}
+                    />
+                    {
+                      errors.email?.type === 'required'
+                      && <p className={styles.error}>Email Address is required</p>
+                    }
+                  </div>
+                  <div className={styles.container__input}>
+                    <Input
+                      type="password"
+                      name="password"
+                      label="Password"
+                      placeholder="Password *"
+                      register={register}
+                      registerProps={{
+                        minLength: 6,
+                        required: true,
+                      }}
+                    />
+                    {
+                      errors.password?.type === 'required'
+                        ? <p className={styles.error}>Password is required</p>
+                        : errors.password?.type === 'minLength'
+                        && <p className={styles.error}>You need a password greater than or equal to 6 letters</p>
+                    }
+                  </div>
+                  <div className={styles.container__input}>
+                    <Input
+                      type="password"
+                      name="confirmPassword"
+                      label="Confirm Password"
+                      placeholder="Confirm Password *"
+                      register={register}
+                      registerProps={{
+                        required: true,
+                      }}
+                    />
+                    {
+                      errors.confirmPassword?.type === 'required'
+                      && <p className={styles.error}>Confirm Password is required</p>
+                    }
+                  </div>
+                  <div className={styles.container__avatars}>
+                    <div className={styles.container__label__avatar}>
+                      <p>
+                        Avatar
+                      </p>
                     </div>
-                    <div className={styles.container__input}>
-                      <Input
-                        type="text"
-                        name="lastName"
-                        label="Last Name"
-                        placeholder="Last Name *"
-                        register={register}
-                        registerProps={{
-                          required: true,
-                        }}
-                      />
-                      {
-                        errors.lastName?.type === 'required'
-                        && <p className={styles.error}>Last Name is required</p>
-                      }
-                    </div>
-                    <div className={styles.container__input}>
-                      <Input
-                        type="email"
-                        name="email"
-                        label="Email Address"
-                        placeholder="Email Address *"
-                        register={register}
-                        registerProps={{
-                          required: true,
-                        }}
-                      />
-                      {
-                        errors.email?.type === 'required'
-                        && <p className={styles.error}>Email Address is required</p>
-                      }
-                    </div>
-                    <div className={styles.container__input}>
-                      <Input
-                        type="password"
-                        name="password"
-                        label="Password"
-                        placeholder="Password *"
-                        register={register}
-                        registerProps={{
-                          minLength: 6,
-                          required: true,
-                        }}
-                      />
-                      {
-                        errors.password?.type === 'required'
-                          ? <p className={styles.error}>Password is required</p>
-                          : errors.password?.type === 'minLength'
-                          && <p className={styles.error}>You need a password greater than or equal to 6 letters</p>
-                      }
-                    </div>
-                    <div className={styles.container__input}>
-                      <Input
-                        type="password"
-                        name="confirmPassword"
-                        label="Confirm Password"
-                        placeholder="Confirm Password *"
-                        register={register}
-                        registerProps={{
-                          required: true,
-                        }}
-                      />
-                      {
-                        errors.confirmPassword?.type === 'required'
-                        && <p className={styles.error}>Confirm Password is required</p>
-                      }
-                    </div>
-                    <div className={styles.container__avatars}>
-                      <div className={styles.container__label__avatar}>
-                        <p>
-                          Avatar
-                        </p>
-                      </div>
-                      <Carousel
-                        slides={AVATARS}
-                        colorLeft={width < 768 ? '#EDF2F4' : '#2B2D42'}
-                        colorRight={width < 768 ? '#EDF2F4' : '#2B2D42'}
-                        currentSlide={currentSlide}
-                        setCurrentSlide={(value) => {
-                          setCurrentSlide(value);
-                          setAvatar(AVATARS[value].image);
-                        }}
-                      />
-                    </div>
-                    <input
-                      type="submit"
-                      className={styles.input__submit}
-                      value="Sign Up"
+                    <Carousel
+                      slides={AVATARS}
+                      colorLeft={width < 768 ? '#EDF2F4' : '#2B2D42'}
+                      colorRight={width < 768 ? '#EDF2F4' : '#2B2D42'}
+                      currentSlide={currentSlide}
+                      setCurrentSlide={(value) => {
+                        setCurrentSlide(value);
+                        setAvatar(AVATARS[value].image);
+                      }}
                     />
                   </div>
-                </form>
-                <Link
-                  to="/sign-in"
-                  className={styles.component__link}
-                >
-                  Already have an account ? Sign In
-                </Link>
-              </div>
+                  <input
+                    type="submit"
+                    className={styles.input__submit}
+                    value="Sign Up"
+                  />
+                </div>
+              </form>
+              <Link
+                to="/sign-in"
+                className={styles.component__link}
+              >
+                Already have an account ? Sign In
+              </Link>
             </div>
           </div>
-        // </div>
+        </div>
       )}
       {redirect && <Message />}
       {
