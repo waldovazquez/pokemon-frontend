@@ -30,14 +30,10 @@ function LandingPage() {
           </div>
           {!data.userData && (
             <div className={styles.container__buttons}>
-              <Button
-                onClick={() => navigate('/sign-in')}
-              >
+              <Button onClick={() => navigate('/sign-in')}>
                 Sign In
               </Button>
-              <Button
-                onClick={() => navigate('/sign-up')}
-              >
+              <Button onClick={() => navigate('/sign-up')}>
                 Sign Up
               </Button>
             </div>
