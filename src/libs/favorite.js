@@ -16,7 +16,7 @@ async function getFavorites(data) {
   try {
     const response = await api.get('/favorites/getallfavorites', {
       params: {
-        page: data.page,
+        page: data ? data.page : null,
       },
     });
     if (response && response.data) {

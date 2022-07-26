@@ -145,12 +145,15 @@ function PokemonCreate() {
                     placeholder="Name *"
                     register={register}
                     registerProps={{
+                      maxLength: 18,
                       required: true,
                     }}
                   />
                   {
                     errors.name?.type === 'required'
-                    && <p className={styles.error}>Name is required</p>
+                      ? <p className={styles.error}>Name is required</p>
+                      : errors.name?.type === 'maxLength'
+                      && <p className={styles.error}>Maximum characters 18</p>
                   }
                 </div>
                 <div className={styles.container__input}>

@@ -12,7 +12,7 @@ function Toast({
 }) {
   setTimeout(() => {
     onClose();
-  }, 5000);
+  }, 3000);
 
   return (
     <Alert

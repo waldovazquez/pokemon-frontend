@@ -54,7 +54,6 @@ function SignIn() {
     } catch (e) {
       console.info('Error', e);
       setAlert({
-        severity: 'error',
         message: 'Something is wrong',
       });
     } finally {

@@ -112,13 +112,13 @@
     justify-content: space-around;
   }
 
-  .container__types {
-    margin: 0px;
-  }
-
   .container__inputs {
     width: 340px;
     padding: 0px;
+  }
+
+  .container__types {
+    margin: 0px;
   }
 
   .container__save {

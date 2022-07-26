@@ -33,10 +33,10 @@ function Card({
   attack,
   id,
   toDelete = false,
+  active = false,
   onClick = () => { },
 }) {
   const navigate = useNavigate();
-
   return (
     <div className={styles.container}>
       <div className={styles.attack}>
@@ -68,8 +68,14 @@ function Card({
       <div className={styles.container__bottom}>
         {!toDelete ? (
           <Tooltip title="Favorite">
-            <IconButton aria-label="Favorite" onClick={() => onClick()}>
-              <MdFavorite className={styles.icon} />
+            <IconButton
+              aria-label="Favorite"
+              onClick={() => onClick()}
+            >
+              <MdFavorite
+                className={styles.icon}
+                color={active ? '#EF233C' : '#2B2D42'}
+              />
             </IconButton>
           </Tooltip>
         ) : (

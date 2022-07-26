@@ -26,7 +26,7 @@ function LandingPage() {
       <div className={styles.container}>
         <div className={styles.container__information}>
           <div className={styles.container__title}>
-            <p className={styles.title}>Discover And Collect Your Pokémon</p>
+            <p className={styles.title}>Discover And Collect Your Pokémons</p>
           </div>
           {!data.userData && (
             <div className={styles.container__buttons}>

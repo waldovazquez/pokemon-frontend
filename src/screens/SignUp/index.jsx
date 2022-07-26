@@ -48,7 +48,6 @@ function SignUp() {
     try {
       if (data.password !== data.confirmPassword) {
         return setAlert({
-          severity: 'error',
           message: 'Passwords do not match',
         });
       }
@@ -74,7 +73,6 @@ function SignUp() {
     } catch (e) {
       console.info('Error', e);
       setAlert({
-        severity: 'error',
         message: 'Something is wrong',
       });
     }

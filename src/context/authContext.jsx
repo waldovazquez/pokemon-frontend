@@ -27,6 +27,7 @@ function AuthProvider({
     token: null,
   });
   const navigate = useNavigate();
+
   async function validateToken(authToken) {
     try {
       const responseData = await getByToken(authToken);

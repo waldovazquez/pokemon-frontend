@@ -27,6 +27,7 @@ import {
 
 import {
   createFavorite,
+  getFavorites,
 } from '../../libs/favorite';
 
 import getTypes from '../../libs/type';
@@ -54,6 +55,7 @@ function Home() {
   const [typeSelected, setTypeSelected] = useState(searchParams.get('type') || '');
   const [orderSelected, setOrderSelected] = useState(searchParams.get('attack') || '');
   const [page, setPage] = useState(Number(searchParams.get('page')) || 1);
+  const [myFavorites, setMyFavorites] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
   const [alert, setAlert] = useState(null);
   const {
@@ -97,6 +99,17 @@ function Home() {
     }
   }
 
+  async function getMyFavorites() {
+    try {
+      const response = await getFavorites();
+      if (response && response.ok) {
+        setMyFavorites(response.favorites);
+      }
+    } catch (e) {
+      console.info('Error', e);
+    }
+  }
+
   async function addToFavorites(pokemonId) {
     try {
       const response = await createFavorite({
@@ -115,6 +128,8 @@ function Home() {
       }
     } catch (e) {
       console.info('Error: ', e);
+    } finally {
+      getMyFavorites();
     }
   }
 
@@ -143,6 +158,7 @@ function Home() {
 
   useEffect(() => {
     getAllTypes();
+    getMyFavorites();
   }, []);
 
   useEffect(() => {
@@ -250,6 +266,7 @@ function Home() {
                     title={item.name}
                     attack={item.attack || 0}
                     id={item._id}
+                    active={(myFavorites.filter((fav) => fav.pokemonId === item._id).length > 0)}
                     onClick={() => addToFavorites(item._id)}
                   />
                 </div>

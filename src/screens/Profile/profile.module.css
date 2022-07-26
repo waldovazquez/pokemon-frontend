@@ -9,7 +9,6 @@
   flex-direction: column;
   align-items: center;
   width: 90%;
-  height: 600px;
   justify-content: center;
   margin: auto;
   background-color: #EDF2F4;
@@ -25,16 +24,28 @@
   width: 100%;
 }
 
-.container__input {
+.form {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  margin-top: 10px;
-  width: 100%;
+  width: 80%;
 }
 
-.container__input>div>p {
-  color: #2B2D42;
+.container__input {
+  height: 74px;
+}
+
+.input__submit {
+  width: 50%;
+  height: 40px;
+  border-radius: 8px;
+  margin: 10px auto;
+  cursor: pointer;
+  border: 2px solid #2B2D42;
+}
+
+.error {
+  color: #D90429;
+  font-size: 14px;
 }
 
 @media only screen and (min-width: 768px) {

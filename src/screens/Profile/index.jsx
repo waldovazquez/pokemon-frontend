@@ -4,12 +4,15 @@ import React, {
   useEffect,
 } from 'react';
 
+import {
+  useForm,
+} from 'react-hook-form';
+
 import AuthContext from '../../context/authContext';
 
 import Screen from '../../components/Screen';
 import Input from '../../components/Input';
 import Toast from '../../components/Toast';
-import Button from '../../components/Button';
 import Carousel from '../../components/Carousel';
 
 import styles from './profile.module.css';
@@ -28,45 +31,44 @@ function Profile() {
     data,
     validateToken,
   } = useContext(AuthContext);
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [currentPassword, setCurrentPassword] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    setValue,
+  } = useForm();
   const [avatar, setAvatar] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
 
   async function getProfile() {
     try {
-      const response = await getByToken(data.token);
+      const response = await getByToken();
+
       if (response && response.ok) {
-        setFirstName(response.userData.firstName);
-        setLastName(response.userData.lastName);
-        setEmail(response.userData.email);
+        setValue('firstName', response.userData.firstName);
+        setValue('lastName', response.userData.lastName);
+        setValue('email', response.userData.email);
         setAvatar(response.userData.avatar);
-        setCurrentSlide(AVATARS.findIndex((av) => av.image === data.userData.avatar));
+        setCurrentSlide(AVATARS.findIndex((av) => av.image === response.userData.avatar));
       }
     } catch (e) {
       console.info('Error', e);
     }
   }
 
-  async function handleProfileUpdate() {
+  async function handleProfileUpdate(dataForm) {
     try {
-      if (newPassword === confirmPassword) {
+      if (dataForm.newPassword === dataForm.confirmPassword) {
         const dataToSave = {
-          firstName,
-          lastName,
-          email,
+          firstName: dataForm.firstName,
+          lastName: dataForm.lastName,
+          email: dataForm.email,
           avatar,
-          currentPassword,
-          password: newPassword,
+          currentPassword: dataForm.currentPassword,
+          password: dataForm.newPassword,
           userId: data.userData._id,
         };
-        setLoading(true);
         const response = await update(dataToSave);
         if (response && response.ok) {
           validateToken(data.token);
@@ -75,28 +77,31 @@ function Profile() {
             message: 'User Successfully Updated',
           });
         }
+        if (response && !response.ok) {
+          setAlert({
+            message: 'The passwords are equal',
+          });
+        }
       } else {
         setAlert({
-          severity: 'error',
           message: 'Passwords do not match',
         });
       }
     } catch (e) {
       console.info('Error', e);
       setAlert({
-        severity: 'error',
         message: 'Something is wrong',
       });
     } finally {
-      setLoading(false);
+      setValue('currentPassword', '');
+      setValue('newPassword', '');
+      setValue('confirmPassword', '');
     }
   }
 
   useEffect(() => {
-    if (data.userData) {
-      getProfile();
-    }
-  }, [data.userData]);
+    getProfile();
+  }, []);
 
   return (
     <Screen safe>
@@ -113,74 +118,111 @@ function Profile() {
               width: '100%',
             }}
           />
-          <div className={styles.container__input}>
-            <Input
-              type="text"
-              label="Firstname"
-              labelColor="#2B2D42"
-              placeholder="Firstname *"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-            />
-            <Input
-              type="text"
-              label="Lastname"
-              labelColor="#2B2D42"
-              placeholder="Lastname *"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-            />
-            <Input
-              type="email"
-              label="Email"
-              labelColor="#2B2D42"
-              placeholder="Email *"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <Input
-              type="password"
-              label="Current Password"
-              labelColor="#2B2D42"
-              placeholder="Current Password *"
-              value={currentPassword}
-              onChange={(e) => setCurrentPassword(e.target.value)}
-            />
-            <Input
-              type="password"
-              label="New Password"
-              labelColor="#2B2D42"
-              placeholder="New Password *"
-              value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
-            />
-            <Input
-              type="password"
-              label="Confirm Password"
-              labelColor="#2B2D42"
-              placeholder="Confirm Password *"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-          </div>
-          <Button
-            type="submit"
-            onClick={() => handleProfileUpdate()}
-            disabled={loading}
+          <form
+            className={styles.form}
+            onSubmit={handleSubmit(handleProfileUpdate)}
           >
-            Update Profile
-          </Button>
+            <div className={styles.container__input}>
+              <Input
+                type="text"
+                name="firstName"
+                label="First Name"
+                placeholder="First Name *"
+                register={register}
+                registerProps={{
+                  required: true,
+                }}
+              />
+              {
+                errors.firstName?.type === 'required'
+                && <p className={styles.error}>First Name is required</p>
+              }
+            </div>
+            <div className={styles.container__input}>
+              <Input
+                type="text"
+                name="lastName"
+                label="Last Name"
+                placeholder="Last Name *"
+                register={register}
+                registerProps={{
+                  required: true,
+                }}
+              />
+              {
+                errors.lastName?.type === 'required'
+                && <p className={styles.error}>Last Name is required</p>
+              }
+            </div>
+            <div className={styles.container__input}>
+              <Input
+                type="text"
+                name="email"
+                label="Email"
+                placeholder="Email *"
+                register={register}
+                registerProps={{
+                  required: true,
+                }}
+              />
+              {
+                errors.email?.type === 'required'
+                && <p className={styles.error}>Email is required</p>
+              }
+            </div>
+            <div className={styles.container__input}>
+              <Input
+                type="password"
+                name="currentPassword"
+                label="Current Password"
+                placeholder="Current Password *"
+                register={register}
+                registerProps={{
+                  required: true,
+                }}
+              />
+              {
+                errors.currentPassword?.type === 'required'
+                && <p className={styles.error}>Current Password is required</p>
+              }
+            </div>
+            <div className={styles.container__input}>
+              <Input
+                type="password"
+                name="newPassword"
+                label="New Password"
+                placeholder="New Password *"
+                register={register}
+              />
+            </div>
+            <div className={styles.container__input}>
+              <Input
+                type="password"
+                name="confirmPassword"
+                label="Confirm Password"
+                placeholder="Confirm Password *"
+                register={register}
+              />
+              {
+                errors.confirmPassword?.type === 'required'
+                && <p className={styles.error}>Confirm Password is required</p>
+              }
+            </div>
+            <input
+              type="submit"
+              className={styles.input__submit}
+              value="Update Profile"
+            />
+          </form>
         </div>
       </div>
-      {
-        alert && (
-          <Toast
-            severity={alert.severity}
-            message={alert.message}
-            onClose={() => setAlert(null)}
-          />
-        )
-      }
+      {alert && (
+        <Toast
+          severity={alert.severity}
+          message={alert.message}
+          onClose={() => setAlert(null)}
+        />
+      )}
     </Screen>
   );
 }

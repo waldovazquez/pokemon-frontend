@@ -4,7 +4,7 @@ async function getByToken(token) {
   try {
     const response = await api.get('/user/getbytoken', {
       params: {
-        token,
+        token: token || null,
       },
     });
     if (response && response.data) {
