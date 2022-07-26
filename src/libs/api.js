@@ -4,16 +4,12 @@ import {
   getLocalStorage,
 } from '../utils/storage';
 
-import {
-  API_URL,
-} from '../utils/constants';
-
 function getToken() {
   return getLocalStorage('x-access-token');
 }
 
 const api = axios.create({
-  baseURL: `${API_URL}`,
+  baseURL: `${import.meta.env.VITE_API_URL}`,
   timeout: 10000,
 });
 
