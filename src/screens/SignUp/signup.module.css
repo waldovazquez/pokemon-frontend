@@ -1,5 +1,5 @@
 .container {
-  height: 100%;
+  height: auto;
   display: flex;
   align-items: center;
 }
@@ -17,6 +17,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 10px;
 }
 
 .image {
@@ -89,6 +90,10 @@
 }
 
 @media only screen and (min-width: 768px) {
+  .container {
+    height: 100vh;
+  }
+
   .content {
     flex-direction: row;
     height: 80%;
@@ -97,6 +102,10 @@
     padding: 10px 10px;
     width: 100%;
     margin: 0px 4px;
+  }
+
+  .container__image{
+    margin: 0px;
   }
 
   .container__content__right {

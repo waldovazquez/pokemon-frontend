@@ -1,7 +1,6 @@
 import React, {
   useState,
   useEffect,
-  useContext,
 } from 'react';
 
 import {
@@ -11,8 +10,6 @@ import {
 import {
   Pagination,
 } from '@mui/material';
-
-import AuthContext from '../../context/authContext';
 
 import Screen from '../../components/Screen';
 import Loading from '../../components/Loading';
@@ -42,9 +39,6 @@ import {
 import styles from './home.module.css';
 
 function Home() {
-  const {
-    data,
-  } = useContext(AuthContext);
   const [searchParams] = useSearchParams();
   const {
     handleUrl,
@@ -114,7 +108,6 @@ function Home() {
     try {
       const response = await createFavorite({
         pokemonId,
-        userId: data.userData._id,
       });
       if (response && response.ok) {
         setAlert({

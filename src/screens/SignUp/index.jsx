@@ -76,7 +76,7 @@ function SignUp() {
   }
 
   return (
-    <Screen safe>
+    <Screen>
       {!redirect && (
         <div className={styles.container}>
           <div className={styles.content}>

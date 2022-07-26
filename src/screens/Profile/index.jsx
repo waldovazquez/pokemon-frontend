@@ -64,14 +64,15 @@ function Profile() {
       const response = await update({
         ...dataForm,
         avatar,
-        userId: data.userData._id,
       });
       if (response && response.ok) {
-        validateToken(data.token);
-        setAlert({
-          severity: 'success',
-          message: 'User Successfully Updated',
-        });
+        const isValid = await validateToken(data.token);
+        if (isValid) {
+          return setAlert({
+            severity: 'success',
+            message: 'User Successfully Updated',
+          });
+        }
       }
       if (response && !response.ok) {
         setAlert({
@@ -90,6 +91,7 @@ function Profile() {
         confirmPassword: '',
       });
     }
+    return null;
   }
 
   useEffect(() => {

@@ -38,13 +38,13 @@ function AuthProvider({
         });
         return true;
       }
-      return false;
+      return null;
     } catch (e) {
       console.info('Error', e);
       removeLocalStorage('x-access-token');
       navigate('/sign-in');
     }
-    return false;
+    return null;
   }
 
   useEffect(() => {
