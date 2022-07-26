@@ -1,15 +1,16 @@
 .container {
   display: flex;
-  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .sub__container {
   display: flex;
   background-color: #EDF2F4;
   border-radius: 10px;
-  height: 60%;
+  height: 80%;
   width: 80%;
-  margin: auto;
 }
 
 .content {
@@ -20,15 +21,18 @@
   justify-content: center;
 }
 
-.content>button {
-  margin-top: 10px;
-}
-
 .image {
   border-radius: 50%;
-  height: 128px;
-  width: 128px;
+  height: 50%;
+  width: 50%;
   object-fit: contain;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
 }
 
 .container__inputs {
@@ -36,40 +40,64 @@
   width: 80%;
 }
 
-.container__inputs>div>p {
-  color: #2B2D42;
+.container__input {
+  height: 74px;
+}
+
+.input__submit {
+  width: 50%;
+  padding: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 2px solid #2B2D42;
+  margin-top: 14px;
 }
 
 .component__link {
-  display: flex;
-  justify-content: flex-end;
   color: #2B2D42;
   margin-top: 6px;
   font-size: 14px;
   font-style: italic;
 }
 
+.error {
+  color: #D90429;
+  font-size: 14px;
+}
+
+.input {
+  width: 100%;
+  height: 36px;
+  border-radius: 8px;
+  border: 2px solid #8D99AE;
+  text-indent: 10px;
+  margin-top: 2px;
+}
+
+.input:focus {
+  border: 2px solid #2B2D42;
+  outline: none;
+}
+
 @media only screen and (min-width: 768px) {
   .sub__container {
     width: 40%;
+    height: 60%;
   }
 
-  .image {
-    height: 256px;
-    width: 256px;
-  }
-
-  .container__inputs {
+  .form {
     width: 60%;
   }
 
-  .container__link {
-    display: flex;
-    justify-content: flex-end;
+  .container__inputs {
+    width: 100%;
   }
 
   .component__link {
     color: #2B2D42;
+    width: 60%;
+    display: flex;
+    justify-content: flex-end;
   }
 
   .component__link:hover {

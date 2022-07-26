@@ -83,7 +83,7 @@ function SignUp() {
     <Screen safe>
       {!redirect && (
         <div className={styles.container}>
-          <div className={styles.sub__container}>
+          {/* <div className={styles.sub__container}> */}
             <div className={styles.content}>
               <div className={styles.container__image}>
                 <img
@@ -216,7 +216,7 @@ function SignUp() {
               </div>
             </div>
           </div>
-        </div>
+        // </div>
       )}
       {redirect && <Message />}
       {

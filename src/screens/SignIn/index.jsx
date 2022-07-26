@@ -8,10 +8,12 @@ import {
   useNavigate,
 } from 'react-router-dom';
 
+import {
+  useForm,
+} from 'react-hook-form';
+
 import AuthContext from '../../context/authContext';
 
-import Input from '../../components/Input';
-import Button from '../../components/Button';
 import Screen from '../../components/Screen';
 import Toast from '../../components/Toast';
 
@@ -31,20 +33,19 @@ function SignIn() {
   const {
     validateToken,
   } = useContext(AuthContext);
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
 
-  async function handleSignIn() {
+  async function handleSignIn(data) {
     try {
       setLoading(true);
-      const dataToSignIn = {
-        email,
-        password,
-      };
-      const response = await login(dataToSignIn);
+      const response = await login(data);
 
       if (response && response.ok) {
         setLocalStorage('x-access-token', response.token);
@@ -61,54 +62,71 @@ function SignIn() {
     }
   }
 
+  console.info('errors', errors);
+
   return (
-    <Screen>
-      <form onSubmit={(e) => e.preventDefault()}>
-        <div className={styles.container}>
-          <div className={styles.sub__container}>
-            <div className={styles.content}>
-              <img
-                src={ashSignIn}
-                alt="ash"
-                className={styles.image}
-              />
+    <Screen safe>
+      <div className={styles.container}>
+        <div className={styles.sub__container}>
+          <div className={styles.content}>
+            <img
+              src={ashSignIn}
+              alt="ash"
+              className={styles.image}
+            />
+            <form
+              className={styles.form}
+              onSubmit={handleSubmit(handleSignIn)}
+            >
               <div className={styles.container__inputs}>
-                <Input
-                  type="text"
-                  label="Email"
-                  labelColor="#2B2D42"
-                  placeholder="Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <Input
-                  type="password"
-                  label="Password"
-                  labelColor="#2B2D42"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <div className={styles.container__link}>
-                  <Link
-                    to="/sign-up"
-                    className={styles.component__link}
-                  >
-                    Need an account? Sign up
-                  </Link>
+                <div className={styles.container__input}>
+                  <p>
+                    Email
+                  </p>
+                  <input
+                    placeholder="Email *"
+                    type="email"
+                    className={styles.input}
+                    {...register('email', { required: true })}
+                  />
+                  {
+                    errors.email?.type === 'required'
+                    && <p className={styles.error}>Email is required</p>
+                  }
+                </div>
+                <div className={styles.container__input}>
+                  <p>
+                    Password
+                  </p>
+                  <input
+                    label="Password"
+                    placeholder="Password *"
+                    type="password"
+                    className={styles.input}
+                    {...register('password', { required: true })}
+                  />
+                  {
+                    errors.password?.type === 'required'
+                    && <p className={styles.error}>Password is required</p>
+                  }
                 </div>
               </div>
-              <Button
+              <input
                 type="submit"
-                onClick={() => handleSignIn()}
                 disabled={loading}
-              >
-                Sign In
-              </Button>
-            </div>
+                className={styles.input__submit}
+                value="Sign In"
+              />
+            </form>
+            <Link
+              to="/sign-up"
+              className={styles.component__link}
+            >
+              Need an account? Sign up
+            </Link>
           </div>
         </div>
-      </form>
+      </div>
       {alert && (
         <Toast
           severity={alert.severity}
